@@ -2,17 +2,17 @@ import React, {Component} from 'react';
 
 import {Container} from "react-bootstrap";
 
-class Dashboard extends Component {
+class Login extends Component {
 
     render() {
         return (
             <div>
                 <Container>
-                    <h1>Dashboard</h1>
+                    <h1>LOGIN</h1>
                 </Container>
             </div>
         );
     }
 }
 
-export default Dashboard;
+export default Login;

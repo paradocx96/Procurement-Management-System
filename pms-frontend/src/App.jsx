@@ -4,8 +4,10 @@ import {BrowserRouter as Router, Redirect, Switch, Route} from 'react-router-dom
 
 // Import Style
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import Components
+import Login from "./components/pages/Login";
 import Dashboard from "./components/pages/Dashboard";
 
 
@@ -15,7 +17,7 @@ function App() {
             <Router>
                 <Switch>
                     {/* USER MANAGEMENT */}
-
+                    <Route path="/" component={Login}/>
 
 
                     {/* DASHBOARD */}
@@ -28,6 +30,7 @@ function App() {
                     {/* INVENTORY */}
 
 
+                    {/* DEFAULT PATH */}
                     <Redirect to="/"/>
                 </Switch>
             </Router>
