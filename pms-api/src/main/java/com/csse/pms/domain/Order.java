@@ -1,13 +1,13 @@
 package com.csse.pms.domain;
 
 import java.time.LocalDateTime;
-import java.util.Map;
+import java.util.List;
 
 public class Order {
 
     private String referenceNo;
     private String supplierId;
-    private Map<String,Integer> itemList;
+    private List<OrderItem> itemList;
     private String siteManagerId;
     private String siteId;
     private String projectId;
@@ -34,11 +34,11 @@ public class Order {
         this.supplierId = supplierId;
     }
 
-    public Map<String, Integer> getItemList() {
+    public List<OrderItem> getItemList() {
         return itemList;
     }
 
-    public void setItemList(Map<String, Integer> itemList) {
+    public void setItemList(List<OrderItem> itemList) {
         this.itemList = itemList;
     }
 

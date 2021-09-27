@@ -3,7 +3,7 @@ package com.csse.pms.dal.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
-import java.util.Map;
+import java.util.List;
 
 @Document
 public class OrderModel {
@@ -11,7 +11,7 @@ public class OrderModel {
     @Id
     private String referenceNo;
     private String supplierId;
-    private Map<String,Integer> itemList;
+    private List<OrderItemModel> itemList;
     private String siteManagerId;
     private String siteId;
     private String projectId;
@@ -25,7 +25,7 @@ public class OrderModel {
     public OrderModel() {
     }
 
-    public OrderModel(String referenceNo, String supplierId, Map<String, Integer> itemList, String siteManagerId, String siteId, String projectId, double amount, String contactDetails, String comment, LocalDateTime dateTime, String status, String mainStatus) {
+    public OrderModel(String referenceNo, String supplierId, List<OrderItemModel> itemList, String siteManagerId, String siteId, String projectId, double amount, String contactDetails, String comment, LocalDateTime dateTime, String status, String mainStatus) {
         this.referenceNo = referenceNo;
         this.supplierId = supplierId;
         this.itemList = itemList;
@@ -74,11 +74,11 @@ public class OrderModel {
         this.supplierId = supplierId;
     }
 
-    public Map<String, Integer> getItemList() {
+    public List<OrderItemModel> getItemList() {
         return itemList;
     }
 
-    public void setItemList(Map<String, Integer> itemList) {
+    public void setItemList(List<OrderItemModel> itemList) {
         this.itemList = itemList;
     }
 
