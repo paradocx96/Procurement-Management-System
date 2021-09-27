@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,6 +34,19 @@ public class OrderAdapterImpl implements OrderDataAdapter {
         this.mongoTemplate = mongoTemplate;
     }
 
+    /**
+     * This Method gets parameter as Order object and assign to new order-model object.
+     * Then order model object save in order collection in MongoDB Cluster database.
+     *
+     * @param order
+     *     Order object from OrderApi class.
+     * @return ResponseEntity<?>
+     *     Customized message will be return.
+     * @exception Exception
+     *     Common Exception to be handled.
+     *
+     * @see #purchaseOrder(Order)
+     * */
     @Override
     public ResponseEntity<?> purchaseOrder(Order order) {
 
@@ -60,6 +74,18 @@ public class OrderAdapterImpl implements OrderDataAdapter {
         }
     }
 
+    /**
+     * This Method gets all orders saved in order collection in MongoDB Cluster database.
+     * Then assign to order model list object.
+     * Then using for loop assign to order list object.
+     *
+     * @return List<Order>
+     *     All founded orders will be return as order list object.
+     * @exception Exception
+     *     Common Exception to be handled.
+     *
+     * @see #getAllOrders()
+     * */
     @Override
     public List<Order> getAllOrders() {
         List<Order> orders = new ArrayList<>();
@@ -92,6 +118,21 @@ public class OrderAdapterImpl implements OrderDataAdapter {
         }
     }
 
+    /**
+     * This Method gets parameter as String id.
+     * Then find the order using the id of order saved in order collection in MongoDB Cluster database.
+     * Then founded order assign to order model object.
+     * Then using for loop assign to order object.
+     *
+     * @param id
+     *     Relevant Order id from OrderApi class.
+     * @return Order
+     *     Founded order will be return as order object.
+     * @exception NoSuchElementException
+     *     If method cannot find the relevant order from database this will throw.
+     *
+     * @see #getAllOrders()
+     * */
     @Override
     public Order getOrderById(String id) {
         OrderModel orderModel;
@@ -114,7 +155,7 @@ public class OrderAdapterImpl implements OrderDataAdapter {
             order.setStatus(orderModel.getStatus());
 
             return order;
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
             return order;
         }
