@@ -5,7 +5,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class OrderItemModel {
 
-    private String referenceNo;
     private String itemId;
     private String itemName;
     private int itemCount;
@@ -13,19 +12,10 @@ public class OrderItemModel {
     public OrderItemModel() {
     }
 
-    public OrderItemModel(String referenceNo, String itemId, String itemName, int itemCount) {
-        this.referenceNo = referenceNo;
+    public OrderItemModel(String itemId, String itemName, int itemCount) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.itemCount = itemCount;
-    }
-
-    public String getReferenceNo() {
-        return referenceNo;
-    }
-
-    public void setReferenceNo(String referenceNo) {
-        this.referenceNo = referenceNo;
     }
 
     public String getItemId() {
