@@ -1,13 +1,16 @@
 package com.csse.pms.domain;
 
+import com.csse.pms.dal.model.OrderItemModel;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Order {
 
+    private String id;
     private String referenceNo;
     private String supplierId;
-    private List<OrderItem> itemList;
+    private List<OrderItemModel> itemList;
     private String siteManagerId;
     private String siteId;
     private String projectId;
@@ -17,6 +20,14 @@ public class Order {
     private LocalDateTime dateTime;
     private String status;
     private String mainStatus;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getReferenceNo() {
         return referenceNo;
@@ -34,11 +45,11 @@ public class Order {
         this.supplierId = supplierId;
     }
 
-    public List<OrderItem> getItemList() {
+    public List<OrderItemModel> getItemList() {
         return itemList;
     }
 
-    public void setItemList(List<OrderItem> itemList) {
+    public void setItemList(List<OrderItemModel> itemList) {
         this.itemList = itemList;
     }
 

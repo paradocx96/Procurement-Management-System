@@ -1,5 +1,7 @@
 package com.csse.pms.dto;
 
+import com.csse.pms.dal.model.OrderItemModel;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -7,7 +9,7 @@ public class OrderDto {
 
     private String referenceNo;
     private String supplierId;
-    private List<OrderItemDto> itemList;
+    private List<OrderItemModel> itemList;
     private String siteManagerId;
     private String siteId;
     private String projectId;
@@ -34,11 +36,11 @@ public class OrderDto {
         this.supplierId = supplierId;
     }
 
-    public List<OrderItemDto> getItemList() {
+    public List<OrderItemModel> getItemList() {
         return itemList;
     }
 
-    public void setItemList(List<OrderItemDto> itemList) {
+    public void setItemList(List<OrderItemModel> itemList) {
         this.itemList = itemList;
     }
 

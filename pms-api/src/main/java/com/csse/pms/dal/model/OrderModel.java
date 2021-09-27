@@ -9,6 +9,7 @@ import java.util.List;
 public class OrderModel {
 
     @Id
+    private String id;
     private String referenceNo;
     private String supplierId;
     private List<OrderItemModel> itemList;
@@ -20,12 +21,12 @@ public class OrderModel {
     private String comment;
     private LocalDateTime dateTime;
     private String status;
-    private String mainStatus;
 
     public OrderModel() {
     }
 
-    public OrderModel(String referenceNo, String supplierId, List<OrderItemModel> itemList, String siteManagerId, String siteId, String projectId, double amount, String contactDetails, String comment, LocalDateTime dateTime, String status, String mainStatus) {
+    public OrderModel(String id, String referenceNo, String supplierId, List<OrderItemModel> itemList, String siteManagerId, String siteId, String projectId, double amount, String contactDetails, String comment, LocalDateTime dateTime, String status) {
+        this.id = id;
         this.referenceNo = referenceNo;
         this.supplierId = supplierId;
         this.itemList = itemList;
@@ -37,13 +38,13 @@ public class OrderModel {
         this.comment = comment;
         this.dateTime = dateTime;
         this.status = status;
-        this.mainStatus = mainStatus;
     }
 
     @Override
     public String toString() {
         return "OrderModel{" +
-                "referenceNo='" + referenceNo + '\'' +
+                "id='" + id + '\'' +
+                ", referenceNo='" + referenceNo + '\'' +
                 ", supplierId='" + supplierId + '\'' +
                 ", itemList=" + itemList +
                 ", siteManagerId='" + siteManagerId + '\'' +
@@ -54,8 +55,15 @@ public class OrderModel {
                 ", comment='" + comment + '\'' +
                 ", dateTime=" + dateTime +
                 ", status='" + status + '\'' +
-                ", mainStatus='" + mainStatus + '\'' +
                 '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getReferenceNo() {
@@ -144,13 +152,5 @@ public class OrderModel {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getMainStatus() {
-        return mainStatus;
-    }
-
-    public void setMainStatus(String mainStatus) {
-        this.mainStatus = mainStatus;
     }
 }

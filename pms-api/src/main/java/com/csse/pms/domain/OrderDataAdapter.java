@@ -9,7 +9,7 @@ public interface OrderDataAdapter {
 
     List<Order> getAllOrders();
 
-    List<Order> getOrderById(String referenceNo);
+    List<Order> getOrderById(String id);
 
     List<Order> getOrderByStatus(String status);
 
@@ -17,14 +17,11 @@ public interface OrderDataAdapter {
 
     List<Order> getOrderByProject(String projectId);
 
-    ResponseEntity<?> deleteOrderById(String referenceNo);
+    ResponseEntity<?> deleteOrderById(String id);
 
-    ResponseEntity<?> archiveOrder(String referenceNo);
+    ResponseEntity<?> archiveOrder(Order order);
 
     ResponseEntity<?> updateOrder(Order order);
 
     ResponseEntity<?> updateOrderStatus(Order order);
-
-    ResponseEntity<?> updateOrderMainStatus(Order order);
-
 }

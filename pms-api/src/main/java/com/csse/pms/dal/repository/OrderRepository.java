@@ -10,8 +10,6 @@ public interface OrderRepository extends MongoRepository<OrderModel, String> {
 
     List<OrderModel> findByStatus(String status);
 
-    List<OrderModel> findByMainStatus(String mainStatus);
-
     List<OrderModel> findBySiteId(String siteId);
 
     List<OrderModel> findByProjectId(String projectId);
