@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderApi {
 
@@ -19,4 +21,10 @@ public class OrderApi {
     public ResponseEntity<?> purchaseOrder(Order order){
         return orderDataAdapter.purchaseOrder(order);
     }
+
+    public List<Order> getAllOrders() {
+        return orderDataAdapter.getAllOrders();
+    }
+
+
 }

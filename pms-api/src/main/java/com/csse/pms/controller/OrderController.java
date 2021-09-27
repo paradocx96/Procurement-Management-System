@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping(CommonConstants.ORDER_REQUEST_MAPPING)
@@ -25,6 +26,7 @@ public class OrderController {
     @PostMapping(CommonConstants.POST_MAPPING_PURCHASE)
     public ResponseEntity<?> purchaseOrder(@RequestBody OrderDto orderDto) {
         Order purchase = new Order();
+
         purchase.setReferenceNo(orderDto.getReferenceNo());
         purchase.setSupplierId(orderDto.getSupplierId());
         purchase.setItemList(orderDto.getItemList());
@@ -36,6 +38,14 @@ public class OrderController {
         purchase.setComment(orderDto.getComment());
         purchase.setDateTime(LocalDateTime.now());
         purchase.setStatus(orderDto.getStatus());
+
         return orderApi.purchaseOrder(purchase);
     }
+
+    @GetMapping(CommonConstants.GET_MAPPING_GET)
+    public List<Order> getKeyNotes(){
+        return orderApi.getAllOrders();
+    }
+
+
 }

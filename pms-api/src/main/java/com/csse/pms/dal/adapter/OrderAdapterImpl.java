@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +19,9 @@ import java.util.logging.Logger;
 @Component
 public class OrderAdapterImpl implements OrderDataAdapter {
 
-    /** Initialize Logger */
+    /**
+     * Initialize Logger
+     */
     public static final Logger LOGGER = Logger.getLogger(OrderAdapterImpl.class.getName());
 
     private final OrderRepository repository;
@@ -59,7 +62,34 @@ public class OrderAdapterImpl implements OrderDataAdapter {
 
     @Override
     public List<Order> getAllOrders() {
-        return null;
+        List<Order> orders = new ArrayList<>();
+
+        try {
+            List<OrderModel> orderModels = repository.findAll();
+
+            for (OrderModel orderModel : orderModels) {
+                Order order = new Order();
+
+                order.setId(orderModel.getId());
+                order.setReferenceNo(orderModel.getReferenceNo());
+                order.setSupplierId(orderModel.getSupplierId());
+                order.setItemList(orderModel.getItemList());
+                order.setSiteManagerId(orderModel.getSiteManagerId());
+                order.setSiteId(orderModel.getSiteId());
+                order.setProjectId(orderModel.getProjectId());
+                order.setAmount(orderModel.getAmount());
+                order.setContactDetails(orderModel.getContactDetails());
+                order.setComment(orderModel.getComment());
+                order.setDateTime(orderModel.getDateTime());
+                order.setStatus(orderModel.getStatus());
+
+                orders.add(order);
+            }
+            return orders;
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+            return orders;
+        }
     }
 
     @Override
