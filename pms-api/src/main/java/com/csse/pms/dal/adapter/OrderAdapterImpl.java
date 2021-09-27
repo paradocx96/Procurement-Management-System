@@ -93,8 +93,31 @@ public class OrderAdapterImpl implements OrderDataAdapter {
     }
 
     @Override
-    public List<Order> getOrderById(String id) {
-        return null;
+    public Order getOrderById(String id) {
+        OrderModel orderModel;
+        Order order = new Order();
+
+        try {
+            orderModel = repository.findById(id).get();
+
+            order.setId(orderModel.getId());
+            order.setReferenceNo(orderModel.getReferenceNo());
+            order.setSupplierId(orderModel.getSupplierId());
+            order.setItemList(orderModel.getItemList());
+            order.setSiteManagerId(orderModel.getSiteManagerId());
+            order.setSiteId(orderModel.getSiteId());
+            order.setProjectId(orderModel.getProjectId());
+            order.setAmount(orderModel.getAmount());
+            order.setContactDetails(orderModel.getContactDetails());
+            order.setComment(orderModel.getComment());
+            order.setDateTime(orderModel.getDateTime());
+            order.setStatus(orderModel.getStatus());
+
+            return order;
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+            return order;
+        }
     }
 
     @Override

@@ -26,5 +26,9 @@ public class OrderApi {
         return orderDataAdapter.getAllOrders();
     }
 
+    public Order getOrderById(String id) {
+        return orderDataAdapter.getOrderById(id);
+    }
+
 
 }
