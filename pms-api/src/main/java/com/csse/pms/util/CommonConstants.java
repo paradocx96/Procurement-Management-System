@@ -40,4 +40,10 @@ public class CommonConstants {
 
     /** Constant for Put Update Status - Mapping Path in Controller */
     public static final String PUT_MAPPING_UPDATE_STATUS = "updateStatus";
+    
+    
+    //inventory common constants
+    
+	/* Constant for countable item base URI */
+    public static final String COUNTABLE_ITEMS_BASE_PATH = "/api/inventory/countable/";
 }
