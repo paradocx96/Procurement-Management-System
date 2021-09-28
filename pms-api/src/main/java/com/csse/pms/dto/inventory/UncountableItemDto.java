@@ -1,12 +1,7 @@
-package com.csse.pms.dal.model.inventory;
+package com.csse.pms.dto.inventory;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-@Document
-public class UncountableItemsModel {
+public class UncountableItemDto {
 	
-	@Id
 	private String id;
 	private String name;
 	private String status;
@@ -16,26 +11,9 @@ public class UncountableItemsModel {
 	private String siteid;
 	private String sitename;
 	
-	public UncountableItemsModel() {
+	public UncountableItemDto() {
 		
 	}
-	
-	
-
-	public UncountableItemsModel(String id, String name, String status, double amount, String unit,
-			double minimumAmount, String siteid, String sitename) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.status = status;
-		this.amount = amount;
-		this.unit = unit;
-		this.minimumAmount = minimumAmount;
-		this.siteid = siteid;
-		this.sitename = sitename;
-	}
-
-
 
 	public String getId() {
 		return id;
@@ -85,31 +63,21 @@ public class UncountableItemsModel {
 		this.minimumAmount = minimumAmount;
 	}
 
-
-
 	public String getSiteid() {
 		return siteid;
 	}
-
-
 
 	public void setSiteid(String siteid) {
 		this.siteid = siteid;
 	}
 
-
-
 	public String getSitename() {
 		return sitename;
 	}
 
-
-
 	public void setSitename(String sitename) {
 		this.sitename = sitename;
 	}
-	
-	
 	
 	
 
