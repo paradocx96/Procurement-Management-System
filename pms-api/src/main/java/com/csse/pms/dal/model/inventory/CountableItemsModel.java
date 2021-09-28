@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class CountableItems {
+public class CountableItemsModel {
 	
 	@Id
 	private String id;
@@ -13,12 +13,12 @@ public class CountableItems {
 	private int quantity;
 	private int minimumQuantity;
 	
-	public CountableItems() {
+	public CountableItemsModel() {
 		
 	}
 	
 	
-	public CountableItems(String id, String name, String status, int quantity, int minimumQuantity) {
+	public CountableItemsModel(String id, String name, String status, int quantity, int minimumQuantity) {
 		super();
 		this.id = id;
 		this.name = name;
