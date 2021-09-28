@@ -46,4 +46,7 @@ public class CommonConstants {
     
 	/* Constant for countable item base URI */
     public static final String COUNTABLE_ITEMS_BASE_PATH = "/api/inventory/countable/";
+    
+    /* Constant for uncountable item base URI */
+    public static final String UNCOUNTABLE_ITEMS_BASE_PATH = "/api/inventory/uncountable/";
 }
