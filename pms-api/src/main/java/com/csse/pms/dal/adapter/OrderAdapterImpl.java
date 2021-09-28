@@ -5,7 +5,6 @@ import com.csse.pms.dal.repository.OrderRepository;
 import com.csse.pms.domain.Order;
 import com.csse.pms.domain.OrderDataAdapter;
 import com.csse.pms.dto.MessageResponseDto;
-
 import com.csse.pms.util.CommonConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -14,7 +13,6 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -312,7 +310,7 @@ public class OrderAdapterImpl implements OrderDataAdapter {
     }
 
     /**
-     * This Method gets parameter as String order object.
+     * This Method gets parameter as order object.
      * Then find the order using the id of order saved in order collection in MongoDB Cluster database.
      * Then update order status using id saved in order collection in MongoDB Cluster database.
      *
@@ -342,7 +340,7 @@ public class OrderAdapterImpl implements OrderDataAdapter {
     }
 
     /**
-     * This Method gets parameter as String order object.
+     * This Method gets parameter as order object.
      * Then find the order using the id of order saved in order collection in MongoDB Cluster database.
      * Then update order using id saved in order collection in MongoDB Cluster database.
      *
@@ -380,7 +378,7 @@ public class OrderAdapterImpl implements OrderDataAdapter {
     }
 
     /**
-     * This Method gets parameter as String order object.
+     * This Method gets parameter as order object.
      * Then find the order using the id of order saved in order collection in MongoDB Cluster database.
      * Then update order status using id saved in order collection in MongoDB Cluster database.
      *
