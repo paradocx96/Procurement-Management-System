@@ -4,11 +4,14 @@ import com.csse.pms.api.OrderApi;
 import com.csse.pms.domain.Order;
 import com.csse.pms.dto.OrderDto;
 import com.csse.pms.util.CommonConstants;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping(CommonConstants.ORDER_REQUEST_MAPPING)
@@ -23,8 +26,10 @@ public class OrderController {
     }
 
     @PostMapping(CommonConstants.POST_MAPPING_PURCHASE)
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> purchaseOrder(@RequestBody OrderDto orderDto) {
         Order purchase = new Order();
+
         purchase.setReferenceNo(orderDto.getReferenceNo());
         purchase.setSupplierId(orderDto.getSupplierId());
         purchase.setItemList(orderDto.getItemList());
@@ -36,6 +41,19 @@ public class OrderController {
         purchase.setComment(orderDto.getComment());
         purchase.setDateTime(LocalDateTime.now());
         purchase.setStatus(orderDto.getStatus());
+
         return orderApi.purchaseOrder(purchase);
+    }
+
+    @GetMapping(CommonConstants.GET_MAPPING_GET)
+    @ResponseStatus(HttpStatus.OK)
+    public List<Order> getAllOrders() {
+        return orderApi.getAllOrders();
+    }
+
+    @GetMapping(CommonConstants.GET_MAPPING_GET_BY_ID)
+    @ResponseStatus(HttpStatus.OK)
+    public Order getOrderById(@PathVariable String id) {
+        return orderApi.getOrderById(id);
     }
 }

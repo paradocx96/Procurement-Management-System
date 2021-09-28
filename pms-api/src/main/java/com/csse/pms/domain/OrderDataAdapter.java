@@ -9,7 +9,7 @@ public interface OrderDataAdapter {
 
     List<Order> getAllOrders();
 
-    List<Order> getOrderById(String id);
+    Order getOrderById(String id);
 
     List<Order> getOrderByStatus(String status);
 
