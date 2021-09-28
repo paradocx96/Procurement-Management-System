@@ -7,6 +7,7 @@ import java.util.List;
 
 public class OrderDto {
 
+    private String id;
     private String referenceNo;
     private String supplierId;
     private List<OrderItemModel> itemList;
@@ -18,7 +19,14 @@ public class OrderDto {
     private String comment;
     private LocalDateTime dateTime;
     private String status;
-    private String mainStatus;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getReferenceNo() {
         return referenceNo;
@@ -106,13 +114,5 @@ public class OrderDto {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getMainStatus() {
-        return mainStatus;
-    }
-
-    public void setMainStatus(String mainStatus) {
-        this.mainStatus = mainStatus;
     }
 }

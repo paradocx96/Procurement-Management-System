@@ -4,12 +4,10 @@ import com.csse.pms.api.OrderApi;
 import com.csse.pms.domain.Order;
 import com.csse.pms.dto.OrderDto;
 import com.csse.pms.util.CommonConstants;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -55,5 +53,66 @@ public class OrderController {
     @ResponseStatus(HttpStatus.OK)
     public Order getOrderById(@PathVariable String id) {
         return orderApi.getOrderById(id);
+    }
+
+    @GetMapping(CommonConstants.GET_MAPPING_GET_BY_STATUS)
+    @ResponseStatus(HttpStatus.OK)
+    public List<Order> getOrderByStatus(@PathVariable String status) {
+        return orderApi.getOrderByStatus(status);
+    }
+
+    @GetMapping(CommonConstants.GET_MAPPING_GET_BY_SITE_ID)
+    @ResponseStatus(HttpStatus.OK)
+    public List<Order> getOrderBySite(@PathVariable String id) {
+        return orderApi.getOrderBySite(id);
+    }
+
+    @GetMapping(CommonConstants.GET_MAPPING_GET_BY_PROJECT_ID)
+    @ResponseStatus(HttpStatus.OK)
+    public List<Order> getOrderByProject(@PathVariable String id) {
+        return orderApi.getOrderByProject(id);
+    }
+
+    @DeleteMapping(CommonConstants.DELETE_MAPPING_DELETE_BY_ID)
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> deleteOrderById(@PathVariable String id) {
+        return orderApi.deleteOrderById(id);
+    }
+
+    @PutMapping(CommonConstants.PUT_MAPPING_ARCHIVE)
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> archiveOrder(@RequestBody OrderDto orderDto) {
+        Order order = new Order();
+        order.setId(orderDto.getId());
+        order.setStatus(orderDto.getStatus());
+
+        return orderApi.archiveOrder(order);
+    }
+
+    @PutMapping(CommonConstants.PUT_MAPPING_UPDATE_STATUS)
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> updateOrderStatus(@RequestBody OrderDto orderDto) {
+        Order order = new Order();
+        order.setId(orderDto.getId());
+        order.setStatus(orderDto.getStatus());
+
+        return orderApi.updateOrderStatus(order);
+    }
+
+    @PutMapping(CommonConstants.PUT_MAPPING_UPDATE)
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> updateOrder(@RequestBody OrderDto orderDto) {
+        Order order = new Order();
+        order.setId(orderDto.getId());
+        order.setSupplierId(orderDto.getSupplierId());
+        order.setItemList(orderDto.getItemList());
+        order.setSiteManagerId(orderDto.getSiteManagerId());
+        order.setAmount(orderDto.getAmount());
+        order.setContactDetails(orderDto.getContactDetails());
+        order.setComment(orderDto.getComment());
+        order.setDateTime(LocalDateTime.now());
+        order.setStatus(orderDto.getStatus());
+
+        return orderApi.updateOrder(order);
     }
 }

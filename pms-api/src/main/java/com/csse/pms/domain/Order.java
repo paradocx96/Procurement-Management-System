@@ -19,7 +19,6 @@ public class Order {
     private String comment;
     private LocalDateTime dateTime;
     private String status;
-    private String mainStatus;
 
     public String getId() {
         return id;
@@ -115,13 +114,5 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getMainStatus() {
-        return mainStatus;
-    }
-
-    public void setMainStatus(String mainStatus) {
-        this.mainStatus = mainStatus;
     }
 }
