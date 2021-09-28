@@ -7,6 +7,7 @@ import java.util.List;
 
 public class OrderDto {
 
+    private String id;
     private String referenceNo;
     private String supplierId;
     private List<OrderItemModel> itemList;
@@ -19,6 +20,14 @@ public class OrderDto {
     private LocalDateTime dateTime;
     private String status;
     private String mainStatus;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getReferenceNo() {
         return referenceNo;
