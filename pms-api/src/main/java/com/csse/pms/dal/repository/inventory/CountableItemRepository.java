@@ -12,5 +12,6 @@ public interface CountableItemRepository extends MongoRepository<CountableItemsM
 	
 	List<CountableItemsModel> findByName(String name);
 	List<CountableItemsModel> findByStatus(String status);
+	List<CountableItemsModel> findBySiteid(String siteId);
 
 }
