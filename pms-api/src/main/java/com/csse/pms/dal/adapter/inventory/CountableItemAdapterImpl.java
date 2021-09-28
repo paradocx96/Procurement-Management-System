@@ -53,8 +53,7 @@ public class CountableItemAdapterImpl implements CountableItemsDataAdpater {
 
 	@Override
 	public List<CountableItemsModel> getItemsByStatus(String status) {
-		// TODO Auto-generated method stub
-		return null;
+		return countableItemRepository.findByStatus(status);
 	}
 	
 	//replaces an existing item

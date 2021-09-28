@@ -14,5 +14,6 @@ public interface UncountableItemsDataAdapter {
 	public String updateItem(UncountableItemsModel updatedItem);
 	public String deleteItem(String id);
 	public String updateAmount(double amount, String id);
+	public List<UncountableItemsModel> getItemsBySiteId(String siteId);
 
 }

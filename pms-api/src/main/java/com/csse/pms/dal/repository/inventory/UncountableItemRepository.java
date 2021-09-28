@@ -12,5 +12,6 @@ public interface UncountableItemRepository extends MongoRepository<UncountableIt
 	
 	List<UncountableItemsModel> findByName(String name);
 	List<UncountableItemsModel> findByStatus(String status);
+	List<UncountableItemsModel> findBySiteid(String siteId);
 
 }
