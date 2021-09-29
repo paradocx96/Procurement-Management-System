@@ -1,7 +1,6 @@
 package com.csse.pms.domain;
 
 import org.springframework.http.ResponseEntity;
-
 import java.util.List;
 
 public interface ProjectDataAdapter {
@@ -11,6 +10,8 @@ public interface ProjectDataAdapter {
     List<Project> getAllProjects();
 
     Project getProjectById(String id);
+
+    List<Project> getProjectBySite(String siteId);
 
     ResponseEntity<?> deleteProjectById(String id);
 
