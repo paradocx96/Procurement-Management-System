@@ -25,7 +25,7 @@ public class DraftOrderApi {
      * @return ResponseEntity<?> - Customized message will be return.
      * @see #saveDraftOrder(DraftOrder)
      */
-    ResponseEntity<?> saveDraftOrder(DraftOrder draftOrder) {
+    public ResponseEntity<?> saveDraftOrder(DraftOrder draftOrder) {
         return draftOrderDataAdapter.saveDraftOrder(draftOrder);
     }
 
@@ -35,7 +35,7 @@ public class DraftOrderApi {
      * @return List<DraftOrder> - All founded draft orders will be return as draft order list object.
      * @see #getAllDraftOrders()
      */
-    List<DraftOrder> getAllDraftOrders() {
+    public List<DraftOrder> getAllDraftOrders() {
         return draftOrderDataAdapter.getAllDraftOrders();
     }
 
@@ -47,7 +47,7 @@ public class DraftOrderApi {
      * @return Order - Founded draft order will be return as order object.
      * @see #getDraftOrderById(String)
      */
-    DraftOrder getDraftOrderById(String id) {
+    public DraftOrder getDraftOrderById(String id) {
         return draftOrderDataAdapter.getDraftOrderById(id);
     }
 
@@ -59,7 +59,7 @@ public class DraftOrderApi {
      * @return List<DraftOrder> - Founded order will be return as draft order list object.
      * @see #getDraftOrderBySite(String)
      */
-    List<DraftOrder> getDraftOrderBySite(String siteId) {
+    public List<DraftOrder> getDraftOrderBySite(String siteId) {
         return draftOrderDataAdapter.getDraftOrderBySite(siteId);
     }
 
@@ -71,7 +71,7 @@ public class DraftOrderApi {
      * @return List<DraftOrder> - Founded order will be return as draft order list object.
      * @see #getDraftOrderByProject(String)
      */
-    List<DraftOrder> getDraftOrderByProject(String projectId) {
+    public List<DraftOrder> getDraftOrderByProject(String projectId) {
         return draftOrderDataAdapter.getDraftOrderByProject(projectId);
     }
 
@@ -83,7 +83,7 @@ public class DraftOrderApi {
      * @return ResponseEntity<?> - Customized message will be return.
      * @see #deleteDraftOrderById(String)
      */
-    ResponseEntity<?> deleteDraftOrderById(String id) {
+    public ResponseEntity<?> deleteDraftOrderById(String id) {
         return draftOrderDataAdapter.deleteDraftOrderById(id);
     }
 
@@ -95,7 +95,7 @@ public class DraftOrderApi {
      * @return ResponseEntity<?> - Customized message will be return.
      * @see #updateDraftOrder(DraftOrder)
      */
-    ResponseEntity<?> updateDraftOrder(DraftOrder draftOrder) {
+    public ResponseEntity<?> updateDraftOrder(DraftOrder draftOrder) {
         return draftOrderDataAdapter.updateDraftOrder(draftOrder);
     }
 }

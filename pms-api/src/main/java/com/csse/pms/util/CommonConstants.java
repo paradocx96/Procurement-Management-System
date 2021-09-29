@@ -11,8 +11,14 @@ public class CommonConstants {
     /** Constant for Request Mapping Path in Order Controller */
     public static final String ORDER_REQUEST_MAPPING = "/api/v1/order/";
 
+    /** Constant for Request Mapping Path in Draft Order Controller */
+    public static final String DRAFT_ORDER_REQUEST_MAPPING = "/api/v1/draft/";
+
     /** Constant for Purchase - Mapping Path in Controller */
     public static final String POST_MAPPING_PURCHASE = "purchase";
+
+    /** Constant for Save - Mapping Path in Controller */
+    public static final String POST_MAPPING_SAVE = "save";
 
     /** Constant for Get - Mapping Path in Controller */
     public static final String GET_MAPPING_GET = "get";
