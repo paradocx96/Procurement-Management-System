@@ -7,15 +7,15 @@ public interface DraftOrderDataAdapter {
 
     ResponseEntity<?> saveDraftOrder(DraftOrder draftOrder);
 
-    List<Order> getAllDraftOrders();
+    List<DraftOrder> getAllDraftOrders();
 
-    Order getDraftOrderById(String id);
+    DraftOrder getDraftOrderById(String id);
 
-    List<Order> getDraftOrderBySite(String siteId);
+    List<DraftOrder> getDraftOrderBySite(String siteId);
 
-    List<Order> getDraftOrderByProject(String projectId);
+    List<DraftOrder> getDraftOrderByProject(String projectId);
 
     ResponseEntity<?> deleteDraftOrderById(String id);
 
-    ResponseEntity<?> updateDraftOrder(DraftOrder order);
+    ResponseEntity<?> updateDraftOrder(DraftOrder draftOrder);
 }

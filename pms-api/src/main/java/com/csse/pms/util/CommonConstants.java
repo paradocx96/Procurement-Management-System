@@ -47,14 +47,23 @@ public class CommonConstants {
     /** Constant for Message - Order Delete Successfully */
     public static final String ORDER_DELETE_SUCCESSFULLY = "Order Delete Successfully";
 
+    /** Constant for Message - Draft Order Delete Successfully */
+    public static final String ORDER_DRAFT_DELETE_SUCCESSFULLY = "Draft Order Delete Successfully";
+
     /** Constant for Message - Order Archive Successfully */
     public static final String ORDER_ARCHIVE_SUCCESSFULLY = "Order Archive Successfully";
 
     /** Constant for Message - Order Update Successfully */
     public static final String ORDER_UPDATE_SUCCESSFULLY = "Order Update Successfully";
 
+    /** Constant for Message - Draft Order Update Successfully */
+    public static final String ORDER_DRAFT_UPDATE_SUCCESSFULLY = "Draft Order Update Successfully";
+
     /** Constant for Message - Order Status Update Successfully */
     public static final String ORDER_STATUS_UPDATE_SUCCESSFULLY = "Order Status Update Successfully";
+
+    /** Constant for Message - Order Save Successfully */
+    public static final String ORDER_SAVE_SUCCESSFULLY = "Order Save Successfully";
 
     /** Constant for Message - Order Purchase Error */
     public static final String ORDER_PURCHASE_ERROR = "Order Purchase Error";
@@ -62,14 +71,23 @@ public class CommonConstants {
     /** Constant for Message - Order Delete Error */
     public static final String ORDER_DELETE_ERROR = "Order Delete Error";
 
+    /** Constant for Message - Draft Order Delete Error */
+    public static final String ORDER_DRAFT_DELETE_ERROR = "Draft Order Delete Error";
+
     /** Constant for Message - Order Archive Error */
     public static final String ORDER_ARCHIVE_ERROR = "Order Archive Error";
 
     /** Constant for Message - Order Update Error */
     public static final String ORDER_UPDATE_ERROR = "Order Update Error";
 
+    /** Constant for Message - Draft Order Update Error */
+    public static final String ORDER_DRAFT_UPDATE_ERROR = "Draft Order Update Error";
+
     /** Constant for Message - Order Status Update Error */
     public static final String ORDER_STATUS_UPDATE_ERROR = "Order Status Update Error";
+
+    /** Constant for Message - Order Save Error */
+    public static final String ORDER_SAVE_ERROR = "Order Save Error";
 
     /** Constant for Message - Order Doesn't Exist */
     public static final String ORDER_DOES_NOT_EXIST = "Order Does not Exist";
