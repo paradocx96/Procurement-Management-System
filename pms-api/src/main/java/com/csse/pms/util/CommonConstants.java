@@ -98,6 +98,27 @@ public class CommonConstants {
     /** Constant for Message - Order Doesn't Exist */
     public static final String ORDER_DOES_NOT_EXIST = "Order Does not Exist";
 
+    /** Constant for Message - Delivery Status Save Successfully */
+    public static final String DELIVERY_STATUS_SAVE_SUCCESSFULLY = "Delivery Status Save Successfully";
+
+    /** Constant for Message - Delivery Status Delete Successfully */
+    public static final String DELIVERY_STATUS_DELETE_SUCCESSFULLY = "Delivery Status Delete Successfully";
+
+    /** Constant for Message - Delivery Status Update Successfully */
+    public static final String DELIVERY_STATUS_UPDATE_SUCCESSFULLY = "Delivery Status Update Successfully";
+
+    /** Constant for Message - Delivery Status Save Error */
+    public static final String DELIVERY_STATUS_SAVE_ERROR = "Delivery Status Save Error";
+
+    /** Constant for Message - Delivery Status Delete Error */
+    public static final String DELIVERY_STATUS_DELETE_ERROR = "Delivery Status Delete Error";
+
+    /** Constant for Message - Delivery Status Update Error */
+    public static final String DELIVERY_STATUS_UPDATE_ERROR = "Delivery Status Update Error";
+
+    /** Constant for Message - Delivery Status Doesn't Exist */
+    public static final String DELIVERY_STATUS_DOES_NOT_EXIST = "Delivery Status Does not Exist";
+
     /** Constant for Variable id */
     public static final String ID = "id";
 
@@ -133,5 +154,8 @@ public class CommonConstants {
 
     /** Constant for Variable dateTime */
     public static final String DATE_TIME= "dateTime";
+
+    /** Constant for Variable remark */
+    public static final String REMARK= "remark";
 
 }
