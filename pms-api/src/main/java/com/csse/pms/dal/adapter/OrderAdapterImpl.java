@@ -288,7 +288,7 @@ public class OrderAdapterImpl implements OrderDataAdapter {
      *
      * @param id - Relevant Order id from OrderApi class.
      * @return ResponseEntity<?> - Customized message will be return.
-     * @throws Exception - If method cannot find the relevant orders or delete order from database this will throw.
+     * @throws NoSuchElementException - If method cannot find the relevant orders or delete order from database this will throw.
      * @see #deleteOrderById(String)
      */
     @Override
@@ -303,7 +303,7 @@ public class OrderAdapterImpl implements OrderDataAdapter {
             } else {
                 return ResponseEntity.ok(new MessageResponseDto(CommonConstants.ORDER_DOES_NOT_EXIST));
             }
-        } catch (Exception e) {
+        } catch (NoSuchElementException e) {
             LOGGER.log(Level.SEVERE, e.getMessage());
             return ResponseEntity.ok(new MessageResponseDto(CommonConstants.ORDER_DELETE_ERROR));
         }
