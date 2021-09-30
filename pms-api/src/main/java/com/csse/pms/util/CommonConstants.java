@@ -98,6 +98,48 @@ public class CommonConstants {
     /** Constant for Message - Order Doesn't Exist */
     public static final String ORDER_DOES_NOT_EXIST = "Order Does not Exist";
 
+    /** Constant for Message - Delivery Status Save Successfully */
+    public static final String DELIVERY_STATUS_SAVE_SUCCESSFULLY = "Delivery Status Save Successfully";
+
+    /** Constant for Message - Delivery Status Delete Successfully */
+    public static final String DELIVERY_STATUS_DELETE_SUCCESSFULLY = "Delivery Status Delete Successfully";
+
+    /** Constant for Message - Delivery Status Update Successfully */
+    public static final String DELIVERY_STATUS_UPDATE_SUCCESSFULLY = "Delivery Status Update Successfully";
+
+    /** Constant for Message - Delivery Status Save Error */
+    public static final String DELIVERY_STATUS_SAVE_ERROR = "Delivery Status Save Error";
+
+    /** Constant for Message - Delivery Status Delete Error */
+    public static final String DELIVERY_STATUS_DELETE_ERROR = "Delivery Status Delete Error";
+
+    /** Constant for Message - Delivery Status Update Error */
+    public static final String DELIVERY_STATUS_UPDATE_ERROR = "Delivery Status Update Error";
+
+    /** Constant for Message - Delivery Status Doesn't Exist */
+    public static final String DELIVERY_STATUS_DOES_NOT_EXIST = "Delivery Status Does not Exist";
+
+    /** Constant for Message - Project Create Successfully */
+    public static final String PROJECT_CREATE_SUCCESSFULLY = "Project Create Successfully";
+
+    /** Constant for Message - Project Delete Successfully */
+    public static final String PROJECT_DELETE_SUCCESSFULLY = "Project Delete Successfully";
+
+    /** Constant for Message - Project Update Successfully */
+    public static final String PROJECT_UPDATE_SUCCESSFULLY = "Project Update Successfully";
+
+    /** Constant for Message - Project Create Error */
+    public static final String PROJECT_CREATE_ERROR = "Project Create Error";
+
+    /** Constant for Message - Project Update Error */
+    public static final String PROJECT_DELETE_ERROR = "Project Delete Error";
+
+    /** Constant for Message - Project Delete Error */
+    public static final String PROJECT_UPDATE_ERROR = "Project Update Error";
+
+    /** Constant for Message - Project Doesn't Exist */
+    public static final String PROJECT_DOES_NOT_EXIST = "Project Does not Exist";
+
     /** Constant for Variable id */
     public static final String ID = "id";
 
@@ -115,6 +157,9 @@ public class CommonConstants {
 
     /** Constant for Variable siteManagerId */
     public static final String SITE_MANAGER_ID= "siteManagerId";
+
+    /** Constant for Variable managerId */
+    public static final String MANAGER_ID= "managerId";
 
     /** Constant for Variable siteId */
     public static final String SITE_ID= "siteId";
@@ -141,5 +186,20 @@ public class CommonConstants {
     /* Constant for uncountable item base URI */
     public static final String UNCOUNTABLE_ITEMS_BASE_PATH = "/api/inventory/uncountable/";
 
+
+    /** Constant for Variable remark */
+    public static final String REMARK= "remark";
+
+    /** Constant for Variable projectName */
+    public static final String PROJECT_NAME= "projectName";
+
+    /** Constant for Variable description */
+    public static final String DESCRIPTION= "description";
+
+    /** Constant for Variable budget */
+    public static final String BUDGET= "budget";
+
+    /** Constant for Variable createDateTime */
+    public static final String CREATE_DATE_TIME= "createDateTime";
 
 }
