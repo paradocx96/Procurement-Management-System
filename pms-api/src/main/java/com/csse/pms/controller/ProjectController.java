@@ -64,7 +64,7 @@ public class ProjectController {
 
     @PutMapping(CommonConstants.PUT_MAPPING_UPDATE)
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> updateProject(ProjectDto projectDto) {
+    public ResponseEntity<?> updateProject(@RequestBody ProjectDto projectDto) {
         Project project = new Project();
 
         project.setId(projectDto.getId());

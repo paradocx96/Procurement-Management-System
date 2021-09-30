@@ -62,6 +62,7 @@ public class DraftOrderAdapterImpl implements DraftOrderDataAdapter {
             draftOrderModel.setDateTime(draftOrder.getDateTime());
 
             draftOrderModel = repository.save(draftOrderModel);
+            LOGGER.log(Level.INFO, draftOrderModel.toString());
 
             return ResponseEntity.ok(new MessageResponseDto(CommonConstants.ORDER_SAVE_SUCCESSFULLY));
         } catch (Exception e) {
