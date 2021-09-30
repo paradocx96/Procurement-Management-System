@@ -187,14 +187,6 @@ public class CommonConstants {
 
     /** Constant for Variable dateTime */
     public static final String DATE_TIME= "dateTime";
-  
-    //inventory common constants    
-	  /* Constant for countable item base URI */
-    public static final String COUNTABLE_ITEMS_BASE_PATH = "/api/inventory/countable/";
-    
-    /* Constant for uncountable item base URI */
-    public static final String UNCOUNTABLE_ITEMS_BASE_PATH = "/api/inventory/uncountable/";
-
 
     /** Constant for Variable remark */
     public static final String REMARK= "remark";
@@ -210,5 +202,12 @@ public class CommonConstants {
 
     /** Constant for Variable createDateTime */
     public static final String CREATE_DATE_TIME= "createDateTime";
+  
+    //inventory common constants    
+    /** Constant for countable item base URI */
+    public static final String COUNTABLE_ITEMS_BASE_PATH = "/api/inventory/countable/";
+    
+    /** Constant for uncountable item base URI */
+    public static final String UNCOUNTABLE_ITEMS_BASE_PATH = "/api/inventory/uncountable/";
 
 }
