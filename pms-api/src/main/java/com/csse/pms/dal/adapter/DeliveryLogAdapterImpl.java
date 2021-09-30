@@ -57,6 +57,7 @@ public class DeliveryLogAdapterImpl implements DeliveryLogDataAdapter {
             deliveryLogModel.setStatus(deliveryLog.getStatus());
 
             deliveryLogModel = repository.save(deliveryLogModel);
+            LOGGER.log(Level.INFO, deliveryLogModel.toString());
 
             return ResponseEntity.ok(new MessageResponseDto(CommonConstants.DELIVERY_STATUS_SAVE_SUCCESSFULLY));
         } catch (Exception e) {

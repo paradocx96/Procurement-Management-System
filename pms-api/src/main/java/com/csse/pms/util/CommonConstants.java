@@ -14,6 +14,12 @@ public class CommonConstants {
     /** Constant for Request Mapping Path in Draft Order Controller */
     public static final String DRAFT_ORDER_REQUEST_MAPPING = "/api/v1/draft/";
 
+    /** Constant for Request Mapping Path in Delivery Log Controller */
+    public static final String DELIVERY_REQUEST_MAPPING = "/api/v1/delivery/";
+
+    /** Constant for Request Mapping Path in Project Controller */
+    public static final String PROJECT_REQUEST_MAPPING = "/api/v1/project/";
+
     /** Constant for Purchase - Mapping Path in Controller */
     public static final String POST_MAPPING_PURCHASE = "purchase";
 
@@ -34,6 +40,9 @@ public class CommonConstants {
 
     /** Constant for Get By Project ID - Mapping Path in Controller */
     public static final String GET_MAPPING_GET_BY_PROJECT_ID = "getByProjectId/{id}";
+
+    /** Constant for Get By Reference No - Mapping Path in Controller */
+    public static final String GET_MAPPING_GET_BY_REFERENCE_NO = "getByReferenceNo/{referenceNo}";
 
     /** Constant for Delete By ID - Mapping Path in Controller */
     public static final String DELETE_MAPPING_DELETE_BY_ID = "deleteById/{id}";
