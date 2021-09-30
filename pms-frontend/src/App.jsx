@@ -28,7 +28,7 @@ function App() {
 
 
                     {/* INVENTORY */}
-
+                    {/*inventory*/}
 
                     {/* DEFAULT PATH */}
                     <Redirect to="/"/>
