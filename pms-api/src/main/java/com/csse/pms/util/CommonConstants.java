@@ -119,6 +119,27 @@ public class CommonConstants {
     /** Constant for Message - Delivery Status Doesn't Exist */
     public static final String DELIVERY_STATUS_DOES_NOT_EXIST = "Delivery Status Does not Exist";
 
+    /** Constant for Message - Project Create Successfully */
+    public static final String PROJECT_CREATE_SUCCESSFULLY = "Project Create Successfully";
+
+    /** Constant for Message - Project Delete Successfully */
+    public static final String PROJECT_DELETE_SUCCESSFULLY = "Project Delete Successfully";
+
+    /** Constant for Message - Project Update Successfully */
+    public static final String PROJECT_UPDATE_SUCCESSFULLY = "Project Update Successfully";
+
+    /** Constant for Message - Project Create Error */
+    public static final String PROJECT_CREATE_ERROR = "Project Create Error";
+
+    /** Constant for Message - Project Update Error */
+    public static final String PROJECT_DELETE_ERROR = "Project Delete Error";
+
+    /** Constant for Message - Project Delete Error */
+    public static final String PROJECT_UPDATE_ERROR = "Project Update Error";
+
+    /** Constant for Message - Project Doesn't Exist */
+    public static final String PROJECT_DOES_NOT_EXIST = "Project Does not Exist";
+
     /** Constant for Variable id */
     public static final String ID = "id";
 
@@ -136,6 +157,9 @@ public class CommonConstants {
 
     /** Constant for Variable siteManagerId */
     public static final String SITE_MANAGER_ID= "siteManagerId";
+
+    /** Constant for Variable managerId */
+    public static final String MANAGER_ID= "managerId";
 
     /** Constant for Variable siteId */
     public static final String SITE_ID= "siteId";
@@ -157,5 +181,17 @@ public class CommonConstants {
 
     /** Constant for Variable remark */
     public static final String REMARK= "remark";
+
+    /** Constant for Variable projectName */
+    public static final String PROJECT_NAME= "projectName";
+
+    /** Constant for Variable description */
+    public static final String DESCRIPTION= "description";
+
+    /** Constant for Variable budget */
+    public static final String BUDGET= "budget";
+
+    /** Constant for Variable createDateTime */
+    public static final String CREATE_DATE_TIME= "createDateTime";
 
 }
