@@ -46,6 +46,7 @@ class AddUncountableItem extends React.Component{
         let item={
             name: this.state.name,
             type: this.state.type,
+            unit: this.state.unit,
             amount: this.state.amount,
             minimumAmount: this.state.minimumAmount,
             siteid: this.state.siteId,

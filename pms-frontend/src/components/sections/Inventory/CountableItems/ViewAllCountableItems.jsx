@@ -38,6 +38,7 @@ class ViewAllCountableItems extends React.Component{
         return (
             <div>
                 <div>
+                    <h2>Countable Items</h2>
                     <Table striped bordered hover variant={'light'}>
                         <thead>
                         <tr>

@@ -20,6 +20,7 @@ class Site extends React.Component{
 
                 <h3>Uncountable Items</h3>
                 <Link to={'/inventory/uncountable/addItem'}>Add Uncountable Item</Link> <br/>
+                <Link to={'/inventory/uncountable/viewAll'}>View all Uncountable Item</Link> <br/>
             </div>
         );
     }
