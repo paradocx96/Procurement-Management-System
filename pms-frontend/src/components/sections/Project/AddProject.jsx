@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
-
+import ProjectService from "../../../services/ProjectService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 
 class AddProject extends Component {
@@ -45,19 +45,21 @@ class AddProject extends Component {
         let value = {
             projectName: this.state.projectName,
             description: this.state.description,
-            budget: this.state.budget
+            budget: this.state.budget,
+            managerId: this.state.managerId,
+            siteId: this.state.siteId
         }
 
         console.log(value);
 
-        // await
-        //     .then(response => response.data)
-        //     .then((data) => {
-        //         console.log(data);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error.message);
-        //     });
+        await ProjectService.create(value)
+            .then(response => response.data)
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(function (error) {
+                console.log(error.message);
+            });
 
         this.onReset();
     }

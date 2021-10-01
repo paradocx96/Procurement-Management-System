@@ -21,9 +21,9 @@ class NavigationSiteManager extends Component {
                         <Navbar.Collapse id="responsive-navbar-nav">
 
                             <Nav className="me-auto">
-                                <NavDropdown title="Order" id="collasible-nav-dropdown">
+                                <NavDropdown title="Purchase Order" id="collasible-nav-dropdown">
                                     <Link to={'/order/list'} className={'dropdown-item'}>Orders</Link>
-                                    <Link to={'/order/addOrder'} className={'dropdown-item'}>Add Order</Link>
+                                    <Link to={'/order/addOrder'} className={'dropdown-item'}>Purchase Order</Link>
                                 </NavDropdown>
                                 <NavDropdown title="Project" id="collasible-nav-dropdown">
                                     <Link to={'/project/list'} className={'dropdown-item'}>Projects</Link>

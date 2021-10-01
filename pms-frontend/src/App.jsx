@@ -40,6 +40,11 @@ import AddProject from "./components/sections/Project/AddProject";
 import ViewAllProject from "./components/sections/Project/ViewAllProject";
 
 
+//Order
+import AddOrder from "./components/sections/Order/AddOrder";
+import ViewAllOrder from "./components/sections/Order/ViewAllOrder";
+
+
 
 function App() {
     return (
@@ -79,6 +84,11 @@ function App() {
                     {/* PROJECT */}
                     <Route path={'/project/addProject'} exact component={AddProject}/>
                     <Route path={'/project/list'} exact component={ViewAllProject}/>
+
+
+                    {/* ORDER */}
+                    <Route path={'/order/addOrder'} exact component={AddOrder}/>
+                    <Route path={'/order/list'} exact component={ViewAllOrder}/>
 
 
                     {/* DEFAULT PATH */}
