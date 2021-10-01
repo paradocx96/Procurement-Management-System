@@ -8,10 +8,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import Components
 import Login from "./components/pages/Login";
+import HeaderBar from "./components/layouts/Header/HeaderBar";
+
+
+// Dashboard
 import Dashboard from "./components/pages/Dashboard";
+import DashboardSiteManager from "./components/pages/DashboardSiteManager";
+import DashboardSeniorManager from "./components/pages/DashboardSeniorManager";
+
+
+//Order
+
+
+//Site
 import AddSite from "./components/sections/Site/AddSite";
 import Site from "./components/pages/Site";
 import ViewAllSites from "./components/sections/Site/ViewAllSites";
+
+
+//Inventory
 import AddCountableItem from "./components/sections/Inventory/CountableItems/AddCountableItem";
 import ViewAllCountableItems from "./components/sections/Inventory/CountableItems/ViewAllCountableItems";
 import ConsumeCountableItems from "./components/sections/Inventory/CountableItems/ConsumeCountableItems";
@@ -20,17 +35,21 @@ import AddUncountableItem from "./components/sections/Inventory/UncountableItems
 import ViewAllUncountableItems from "./components/sections/Inventory/UncountableItems/ViewAllUncountableItems";
 
 
+
 function App() {
     return (
         <div>
             <Router>
+                <HeaderBar/>
                 <Switch>
                     {/* USER MANAGEMENT */}
                     <Route exact path="/" component={Login}/>
 
 
                     {/* DASHBOARD */}
-                    <Route path="/dashboard" component={Dashboard}/>
+                    <Route path="/dashboard/admin" component={Dashboard}/>
+                    <Route path="/dashboard/site" component={DashboardSiteManager}/>
+                    <Route path="/dashboard/senior" component={DashboardSeniorManager}/>
 
 
                     {/* SITE */}
