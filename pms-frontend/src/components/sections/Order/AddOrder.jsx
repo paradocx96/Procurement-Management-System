@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
 import {Container} from "react-bootstrap";
+import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 
-import NavigationAdmin from "../layouts/Navigation/NavigationAdmin";
-
-class Dashboard extends Component {
+class AddOrder extends Component {
 
     render() {
         return (
             <div>
-                <NavigationAdmin/>
+                <NavigationSiteManager/>
                 <Container>
-                    <h1>Dashboard</h1>
+                <h2>PURCHASE ORDER</h2>
+
                 </Container>
             </div>
         );
     }
 }
 
-export default Dashboard;
+export default AddOrder;
