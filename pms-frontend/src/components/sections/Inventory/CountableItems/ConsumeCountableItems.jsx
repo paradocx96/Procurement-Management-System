@@ -2,12 +2,14 @@ import React from "react";
 import CountableItemService from "../../../../services/CountableItemService";
 import {Button, Form} from "react-bootstrap";
 import Toast1 from "../../../Toasts/Toast1";
+import Toast2 from "../../../Toasts/Toast2";
 
 class ConsumeCountableItems extends React.Component{
     constructor(props) {
         super(props);
         this.state = this.initialState;
         this.state.show = false;
+        this.state.showExceeded = false;
 
         this.onChange =  this.onChange;
         this.saveChanges = this.saveChanges.bind(this);
@@ -50,21 +52,31 @@ class ConsumeCountableItems extends React.Component{
     saveChanges =async (event) =>{
         event.preventDefault();
 
-        let quantityUpdate={
-            id:this.state.id,
-            quantity: this.state.consumedQuantity
+        let remainingQuantity = this.state.quantity - this.state.consumedQuantity;
+
+        if (remainingQuantity < 0){
+            this.setState({"showExceeded":true});
+            setTimeout(() => this.setState({"showExceeded":false}),3000);
+        }
+        else {
+            let quantityUpdate={
+                id:this.state.id,
+                quantity: this.state.consumedQuantity
+            }
+
+            await CountableItemService.consumeItem(quantityUpdate)
+                .then(response => response.data)
+                .then((data) => {
+                    if(data != null){
+                        this.setState({"show":true});
+                        setTimeout(() => this.setState({"show":false}),3000);
+                    }
+                }).catch(error => {
+                    console.log("Cannot consume item. Error: ",error);
+                });
         }
 
-        await CountableItemService.consumeItem(quantityUpdate)
-            .then(response => response.data)
-            .then((data) => {
-                if(data != null){
-                    this.setState({"show":true});
-                    setTimeout(() => this.setState({"show":false}),3000);
-                }
-            }).catch(error => {
-                console.log("Cannot consume item. Error: ",error);
-            })
+
     }
 
     render() {
@@ -85,6 +97,19 @@ class ConsumeCountableItems extends React.Component{
                     />
 
                 </div>
+
+                    <div style={{"display": this.state.showExceeded ? "block" : "none"}}>
+
+                        <Toast2
+
+                            children={{
+                                show: this.state.showExceeded,
+                                message: "Consumed quantity exceeds available quantity",
+                                type: 'warning'
+                            }}
+                        />
+
+                    </div>
 
                 <h2>Consume Items</h2>
                 <h3>Id : {this.state.id}</h3>
