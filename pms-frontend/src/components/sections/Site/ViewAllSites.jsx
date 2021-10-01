@@ -48,10 +48,10 @@ class ViewAllSites extends React.Component{
 
                                 this.state.sites.map((e) => (
                                     <tr key={e.id}>
-                                        <td>e.id</td>
-                                        <td>e.siteName</td>
-                                        <td>e.location</td>
-                                        <td>e.siteManager</td>
+                                        <td>{e.id}</td>
+                                        <td>{e.siteName}</td>
+                                        <td>{e.location}</td>
+                                        <td>{e.siteManager}</td>
 
                                         <td>
                                             <Button className={'btn btn-warning'}>Edit</Button>
