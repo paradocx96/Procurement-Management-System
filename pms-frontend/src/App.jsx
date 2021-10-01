@@ -35,6 +35,11 @@ import AddUncountableItem from "./components/sections/Inventory/UncountableItems
 import ViewAllUncountableItems from "./components/sections/Inventory/UncountableItems/ViewAllUncountableItems";
 
 
+//Project
+import AddProject from "./components/sections/Project/AddProject";
+import ViewAllProject from "./components/sections/Project/ViewAllProject";
+
+
 
 function App() {
     return (
@@ -69,6 +74,11 @@ function App() {
                     {/*uncountable items*/}
                     <Route path="/inventory/uncountable/addItem" component={AddUncountableItem}/>
                     <Route path="/inventory/uncountable/viewAll" component={ViewAllUncountableItems}/>
+
+
+                    {/* PROJECT */}
+                    <Route path={'/project/addProject'} exact component={AddProject}/>
+                    <Route path={'/project/list'} exact component={ViewAllProject}/>
 
 
                     {/* DEFAULT PATH */}

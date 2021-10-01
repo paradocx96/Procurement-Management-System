@@ -25,6 +25,10 @@ class NavigationSiteManager extends Component {
                                     <Link to={'/order/list'} className={'dropdown-item'}>Orders</Link>
                                     <Link to={'/order/addOrder'} className={'dropdown-item'}>Add Order</Link>
                                 </NavDropdown>
+                                <NavDropdown title="Project" id="collasible-nav-dropdown">
+                                    <Link to={'/project/list'} className={'dropdown-item'}>Projects</Link>
+                                    <Link to={'/project/addProject'} className={'dropdown-item'}>Add Project</Link>
+                                </NavDropdown>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
