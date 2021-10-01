@@ -11,7 +11,7 @@ import com.csse.pms.dal.model.inventory.CountableItemsModel;
 public interface CountableItemRepository extends MongoRepository<CountableItemsModel, String> {
 	
 	List<CountableItemsModel> findByName(String name);
-	List<CountableItemsModel> findByStatus(String status);
+	List<CountableItemsModel> findByType(String type);
 	List<CountableItemsModel> findBySiteid(String siteId);
 
 }

@@ -52,8 +52,8 @@ public class CountableItemAdapterImpl implements CountableItemsDataAdpater {
 	}
 
 	@Override
-	public List<CountableItemsModel> getItemsByStatus(String status) {
-		return countableItemRepository.findByStatus(status);
+	public List<CountableItemsModel> getItemsByType(String type) {
+		return countableItemRepository.findByType(type);
 	}
 	
 	//replaces an existing item
