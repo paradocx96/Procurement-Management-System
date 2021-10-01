@@ -1,0 +1,16 @@
+package com.csse.pms.dal.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+import com.csse.pms.dal.model.SupplierModel;
+
+
+@Repository
+public interface SupplierRepository extends MongoRepository<SupplierModel, String> {
+
+	//Create method for find the user by email
+	Optional<SupplierModel> findByEmail(String email);
+}
