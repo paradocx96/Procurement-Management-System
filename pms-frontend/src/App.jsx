@@ -18,6 +18,7 @@ import ConsumeCountableItems from "./components/sections/Inventory/CountableItem
 import ReplenishCountableItems from "./components/sections/Inventory/CountableItems/ReplenishCountableItems";
 import AddUncountableItem from "./components/sections/Inventory/UncountableItems/AddUncountableItem";
 import ViewAllUncountableItems from "./components/sections/Inventory/UncountableItems/ViewAllUncountableItems";
+import DashboardSite from "./components/pages/DashboardSite";
 
 
 function App() {
@@ -30,7 +31,8 @@ function App() {
 
 
                     {/* DASHBOARD */}
-                    <Route path="/dashboard" component={Dashboard}/>
+                    <Route path="/dashboard/admin" component={Dashboard}/>
+                    <Route path="/dashboard/site" component={DashboardSite}/>
 
 
                     {/* SITE */}
