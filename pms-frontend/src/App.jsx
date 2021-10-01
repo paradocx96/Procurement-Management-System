@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Import Components
 import Login from "./components/pages/Login";
 import Dashboard from "./components/pages/Dashboard";
+import AddSite from "./components/sections/Site/AddSite";
+import Site from "./components/pages/Site";
 
 
 function App() {
@@ -25,7 +27,8 @@ function App() {
 
 
                     {/* SITE */}
-
+                    <Route path="/site/main" component={Site}/>
+                    <Route path="/site/addSite" component={AddSite}/>
 
                     {/* INVENTORY */}
                     {/*inventory*/}
