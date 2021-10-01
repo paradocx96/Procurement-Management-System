@@ -14,6 +14,10 @@ import Site from "./components/pages/Site";
 import ViewAllSites from "./components/sections/Site/ViewAllSites";
 import AddCountableItem from "./components/sections/Inventory/CountableItems/AddCountableItem";
 import ViewAllCountableItems from "./components/sections/Inventory/CountableItems/ViewAllCountableItems";
+import ConsumeCountableItems from "./components/sections/Inventory/CountableItems/ConsumeCountableItems";
+import ReplenishCountableItems from "./components/sections/Inventory/CountableItems/ReplenishCountableItems";
+import AddUncountableItem from "./components/sections/Inventory/UncountableItems/AddUncountableItem";
+import ViewAllUncountableItems from "./components/sections/Inventory/UncountableItems/ViewAllUncountableItems";
 
 
 function App() {
@@ -40,6 +44,12 @@ function App() {
                     {/*countable Items*/}
                     <Route path="/inventory/countable/addItem" component={AddCountableItem}/>
                     <Route path="/inventory/countable/viewAll" component={ViewAllCountableItems}/>
+                    <Route path="/inventory/countable/consume/:id" component={ConsumeCountableItems}/>
+                    <Route path="/inventory/countable/replenish/:id" component={ReplenishCountableItems}/>
+
+                    {/*uncountable items*/}
+                    <Route path="/inventory/uncountable/addItem" component={AddUncountableItem}/>
+                    <Route path="/inventory/uncountable/viewAll" component={ViewAllUncountableItems}/>
 
 
                     {/* DEFAULT PATH */}

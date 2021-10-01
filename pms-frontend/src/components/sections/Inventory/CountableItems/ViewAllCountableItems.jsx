@@ -1,6 +1,5 @@
 import React from "react";
 import CountableItemService from "../../../../services/CountableItemService";
-import data from "bootstrap/js/src/dom/data";
 import {Button, Table} from "react-bootstrap";
 
 class ViewAllCountableItems extends React.Component{
@@ -23,10 +22,23 @@ class ViewAllCountableItems extends React.Component{
             })
     }
 
+    navigateToConsumePage= (event,id) => {
+
+        window.location =`/inventory/countable/consume/${id}`;
+
+    }
+
+    navigateToReplenishPage= (event,id) => {
+
+        window.location =`/inventory/countable/replenish/${id}`;
+
+    }
+
     render() {
         return (
             <div>
                 <div>
+                    <h2>Countable Items</h2>
                     <Table striped bordered hover variant={'light'}>
                         <thead>
                         <tr>
@@ -56,7 +68,20 @@ class ViewAllCountableItems extends React.Component{
                                         <td>{e.sitename}</td>
 
                                         <td>
-                                            <Button className={'btn btn-warning'}>Edit</Button>
+                                            <Button className={'btn btn-info'}
+                                                    onClick={event => this.navigateToConsumePage(this,e.id)}
+                                            >
+                                                Consume
+                                            </Button>
+
+
+                                        </td>
+                                        <td>
+                                            <Button className={'btn btn-success'}
+                                                    onClick={event => this.navigateToReplenishPage(this,e.id)}
+                                            >
+                                                Replenish
+                                            </Button>
                                         </td>
                                     </tr>
                                 ))
