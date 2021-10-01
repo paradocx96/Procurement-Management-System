@@ -13,4 +13,7 @@ public interface SupplierRepository extends MongoRepository<SupplierModel, Strin
 
 	//Create method for find the user by email
 	Optional<SupplierModel> findByEmail(String email);
+	
+	//Create this method to find out mail already in the Database or not
+	Boolean existsByEmail(String email);
 }
