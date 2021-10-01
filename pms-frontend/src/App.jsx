@@ -13,6 +13,7 @@ import AddSite from "./components/sections/Site/AddSite";
 import Site from "./components/pages/Site";
 import ViewAllSites from "./components/sections/Site/ViewAllSites";
 import AddCountableItem from "./components/sections/Inventory/CountableItems/AddCountableItem";
+import ViewAllCountableItems from "./components/sections/Inventory/CountableItems/ViewAllCountableItems";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
 
                     {/*countable Items*/}
                     <Route path="/inventory/countable/addItem" component={AddCountableItem}/>
+                    <Route path="/inventory/countable/viewAll" component={ViewAllCountableItems}/>
 
 
                     {/* DEFAULT PATH */}

@@ -1,5 +1,5 @@
 import React from "react";
-import {Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import SiteService from "../../../../services/SiteService";
 import data from "bootstrap/js/src/dom/data";
 import CountableItemService from "../../../../services/CountableItemService";
@@ -34,7 +34,9 @@ class AddCountableItem extends React.Component{
         await SiteService.getAllSites()
             .then(response => response.data)
             .then((data) => {
-                this.setState({siteList: data})
+                this.setState({siteList: data});
+                this.setState({siteId:data[0].id});
+                this.setState({type:'critical'})
             }).catch(error => {
                 console.log("Cannot get all sites. Error: ",error);
             })
@@ -44,16 +46,18 @@ class AddCountableItem extends React.Component{
         event.preventDefault();
 
         //set the site name to the state variable
-        await this.assignSiteName(this.state.siteId);
+        await this.assignSiteName();
 
         let item={
             name: this.state.name,
             type: this.state.type,
             quantity: this.state.quantity,
             minimumQuantity: this.state.minimumQuantity,
-            siteid: this.state.siteid,
-            sitename : this.state.sitename
+            siteid: this.state.siteId,
+            sitename : this.state.siteName
         }
+
+        console.log("Item : ",item)
 
         await CountableItemService.addNewCountableItem(item)
             .then(response => response.data)
@@ -69,13 +73,13 @@ class AddCountableItem extends React.Component{
 
     }
 
-    assignSiteName = async (id) =>{
-        await SiteService.getSiteById(id)
+    assignSiteName = async () =>{
+        await SiteService.getSiteById(this.state.siteId)
             .then(response => response.data)
             .then((data) => {
                 if (data != null){
                     console.log("Site name received : ",data.siteName);
-                    this.setState({siteName:data.siteName})
+                    this.setState({siteName:data.siteName});
                 }
                 else {
                     console.log("Site name is null");
@@ -107,7 +111,7 @@ class AddCountableItem extends React.Component{
 
                     <h2>Add Countable Item</h2>
 
-                    <Form>
+                    <Form onSubmit={this.submitItem}>
                         <Form.Group>
                             <Form.Label>Item name</Form.Label>
                             <Form.Control
@@ -190,12 +194,10 @@ class AddCountableItem extends React.Component{
                             </Form.Control>
                         </Form.Group>
 
+                        <Button type={'submit'} className={'btn btn-success'}>Add Item</Button>
+
                     </Form>
                 </div>
-
-
-
-
 
             </div>
         );
