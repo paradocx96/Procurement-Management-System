@@ -20,7 +20,7 @@ function App() {
             <Router>
                 <Switch>
                     {/* USER MANAGEMENT */}
-                    <Route path="/" component={Login}/>
+                    <Route exact path="/" component={Login}/>
 
 
                     {/* DASHBOARD */}
@@ -28,7 +28,7 @@ function App() {
 
 
                     {/* SITE */}
-                    <Route path="/site/main" component={Site}/>
+                    <Route path={'/site'} exact component={Site}/>
                     <Route path="/site/addSite" component={AddSite}/>
                     <Route path="/site/viewAll" component={ViewAllSites}/>
 

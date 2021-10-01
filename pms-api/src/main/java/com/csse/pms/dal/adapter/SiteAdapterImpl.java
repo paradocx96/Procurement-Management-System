@@ -5,12 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.data.mongodb.core.MongoTemplate;
-
+import org.springframework.stereotype.Component;
 
 import com.csse.pms.dal.model.SiteModel;
 import com.csse.pms.dal.repository.SiteRepository;
 import com.csse.pms.domain.SiteDataAdapter;
 
+@Component
 public class SiteAdapterImpl implements SiteDataAdapter {
 	
 	//public static final Logger LOGGER = Logger.getLogger(SiteAdapterImpl.class.getName());
