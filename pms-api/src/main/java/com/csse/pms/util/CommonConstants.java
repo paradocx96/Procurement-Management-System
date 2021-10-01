@@ -142,4 +142,12 @@ public class CommonConstants {
     public static final String UNCOUNTABLE_ITEMS_BASE_PATH = "/api/inventory/uncountable/";
 
 
+    /******  Supplier Common Constants  ******/ 
+    
+    /** Constant for Request Mapping Path in Supplier Controller */
+    public static final String SUPPLIER_REQUEST_MAPPING = "/api/v1/supplier/";
+    
+    /** Constant for Request Mapping Path in Supplier Controller */
+    public static final String SUPPLIER_POST_MAPPING_REGISTER = "register";
+    
 }
