@@ -20,7 +20,7 @@ class CountableItemService extends Component{
     }
 
     getCountableItemById(id){
-        return axios.get(BACKEND_BASE_URL + COUNTABLE_URL + "BACKEND_BASE_URL/" + id);
+        return axios.get(BACKEND_BASE_URL + COUNTABLE_URL + "getCountableItemById/" + id);
     }
 
     getCriticalCountableItems(){
