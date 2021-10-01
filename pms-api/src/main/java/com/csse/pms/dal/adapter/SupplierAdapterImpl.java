@@ -2,6 +2,7 @@ package com.csse.pms.dal.adapter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
 import com.csse.pms.dal.model.SupplierModel;
 import com.csse.pms.dal.repository.SupplierRepository;
@@ -23,6 +24,7 @@ import com.csse.pms.dto.SupplierMessageResponseDto;
  *
  */
 
+@Component
 public class SupplierAdapterImpl implements SupplierDataAdapter{
 
 	@Autowired
