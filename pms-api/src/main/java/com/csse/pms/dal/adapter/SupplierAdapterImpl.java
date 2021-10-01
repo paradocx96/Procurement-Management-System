@@ -1,9 +1,16 @@
 package com.csse.pms.dal.adapter;
 
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import com.csse.pms.dal.model.EmailSender;
 import com.csse.pms.dal.model.SupplierModel;
 import com.csse.pms.dal.repository.SupplierRepository;
 import com.csse.pms.domain.Supplier;
@@ -29,6 +36,14 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 
 	@Autowired
 	private SupplierRepository supplierRepository;
+	
+	@Autowired
+	private EmailSender emailSender;
+	
+	/**
+     * Initialize Logger
+     */
+    public static final Logger LOGGER = Logger.getLogger(SupplierAdapterImpl.class.getName());
 
 	@Override
 	public ResponseEntity<?> registerSupplier(Supplier supplier) {
@@ -54,6 +69,22 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 				);
 		
 		supplierRepository.save(supplierDetails);
+		
+		/**
+		 * Set the values to email sender class and call 
+		 * send email method to send the email
+		 * 
+		 */
+		emailSender.setEmail(supplier.getEmail());
+		emailSender.setUsername(supplier.getName());
+		
+		try {
+				emailSender.sendEmail();
+				
+		} catch (UnsupportedEncodingException | MessagingException e) {
+			
+			 LOGGER.log(Level.SEVERE, e.getMessage());
+		}
 		
 		//return success MSG to frontEnd user is registered successfully
 		return ResponseEntity.ok(new SupplierMessageResponseDto("You have successfully registered!"));
