@@ -14,6 +14,12 @@ public class CommonConstants {
     /** Constant for Request Mapping Path in Draft Order Controller */
     public static final String DRAFT_ORDER_REQUEST_MAPPING = "/api/v1/draft/";
 
+    /** Constant for Request Mapping Path in Delivery Log Controller */
+    public static final String DELIVERY_REQUEST_MAPPING = "/api/v1/delivery/";
+
+    /** Constant for Request Mapping Path in Project Controller */
+    public static final String PROJECT_REQUEST_MAPPING = "/api/v1/project/";
+
     /** Constant for Purchase - Mapping Path in Controller */
     public static final String POST_MAPPING_PURCHASE = "purchase";
 
@@ -34,6 +40,9 @@ public class CommonConstants {
 
     /** Constant for Get By Project ID - Mapping Path in Controller */
     public static final String GET_MAPPING_GET_BY_PROJECT_ID = "getByProjectId/{id}";
+
+    /** Constant for Get By Reference No - Mapping Path in Controller */
+    public static final String GET_MAPPING_GET_BY_REFERENCE_NO = "getByReferenceNo/{referenceNo}";
 
     /** Constant for Delete By ID - Mapping Path in Controller */
     public static final String DELETE_MAPPING_DELETE_BY_ID = "deleteById/{id}";
@@ -177,22 +186,7 @@ public class CommonConstants {
     public static final String COMMENT= "comment";
 
     /** Constant for Variable dateTime */
-    public static final String DATE_TIME= "dateTime";
-  
-    
-    
-    
-    //inventory common constants    
-	  /* Constant for countable item base URI */
-    public static final String COUNTABLE_ITEMS_BASE_PATH = "/api/inventory/countable/";
-    
-    /* Constant for uncountable item base URI */
-    public static final String UNCOUNTABLE_ITEMS_BASE_PATH = "/api/inventory/uncountable/";
-    
-    
-	/* Constants for site */
-    /* Constant for site base URI */
-    public static final String SITE_BASE_PATH = "/api/site/";
+    public static final String DATE_TIME= "dateTime";  
 
     /** Constant for Variable remark */
     public static final String REMARK= "remark";
@@ -208,5 +202,16 @@ public class CommonConstants {
 
     /** Constant for Variable createDateTime */
     public static final String CREATE_DATE_TIME= "createDateTime";
+  
+    //inventory common constants    
+    /** Constant for countable item base URI */
+    public static final String COUNTABLE_ITEMS_BASE_PATH = "/api/inventory/countable/";
+    
+    /** Constant for uncountable item base URI */
+    public static final String UNCOUNTABLE_ITEMS_BASE_PATH = "/api/inventory/uncountable/";
+          
+	  /* Constants for site */
+    /* Constant for site base URI */
+    public static final String SITE_BASE_PATH = "/api/site/";
 
 }

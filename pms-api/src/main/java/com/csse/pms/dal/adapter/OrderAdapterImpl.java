@@ -64,6 +64,7 @@ public class OrderAdapterImpl implements OrderDataAdapter {
             orderModel.setStatus(order.getStatus());
 
             orderModel = repository.save(orderModel);
+            LOGGER.log(Level.INFO, orderModel.toString());
 
             return ResponseEntity.ok(new MessageResponseDto(CommonConstants.ORDER_PURCHASE_SUCCESSFULLY));
         } catch (Exception e) {

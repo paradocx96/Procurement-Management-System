@@ -80,8 +80,6 @@ public class DraftOrderController {
         draftOrder.setSupplierId(draftOrderDto.getSupplierId());
         draftOrder.setItemList(draftOrderDto.getItemList());
         draftOrder.setSiteManagerId(draftOrderDto.getSiteManagerId());
-        draftOrder.setSiteId(draftOrderDto.getSiteId());
-        draftOrder.setProjectId(draftOrderDto.getProjectId());
         draftOrder.setAmount(draftOrderDto.getAmount());
         draftOrder.setContactDetails(draftOrderDto.getContactDetails());
         draftOrder.setComment(draftOrderDto.getComment());
