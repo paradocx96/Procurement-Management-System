@@ -11,6 +11,7 @@ class AddSite extends React.Component{
         this.state.show = false;
 
         this.onChange = this.onChange.bind(this);
+        this.submitSite = this.submitSite.bind(this);
 
     }
     initialState={
@@ -23,7 +24,9 @@ class AddSite extends React.Component{
         this.setState({[event.target.name] : event.target.value});
     }
 
-    submitSite = async () => {
+    submitSite = async (event) => {
+
+        event.preventDefault();
 
         let site ={
             siteName: this.state.siteName,
@@ -66,7 +69,7 @@ class AddSite extends React.Component{
 
                 </div>
 
-                <Form>
+                <Form onSubmit={this.submitSite}>
                     <Form.Group>
                         <Form.Label>Site name</Form.Label>
                         <Form.Control
