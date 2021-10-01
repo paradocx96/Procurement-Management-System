@@ -1,10 +1,10 @@
 import axios from "axios";
 import connection from "./connection.json";
 
-const SERVICE_URL = "/api/v1/project";
+const SERVICE_URL = "/api/v1/delivery";
 const URL = connection.localAddress + SERVICE_URL;
 
-export default new class ProjectService {
+export default new class DeliveryLogService {
 
     create(value) {
         return axios.post(URL + "/save/", value);
@@ -18,8 +18,8 @@ export default new class ProjectService {
         return axios.get(URL + "/getById/" + id);
     }
 
-    getBySiteId(id) {
-        return axios.get(URL + "/getBySiteId/" + id);
+    getByReferenceNo(id) {
+        return axios.get(URL + "/getByReferenceNo/" + id);
     }
 
     deleteById(id) {
