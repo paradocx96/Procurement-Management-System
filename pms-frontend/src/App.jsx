@@ -12,6 +12,7 @@ import Dashboard from "./components/pages/Dashboard";
 import AddSite from "./components/sections/Site/AddSite";
 import Site from "./components/pages/Site";
 import ViewAllSites from "./components/sections/Site/ViewAllSites";
+import AddCountableItem from "./components/sections/Inventory/CountableItems/AddCountableItem";
 
 
 function App() {
@@ -34,6 +35,10 @@ function App() {
 
                     {/* INVENTORY */}
                     {/*inventory*/}
+
+                    {/*countable Items*/}
+                    <Route path="/inventory/countable/addItem" component={AddCountableItem}/>
+
 
                     {/* DEFAULT PATH */}
                     <Redirect to="/"/>
