@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import ProjectService from "../../../services/ProjectService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
+import Toast1 from "../../Toasts/Toast1";
 
 class AddProject extends Component {
 
@@ -11,6 +12,8 @@ class AddProject extends Component {
         this.state = this.initialState;
         this.state.managerId = '100';
         this.state.siteId = '200';
+        this.state.show = false;
+        this.state.message = '';
 
         this.onSubmit = this.onSubmit.bind(this);
         this.onReset = this.onReset.bind(this);
@@ -75,6 +78,16 @@ class AddProject extends Component {
                 <NavigationSiteManager/>
                 <Container>
                     <h2>ADD NEW PROJECT</h2>
+
+                    {/*<div style={{"display": this.state.show ? "block" : "none"}}>*/}
+                    {/*    <Toast1*/}
+                    {/*        children={{*/}
+                    {/*            show: this.state.show,*/}
+                    {/*            message: this.state.message,*/}
+                    {/*            type: 'success'*/}
+                    {/*        }}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
 
                     <div>
                         <Form onSubmit={this.onSubmit.bind(this)}
