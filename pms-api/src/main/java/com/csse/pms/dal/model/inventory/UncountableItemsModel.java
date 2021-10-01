@@ -9,7 +9,7 @@ public class UncountableItemsModel {
 	@Id
 	private String id;
 	private String name;
-	private String status;
+	private String type;
 	private double amount;
 	private String unit;
 	private double minimumAmount;
@@ -19,15 +19,15 @@ public class UncountableItemsModel {
 	public UncountableItemsModel() {
 		
 	}
-	
-	
 
-	public UncountableItemsModel(String id, String name, String status, double amount, String unit,
-			double minimumAmount, String siteid, String sitename) {
+
+
+	public UncountableItemsModel(String id, String name, String type, double amount, String unit, double minimumAmount,
+			String siteid, String sitename) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.status = status;
+		this.type = type;
 		this.amount = amount;
 		this.unit = unit;
 		this.minimumAmount = minimumAmount;
@@ -53,13 +53,19 @@ public class UncountableItemsModel {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return status;
+	
+
+	public String getType() {
+		return type;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+
+
+	public void setType(String type) {
+		this.type = type;
 	}
+
+
 
 	public double getAmount() {
 		return amount;

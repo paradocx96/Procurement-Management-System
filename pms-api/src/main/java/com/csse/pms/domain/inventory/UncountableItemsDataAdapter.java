@@ -10,7 +10,7 @@ public interface UncountableItemsDataAdapter {
 	public String addItem(UncountableItemsModel newItem);
 	public UncountableItemsModel getItemById(String id);
 	public UncountableItemsModel getItemByName(String name);
-	public List<UncountableItemsModel> getItemsByStatus(String status);
+	public List<UncountableItemsModel> getItemsByType(String type);
 	public String updateItem(UncountableItemsModel updatedItem);
 	public String deleteItem(String id);
 	public String updateAmount(double amount, String id);

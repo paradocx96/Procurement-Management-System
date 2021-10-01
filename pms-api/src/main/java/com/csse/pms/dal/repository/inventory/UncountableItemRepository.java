@@ -11,7 +11,7 @@ import com.csse.pms.dal.model.inventory.UncountableItemsModel;
 public interface UncountableItemRepository extends MongoRepository<UncountableItemsModel, String> {
 	
 	List<UncountableItemsModel> findByName(String name);
-	List<UncountableItemsModel> findByStatus(String status);
+	List<UncountableItemsModel> findByType(String type);
 	List<UncountableItemsModel> findBySiteid(String siteId);
 
 }
