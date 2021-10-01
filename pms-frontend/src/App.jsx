@@ -15,6 +15,7 @@ import ViewAllSites from "./components/sections/Site/ViewAllSites";
 import AddCountableItem from "./components/sections/Inventory/CountableItems/AddCountableItem";
 import ViewAllCountableItems from "./components/sections/Inventory/CountableItems/ViewAllCountableItems";
 import ConsumeCountableItems from "./components/sections/Inventory/CountableItems/ConsumeCountableItems";
+import ReplenishCountableItems from "./components/sections/Inventory/CountableItems/ReplenishCountableItems";
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
                     <Route path="/inventory/countable/addItem" component={AddCountableItem}/>
                     <Route path="/inventory/countable/viewAll" component={ViewAllCountableItems}/>
                     <Route path="/inventory/countable/consume/:id" component={ConsumeCountableItems}/>
+                    <Route path="/inventory/countable/replenish/:id" component={ReplenishCountableItems}/>
 
 
                     {/* DEFAULT PATH */}

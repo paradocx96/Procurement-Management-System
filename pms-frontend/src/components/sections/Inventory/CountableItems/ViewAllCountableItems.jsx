@@ -29,6 +29,12 @@ class ViewAllCountableItems extends React.Component{
 
     }
 
+    navigateToReplenishPage= (event,id) => {
+
+        window.location =`/inventory/countable/replenish/${id}`;
+
+    }
+
     render() {
         return (
             <div>
@@ -66,6 +72,15 @@ class ViewAllCountableItems extends React.Component{
                                                     onClick={event => this.navigateToConsumePage(this,e.id)}
                                             >
                                                 Consume
+                                            </Button>
+
+
+                                        </td>
+                                        <td>
+                                            <Button className={'btn btn-success'}
+                                                    onClick={event => this.navigateToReplenishPage(this,e.id)}
+                                            >
+                                                Replenish
                                             </Button>
                                         </td>
                                     </tr>
