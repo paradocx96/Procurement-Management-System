@@ -8,19 +8,32 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import Components
 import Login from "./components/pages/Login";
+import HeaderBar from "./components/layouts/Header/HeaderBar";
+
+
+// Dashboard
 import Dashboard from "./components/pages/Dashboard";
+import DashboardSiteManager from "./components/pages/DashboardSiteManager";
+import DashboardSeniorManager from "./components/pages/DashboardSeniorManager";
+
+
+//Order
+
+
+//Site
 import AddSite from "./components/sections/Site/AddSite";
 import Site from "./components/pages/Site";
 import ViewAllSites from "./components/sections/Site/ViewAllSites";
+
+
+//Inventory
 import AddCountableItem from "./components/sections/Inventory/CountableItems/AddCountableItem";
 import ViewAllCountableItems from "./components/sections/Inventory/CountableItems/ViewAllCountableItems";
 import ConsumeCountableItems from "./components/sections/Inventory/CountableItems/ConsumeCountableItems";
 import ReplenishCountableItems from "./components/sections/Inventory/CountableItems/ReplenishCountableItems";
 import AddUncountableItem from "./components/sections/Inventory/UncountableItems/AddUncountableItem";
 import ViewAllUncountableItems from "./components/sections/Inventory/UncountableItems/ViewAllUncountableItems";
-import HeaderBar from "./components/layouts/Header/HeaderBar";
-import DashboardSiteManager from "./components/pages/DashboardSiteManager";
-import DashboardSeniorManager from "./components/pages/DashboardSeniorManager";
+
 
 
 function App() {
