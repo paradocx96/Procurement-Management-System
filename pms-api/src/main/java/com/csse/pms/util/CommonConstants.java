@@ -214,4 +214,18 @@ public class CommonConstants {
     /* Constant for site base URI */
     public static final String SITE_BASE_PATH = "/api/site/";
 
+    /******  Supplier Common Constants  ******/ 
+    
+    /** Constant for Request Mapping Path in Supplier Controller */
+    public static final String SUPPLIER_REQUEST_MAPPING = "/api/v1/supplier/";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_POST_MAPPING_REGISTER = "register";
+    
+    /** Constant for variable response message */
+    public static final String SUPPLIER_REGISTRATION_SUCCESS_MSG = "You have successfully registered!";
+    
+    /** Constant for variable response message */
+    public static final String SUPPLIER_EMAIL_REGISTRATION_ERROR_MSG = "This mail is already taken!";
+    
 }
