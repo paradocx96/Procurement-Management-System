@@ -11,6 +11,7 @@ import Login from "./components/pages/Login";
 import Dashboard from "./components/pages/Dashboard";
 import AddSite from "./components/sections/Site/AddSite";
 import Site from "./components/pages/Site";
+import ViewAllSites from "./components/sections/Site/ViewAllSites";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
                     {/* SITE */}
                     <Route path="/site/main" component={Site}/>
                     <Route path="/site/addSite" component={AddSite}/>
+                    <Route path="/site/viewAll" component={ViewAllSites}/>
 
                     {/* INVENTORY */}
                     {/*inventory*/}
