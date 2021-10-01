@@ -37,7 +37,7 @@ public class CountableItemsApi {
 			
 			countableItemDto.setId(countableItemsModel.getId());
 			countableItemDto.setName(countableItemsModel.getName());
-			countableItemDto.setStatus(countableItemsModel.getStatus());
+			countableItemDto.setType(countableItemsModel.getType());
 			countableItemDto.setQuantity(countableItemsModel.getQuantity());
 			countableItemDto.setMinimumQuantity(countableItemsModel.getMinimumQuantity());
 			countableItemDto.setSiteid(countableItemsModel.getSiteid());
@@ -57,7 +57,7 @@ public class CountableItemsApi {
 		
 		//set the attributes
 		countableItemsModel.setName(countableItemDto.getName());
-		countableItemsModel.setStatus(countableItemDto.getStatus());
+		countableItemsModel.setType(countableItemDto.getType());
 		countableItemsModel.setQuantity(countableItemDto.getQuantity());
 		countableItemsModel.setMinimumQuantity(countableItemDto.getMinimumQuantity());
 		countableItemsModel.setSiteid(countableItemDto.getSiteid());
@@ -79,7 +79,7 @@ public class CountableItemsApi {
 		//set the attributes
 		countableItemDto.setId(countableItemsModel.getId());
 		countableItemDto.setName(countableItemsModel.getName());
-		countableItemDto.setStatus(countableItemsModel.getStatus());
+		countableItemDto.setType(countableItemsModel.getType());
 		countableItemDto.setQuantity(countableItemsModel.getQuantity());
 		countableItemDto.setMinimumQuantity(countableItemsModel.getMinimumQuantity());
 		countableItemDto.setSiteid(countableItemsModel.getSiteid());
@@ -95,7 +95,7 @@ public class CountableItemsApi {
 		List<CountableItemDto> countableItemDtoList = new ArrayList<>();
 		List<CountableItemsModel> countableItemsModelsList = new ArrayList<>();
 		
-		countableItemsModelsList = countableItemDataAdapter.getItemsByStatus("critical");
+		countableItemsModelsList = countableItemDataAdapter.getItemsByType("critical");
 		
 		//iterate through model list
 		for(CountableItemsModel countableItemsModel : countableItemsModelsList) {
@@ -107,7 +107,7 @@ public class CountableItemsApi {
 			//set attributes
 			countableItemDto.setId(countableItemsModel.getId());
 			countableItemDto.setName(countableItemsModel.getName());
-			countableItemDto.setStatus(countableItemsModel.getStatus());
+			countableItemDto.setType(countableItemsModel.getType());
 			countableItemDto.setQuantity(countableItemsModel.getQuantity());
 			countableItemDto.setMinimumQuantity(countableItemsModel.getMinimumQuantity());
 			countableItemDto.setSiteid(countableItemsModel.getSiteid());
@@ -127,7 +127,7 @@ public class CountableItemsApi {
 				List<CountableItemDto> countableItemDtoList = new ArrayList<>();
 				List<CountableItemsModel> countableItemsModelsList = new ArrayList<>();
 				
-				countableItemsModelsList = countableItemDataAdapter.getItemsByStatus("nonCritical");
+				countableItemsModelsList = countableItemDataAdapter.getItemsByType("nonCritical");
 				
 				//iterate through model list
 				for(CountableItemsModel countableItemsModel : countableItemsModelsList) {
@@ -139,7 +139,7 @@ public class CountableItemsApi {
 					//set attributes
 					countableItemDto.setId(countableItemsModel.getId());
 					countableItemDto.setName(countableItemsModel.getName());
-					countableItemDto.setStatus(countableItemsModel.getStatus());
+					countableItemDto.setType(countableItemsModel.getType());
 					countableItemDto.setQuantity(countableItemsModel.getQuantity());
 					countableItemDto.setMinimumQuantity(countableItemsModel.getMinimumQuantity());
 					countableItemDto.setSiteid(countableItemsModel.getSiteid());
@@ -161,7 +161,7 @@ public class CountableItemsApi {
 		//set the attributes
 		countableItemsModel.setId(countableItemDto.getId());
 		countableItemsModel.setName(countableItemDto.getName());
-		countableItemsModel.setStatus(countableItemDto.getStatus());
+		countableItemsModel.setType(countableItemDto.getType());
 		countableItemsModel.setQuantity(countableItemDto.getQuantity());
 		countableItemsModel.setMinimumQuantity(countableItemDto.getMinimumQuantity());
 		countableItemsModel.setSiteid(countableItemDto.getSiteid());
@@ -233,7 +233,7 @@ public class CountableItemsApi {
 			//set attributes
 			countableItemDto.setId(countableItemsModel.getId());
 			countableItemDto.setName(countableItemsModel.getName());
-			countableItemDto.setStatus(countableItemsModel.getStatus());
+			countableItemDto.setType(countableItemsModel.getType());
 			countableItemDto.setQuantity(countableItemsModel.getQuantity());
 			countableItemDto.setMinimumQuantity(countableItemsModel.getMinimumQuantity());
 			countableItemDto.setSiteid(countableItemsModel.getSiteid());

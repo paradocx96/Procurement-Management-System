@@ -186,7 +186,7 @@ public class CommonConstants {
     public static final String COMMENT= "comment";
 
     /** Constant for Variable dateTime */
-    public static final String DATE_TIME= "dateTime";
+    public static final String DATE_TIME= "dateTime";  
 
     /** Constant for Variable remark */
     public static final String REMARK= "remark";
@@ -209,5 +209,9 @@ public class CommonConstants {
     
     /** Constant for uncountable item base URI */
     public static final String UNCOUNTABLE_ITEMS_BASE_PATH = "/api/inventory/uncountable/";
+          
+	  /* Constants for site */
+    /* Constant for site base URI */
+    public static final String SITE_BASE_PATH = "/api/site/";
 
 }

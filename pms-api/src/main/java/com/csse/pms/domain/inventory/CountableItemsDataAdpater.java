@@ -10,7 +10,7 @@ public interface CountableItemsDataAdpater {
 	public String addItem(CountableItemsModel newItem);
 	public CountableItemsModel getItemById(String id);
 	public List<CountableItemsModel>   getItemByName(String name);
-	public List<CountableItemsModel> getItemsByStatus(String status);
+	public List<CountableItemsModel> getItemsByType(String type);
 	public String updateItem(CountableItemsModel updatedItem);
 	public String deleteItem(String id);
 	public String updateQuantity(int quantity, String id);

@@ -9,6 +9,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Import Components
 import Login from "./components/pages/Login";
 import Dashboard from "./components/pages/Dashboard";
+import AddSite from "./components/sections/Site/AddSite";
+import Site from "./components/pages/Site";
+import ViewAllSites from "./components/sections/Site/ViewAllSites";
+import AddCountableItem from "./components/sections/Inventory/CountableItems/AddCountableItem";
+import ViewAllCountableItems from "./components/sections/Inventory/CountableItems/ViewAllCountableItems";
 
 
 function App() {
@@ -17,7 +22,7 @@ function App() {
             <Router>
                 <Switch>
                     {/* USER MANAGEMENT */}
-                    <Route path="/" component={Login}/>
+                    <Route exact path="/" component={Login}/>
 
 
                     {/* DASHBOARD */}
@@ -25,10 +30,17 @@ function App() {
 
 
                     {/* SITE */}
-
+                    <Route path={'/site'} exact component={Site}/>
+                    <Route path="/site/addSite" component={AddSite}/>
+                    <Route path="/site/viewAll" component={ViewAllSites}/>
 
                     {/* INVENTORY */}
                     {/*inventory*/}
+
+                    {/*countable Items*/}
+                    <Route path="/inventory/countable/addItem" component={AddCountableItem}/>
+                    <Route path="/inventory/countable/viewAll" component={ViewAllCountableItems}/>
+
 
                     {/* DEFAULT PATH */}
                     <Redirect to="/"/>

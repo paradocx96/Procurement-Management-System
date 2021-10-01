@@ -34,7 +34,7 @@ public class UncountableItemsApi {
 			
 			uncountableItemDto.setId(uncountableItemsModel.getId());
 			uncountableItemDto.setName(uncountableItemsModel.getName());
-			uncountableItemDto.setStatus(uncountableItemsModel.getStatus());
+			uncountableItemDto.setType(uncountableItemsModel.getType());
 			uncountableItemDto.setAmount(uncountableItemsModel.getAmount());
 			uncountableItemDto.setUnit(uncountableItemsModel.getUnit());
 			uncountableItemDto.setMinimumAmount(uncountableItemsModel.getMinimumAmount());
@@ -57,7 +57,7 @@ public class UncountableItemsApi {
 		
 		//set the attributes to the model
 		uncountableItemsModel.setName(uncountableItemDto.getName());
-		uncountableItemsModel.setStatus(uncountableItemDto.getStatus());
+		uncountableItemsModel.setType(uncountableItemDto.getType());
 		uncountableItemsModel.setAmount(uncountableItemDto.getAmount());
 		uncountableItemsModel.setUnit(uncountableItemDto.getUnit());
 		uncountableItemsModel.setMinimumAmount(uncountableItemDto.getMinimumAmount());
@@ -79,7 +79,7 @@ public class UncountableItemsApi {
 		//set the attributes
 		uncountableItemDto.setId(uncountableItemsModel.getId());
 		uncountableItemDto.setName(uncountableItemsModel.getName());
-		uncountableItemDto.setStatus(uncountableItemsModel.getStatus());
+		uncountableItemDto.setType(uncountableItemsModel.getType());
 		uncountableItemDto.setAmount(uncountableItemsModel.getAmount());
 		uncountableItemDto.setUnit(uncountableItemsModel.getUnit());
 		uncountableItemDto.setMinimumAmount(uncountableItemsModel.getMinimumAmount());
@@ -95,14 +95,14 @@ public class UncountableItemsApi {
 		List<UncountableItemDto> uncountableItemDtoList = new ArrayList<>();
 		List<UncountableItemsModel> uncountableItemsModelsList = new ArrayList<>();
 		
-		uncountableItemsModelsList = uncountableItemDataAdapter.getItemsByStatus("critical");
+		uncountableItemsModelsList = uncountableItemDataAdapter.getItemsByType("critical");
 		
 		for(UncountableItemsModel uncountableItemsModel : uncountableItemsModelsList) {
 			UncountableItemDto uncountableItemDto = new UncountableItemDto();
 			
 			uncountableItemDto.setId(uncountableItemsModel.getId());
 			uncountableItemDto.setName(uncountableItemsModel.getName());
-			uncountableItemDto.setStatus(uncountableItemsModel.getStatus());
+			uncountableItemDto.setType(uncountableItemsModel.getType());
 			uncountableItemDto.setAmount(uncountableItemsModel.getAmount());
 			uncountableItemDto.setUnit(uncountableItemsModel.getUnit());
 			uncountableItemDto.setMinimumAmount(uncountableItemsModel.getMinimumAmount());
@@ -121,14 +121,14 @@ public class UncountableItemsApi {
 		List<UncountableItemDto> uncountableItemDtoList = new ArrayList<>();
 		List<UncountableItemsModel> uncountableItemsModelsList = new ArrayList<>();
 		
-		uncountableItemsModelsList = uncountableItemDataAdapter.getItemsByStatus("nonCritical");
+		uncountableItemsModelsList = uncountableItemDataAdapter.getItemsByType("nonCritical");
 		
 		for(UncountableItemsModel uncountableItemsModel : uncountableItemsModelsList) {
 			UncountableItemDto uncountableItemDto = new UncountableItemDto();
 			
 			uncountableItemDto.setId(uncountableItemsModel.getId());
 			uncountableItemDto.setName(uncountableItemsModel.getName());
-			uncountableItemDto.setStatus(uncountableItemsModel.getStatus());
+			uncountableItemDto.setType(uncountableItemsModel.getType());
 			uncountableItemDto.setAmount(uncountableItemsModel.getAmount());
 			uncountableItemDto.setUnit(uncountableItemsModel.getUnit());
 			uncountableItemDto.setMinimumAmount(uncountableItemsModel.getMinimumAmount());
@@ -150,7 +150,7 @@ public class UncountableItemsApi {
 		//set the attributes to the model
 		uncountableItemsModel.setId(uncountableItemDto.getId());
 		uncountableItemsModel.setName(uncountableItemDto.getName());
-		uncountableItemsModel.setStatus(uncountableItemDto.getStatus());
+		uncountableItemsModel.setType(uncountableItemDto.getType());
 		uncountableItemsModel.setAmount(uncountableItemDto.getAmount());
 		uncountableItemsModel.setUnit(uncountableItemDto.getUnit());
 		uncountableItemsModel.setMinimumAmount(uncountableItemDto.getMinimumAmount());
@@ -214,7 +214,7 @@ public class UncountableItemsApi {
 			
 			uncountableItemDto.setId(uncountableItemsModel.getId());
 			uncountableItemDto.setName(uncountableItemsModel.getName());
-			uncountableItemDto.setStatus(uncountableItemsModel.getStatus());
+			uncountableItemDto.setType(uncountableItemsModel.getType());
 			uncountableItemDto.setAmount(uncountableItemsModel.getAmount());
 			uncountableItemDto.setUnit(uncountableItemsModel.getUnit());
 			uncountableItemDto.setMinimumAmount(uncountableItemsModel.getMinimumAmount());

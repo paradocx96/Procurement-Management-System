@@ -1,17 +1,19 @@
 package com.csse.pms.domain;
 
-import org.springframework.http.ResponseEntity;
+
+import com.csse.pms.dal.model.SiteModel;
+
 import java.util.List;
 
 public interface SiteDataAdapter {
 
-    ResponseEntity<?> createSite(Site site);
+    String createSite(SiteModel site);
 
-    List<Site> getAllSites();
+    List<SiteModel> getAllSites();
 
-    Site getSiteById(String id);
+    SiteModel getSiteById(String id);
 
-    ResponseEntity<?> deleteSiteById(String id);
+    String deleteSiteById(String id);
 
-    ResponseEntity<?> updateSite(Site site);
+    String updateSite(SiteModel site);
 }

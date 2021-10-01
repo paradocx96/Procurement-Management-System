@@ -9,7 +9,7 @@ public class CountableItemsModel {
 	@Id
 	private String id;
 	private String name;
-	private String status;
+	private String type;
 	private int quantity;
 	private int minimumQuantity;
 	private String siteid;
@@ -20,17 +20,26 @@ public class CountableItemsModel {
 	}
 
 
-	public CountableItemsModel(String id, String name, String status, int quantity, int minimumQuantity, String siteid,
+	
+
+
+
+
+
+	public CountableItemsModel(String id, String name, String type, int quantity, int minimumQuantity, String siteid,
 			String sitename) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.status = status;
+		this.type = type;
 		this.quantity = quantity;
 		this.minimumQuantity = minimumQuantity;
 		this.siteid = siteid;
 		this.sitename = sitename;
 	}
+
+
+
 
 
 
@@ -56,14 +65,7 @@ public class CountableItemsModel {
 	}
 
 
-	public String getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	
 
 
 	public int getQuantity() {
@@ -104,6 +106,30 @@ public class CountableItemsModel {
 	public void setSitename(String sitename) {
 		this.sitename = sitename;
 	}
+
+
+
+
+
+
+
+
+	public String getType() {
+		return type;
+	}
+
+
+
+
+
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	
 	
 	
 	

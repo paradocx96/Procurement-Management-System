@@ -53,8 +53,8 @@ public class UncountableItemAdapterImpl implements UncountableItemsDataAdapter {
 
 	//get a list of items of same status
 	@Override
-	public List<UncountableItemsModel> getItemsByStatus(String status) {
-		return uncountableItemRepository.findByStatus(status);
+	public List<UncountableItemsModel> getItemsByType(String type) {
+		return uncountableItemRepository.findByType(type);
 	}
 
 	//replace an existing item

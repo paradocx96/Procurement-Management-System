@@ -4,7 +4,7 @@ public class UncountableItemDto {
 	
 	private String id;
 	private String name;
-	private String status;
+	private String type;
 	private double amount;
 	private String unit;
 	private double minimumAmount;
@@ -31,12 +31,14 @@ public class UncountableItemDto {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return status;
+	
+
+	public String getType() {
+		return type;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public double getAmount() {

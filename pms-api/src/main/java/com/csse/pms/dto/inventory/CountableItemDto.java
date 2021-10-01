@@ -4,7 +4,7 @@ public class CountableItemDto {
 	
 	private String id;
 	private String name;
-	private String status;
+	private String type;
 	private int quantity;
 	private int minimumQuantity;
 	private String siteid;
@@ -30,12 +30,12 @@ public class CountableItemDto {
 		this.name = name;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getType() {
+		return type;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public int getQuantity() {
