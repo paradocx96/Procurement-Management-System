@@ -16,6 +16,7 @@ import com.csse.pms.dal.repository.SupplierRepository;
 import com.csse.pms.domain.Supplier;
 import com.csse.pms.domain.SupplierDataAdapter;
 import com.csse.pms.dto.SupplierMessageResponseDto;
+import com.csse.pms.util.CommonConstants;
 
 /**
  * 
@@ -54,7 +55,7 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 		 *  
 		 */
 		if(supplierRepository.existsByEmail(supplier.getEmail())) {
-			return ResponseEntity.badRequest().body(new SupplierMessageResponseDto("This mail is already taken!"));
+			return ResponseEntity.badRequest().body(new SupplierMessageResponseDto(CommonConstants.SUPPLIER_EMAIL_REGISTRATION_ERROR_MSG));
 		}
 		
 		
@@ -87,7 +88,7 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 		}
 		
 		//return success MSG to frontEnd user is registered successfully
-		return ResponseEntity.ok(new SupplierMessageResponseDto("You have successfully registered!"));
+		return ResponseEntity.ok(new SupplierMessageResponseDto(CommonConstants.SUPPLIER_REGISTRATION_SUCCESS_MSG));
 	}
 	
 }
