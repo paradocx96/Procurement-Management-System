@@ -18,13 +18,16 @@ import ConsumeCountableItems from "./components/sections/Inventory/CountableItem
 import ReplenishCountableItems from "./components/sections/Inventory/CountableItems/ReplenishCountableItems";
 import AddUncountableItem from "./components/sections/Inventory/UncountableItems/AddUncountableItem";
 import ViewAllUncountableItems from "./components/sections/Inventory/UncountableItems/ViewAllUncountableItems";
-import DashboardSite from "./components/pages/DashboardSite";
+import HeaderBar from "./components/layouts/Header/HeaderBar";
+import DashboardSiteManager from "./components/pages/DashboardSiteManager";
+import DashboardSeniorManager from "./components/pages/DashboardSeniorManager";
 
 
 function App() {
     return (
         <div>
             <Router>
+                <HeaderBar/>
                 <Switch>
                     {/* USER MANAGEMENT */}
                     <Route exact path="/" component={Login}/>
@@ -32,7 +35,8 @@ function App() {
 
                     {/* DASHBOARD */}
                     <Route path="/dashboard/admin" component={Dashboard}/>
-                    <Route path="/dashboard/site" component={DashboardSite}/>
+                    <Route path="/dashboard/site" component={DashboardSiteManager}/>
+                    <Route path="/dashboard/senior" component={DashboardSeniorManager}/>
 
 
                     {/* SITE */}
