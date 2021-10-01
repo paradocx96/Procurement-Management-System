@@ -1,6 +1,5 @@
 import React from "react";
 import CountableItemService from "../../../../services/CountableItemService";
-import data from "bootstrap/js/src/dom/data";
 import {Button, Table} from "react-bootstrap";
 
 class ViewAllCountableItems extends React.Component{
