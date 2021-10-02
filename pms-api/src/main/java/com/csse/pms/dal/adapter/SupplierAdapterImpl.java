@@ -22,6 +22,7 @@ import com.csse.pms.dal.model.ERole;
 import com.csse.pms.dal.model.EmailSender;
 import com.csse.pms.dal.model.Role;
 import com.csse.pms.dal.model.SupplierModel;
+import com.csse.pms.dal.repository.InternelUserRepository;
 import com.csse.pms.dal.repository.RoleMongoRepository;
 import com.csse.pms.dal.repository.SupplierRepository;
 import com.csse.pms.domain.Supplier;
@@ -68,6 +69,9 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 	@Autowired
 	RoleMongoRepository roleMongoRepository;
 	
+	@Autowired
+	private InternelUserRepository internelUserRepository;
+	
 	/**
      * Initialize Logger
      */
@@ -85,6 +89,9 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 			return ResponseEntity.badRequest().body(new SupplierMessageResponseDto(CommonConstants.SUPPLIER_EMAIL_REGISTRATION_ERROR_MSG));
 		}
 		
+		if(internelUserRepository.existsByEmail(supplier.getEmail())) {
+			return ResponseEntity.badRequest().body(new SupplierMessageResponseDto(CommonConstants.SUPPLIER_EMAIL_REGISTRATION_ERROR_MSG));
+		}
 		
 		SupplierModel supplierDetails = new SupplierModel(
 				supplier.getName(),
