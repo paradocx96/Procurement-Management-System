@@ -22,14 +22,11 @@ import com.csse.pms.dal.model.ERole;
 import com.csse.pms.dal.model.EmailSender;
 import com.csse.pms.dal.model.InternelUserModel;
 import com.csse.pms.dal.model.Role;
-import com.csse.pms.dal.model.SupplierModel;
 import com.csse.pms.dal.repository.InternelUserRepository;
 import com.csse.pms.dal.repository.RoleMongoRepository;
 import com.csse.pms.dal.repository.SupplierRepository;
 import com.csse.pms.domain.InternelUser;
 import com.csse.pms.domain.InternelUserDataAdapter;
-import com.csse.pms.domain.Supplier;
-import com.csse.pms.domain.SupplierDataAdapter;
 import com.csse.pms.dto.JwtResponseDto;
 import com.csse.pms.dto.SupplierMessageResponseDto;
 import com.csse.pms.security.jwt.JwtUtils;
@@ -104,12 +101,35 @@ public class InternelUserAdapterImpl implements InternelUserDataAdapter{
 		//Create new HashSet to store user Roles
 		Set<Role> roles = new HashSet<>();
 						
-		//If it is true, Add ROLE_USER to that user
-		Role userRole = roleMongoRepository.findByName(ERole.ROLE_ADMIN)
-								.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		//Check user role and assigned
+		if(internelUser.getUserType().equals("accountant")) {
 				
-		roles.add(userRole);
+				//If it is true, Add ROLE_USER to that user
+				Role userAccount = roleMongoRepository.findByName(ERole.ROLE_ACCOUNTANT)
+						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+				
+				//add role into list
+				roles.add(userAccount);
+				
+			}else if(internelUser.getUserType().equals("seniorManager")) {
+				
+				Role userSeniorManager = roleMongoRepository.findByName(ERole.ROLE_SENIOR_MANAGER)
+						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+				
+				//add role into list
+				roles.add(userSeniorManager);
+				
+				}else if(internelUser.getUserType().equals("siteManager")) {
+					
+					Role userSiteManager = roleMongoRepository.findByName(ERole.ROLE_SITE_MANAGER)
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					
+					//add role into list
+					roles.add(userSiteManager);
+					
+					}
 		
+	
 		//set all roles to user object
 		interelUserDetails.setRoles(roles);
 		
