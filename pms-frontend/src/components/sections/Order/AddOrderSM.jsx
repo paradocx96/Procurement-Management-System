@@ -1,29 +1,31 @@
 import React, {Component} from 'react';
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
+import {v4 as uuid4} from 'uuid';
 import OrderService from "../../../services/OrderService";
 import DraftOrderService from "../../../services/DraftOrderService";
-
+import ProjectService from "../../../services/ProjectService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 
-class AddOrder extends Component {
+class AddOrderSM extends Component {
 
     // Initializing state values and functions
     constructor(props) {
         super(props);
         this.state = this.initialState;
-
-        this.state.siteManagerId = '100';
-        this.state.siteId = '200';
-        this.state.projectId = '10';
-        this.state.status = 'pending';
-
-        this.state.message = '';
-        this.state.show = false;
+        this.state = {
+            siteManagerId: '100',
+            siteId: '200',
+            status: 'pending',
+            projectList: [],
+            message: '',
+            show: false,
+        }
 
         this.onSubmit = this.onSubmit.bind(this);
         this.onReset = this.onReset.bind(this);
         this.onDraft = this.onDraft.bind(this);
 
+        this.onHandlerProjectId = this.onHandlerProjectId.bind();
         this.onHandlerSupplierId = this.onHandlerSupplierId.bind();
         this.onHandlerAmount = this.onHandlerAmount.bind();
         this.onHandlerContactDetails = this.onHandlerContactDetails.bind();
@@ -33,6 +35,7 @@ class AddOrder extends Component {
     // Initializing default values
     initialState = {
         referenceNo: '',
+        projectId: '',
         supplierId: '',
         itemList: [],
         amount: 0.0,
@@ -40,7 +43,21 @@ class AddOrder extends Component {
         comment: ''
     }
 
+    componentDidMount = async () => {
+        await ProjectService.getAll()
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({projectList: data});
+            }).catch(error =>
+                console.log(error.message)
+            );
+    }
+
     // Assign form values to State variables
+    onHandlerProjectId = (event) => {
+        this.setState({projectId: event.target.value});
+    }
+
     onHandlerSupplierId = (event) => {
         this.setState({supplierId: event.target.value});
     }
@@ -61,8 +78,10 @@ class AddOrder extends Component {
     onSubmit = async (event) => {
         event.preventDefault();
 
+        let newRefNo = uuid4();
+
         let value = {
-            referenceNo: this.state.referenceNo,
+            referenceNo: newRefNo,
             supplierId: this.state.supplierId,
             itemList: this.state.itemList,
             siteManagerId: this.state.siteManagerId,
@@ -85,7 +104,8 @@ class AddOrder extends Component {
         //         console.log(error.message);
         //     });
 
-        this.onReset();
+        await this.componentDidMount();
+        await this.onReset();
     }
 
     // TODO : Draft form values
@@ -114,12 +134,14 @@ class AddOrder extends Component {
         //         console.log(error.message);
         //     });
 
-        this.onReset();
+        await this.componentDidMount();
+        await this.onReset();
     }
 
     // Reset form values
     onReset = () => {
-        this.setState(() => this.initialState)
+        this.setState(() => this.initialState);
+        this.componentDidMount();
     }
 
     render() {
@@ -133,14 +155,30 @@ class AddOrder extends Component {
                         <Form onSubmit={this.onSubmit.bind(this)}
                               onReset={this.onReset.bind(this)}>
 
+                            <Form.Group controlId="projectId" className={'pt-3'}>
+                                <Form.Control required as="select"
+                                              name="projectId"
+                                              onChange={this.onHandlerProjectId}>
+
+                                    <option>Project</option>
+                                    {this.state.projectList.map(item => (
+                                        <option key={item.id} value={item.id}>
+                                            {item.projectName}
+                                        </option>
+                                    ))}
+                                </Form.Control>
+                            </Form.Group>
+
+
                             <Form.Group controlId="supplierId" className={'pt-3'}>
                                 <Form.Control required as="select"
                                               name="supplierId"
                                               value={this.state.supplierId}
                                               onChange={this.onHandlerSupplierId}>
 
-                                    <option>Select Supplier</option>
                                     <option>Supplier</option>
+                                    <option>Supplier 1</option>
+                                    <option>Supplier 2</option>
                                 </Form.Control>
                             </Form.Group>
 
@@ -164,11 +202,6 @@ class AddOrder extends Component {
                                                   value={this.state.comment}
                                                   onChange={this.onHandlerComment}/>
                                 </Col>
-
-                            </Form.Group>
-
-                            <Form.Group controlId="comment" className={'pt-3'}>
-
                             </Form.Group>
 
                             <Form.Group className={'pt-2'}>
@@ -187,4 +220,4 @@ class AddOrder extends Component {
     }
 }
 
-export default AddOrder;
+export default AddOrderSM;

@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import {Container, Table} from "react-bootstrap";
 import OrderService from "../../../services/OrderService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
+import {Link} from "react-router-dom";
 
-class ViewAllOrder extends Component {
+class ViewAllOrderSM extends Component {
 
     // Initializing state values and functions
     constructor(props) {
@@ -13,7 +14,6 @@ class ViewAllOrder extends Component {
         }
     }
 
-    // Function for get all teachers details
     componentDidMount = async () => {
         await OrderService.getAll()
             .then(response => response.data)
@@ -40,6 +40,7 @@ class ViewAllOrder extends Component {
                             <th>Project ID</th>
                             <th>Amount</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -57,6 +58,12 @@ class ViewAllOrder extends Component {
                                         <td>{item.projectId}</td>
                                         <td>{item.amount}</td>
                                         <td>{item.status}</td>
+                                        <td>
+                                            <Link to={`/delivery/addDeliverySm/` + item.id}
+                                                  className={'btn btn-primary'}>
+                                                Delivery Log
+                                            </Link>
+                                        </td>
                                     </tr>
                                 ))
                         }
@@ -68,4 +75,4 @@ class ViewAllOrder extends Component {
     }
 }
 
-export default ViewAllOrder;
+export default ViewAllOrderSM;

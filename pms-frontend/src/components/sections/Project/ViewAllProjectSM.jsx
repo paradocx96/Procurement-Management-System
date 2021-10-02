@@ -3,7 +3,7 @@ import {Container, Table} from "react-bootstrap";
 import ProjectService from "../../../services/ProjectService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 
-class ViewAllProject extends Component {
+class ViewAllProjectSM extends Component {
 
     // Initializing state values and functions
     constructor(props) {
@@ -13,7 +13,6 @@ class ViewAllProject extends Component {
         }
     }
 
-    // Function for get all teachers details
     componentDidMount = async () => {
         await ProjectService.getAll()
             .then(response => response.data)
@@ -64,4 +63,4 @@ class ViewAllProject extends Component {
     }
 }
 
-export default ViewAllProject;
+export default ViewAllProjectSM;

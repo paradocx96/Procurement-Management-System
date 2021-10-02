@@ -36,13 +36,15 @@ import ViewAllUncountableItems from "./components/sections/Inventory/Uncountable
 
 
 //Project
-import AddProject from "./components/sections/Project/AddProject";
-import ViewAllProject from "./components/sections/Project/ViewAllProject";
+import AddProjectSM from "./components/sections/Project/AddProjectSM";
+import ViewAllProjectSM from "./components/sections/Project/ViewAllProjectSM";
 
 
 //Order
-import AddOrder from "./components/sections/Order/AddOrder";
-import ViewAllOrder from "./components/sections/Order/ViewAllOrder";
+import AddOrderSM from "./components/sections/Order/AddOrderSM";
+import ViewAllOrderSM from "./components/sections/Order/ViewAllOrderSM";
+import ViewAllDraftOrderSM from "./components/sections/Order/ViewAllDraftOrderSM";
+import AddDeliverySm from "./components/sections/Delivery/AddDeliverySm";
 
 
 
@@ -82,13 +84,22 @@ function App() {
 
 
                     {/* PROJECT */}
-                    <Route path={'/project/addProject'} exact component={AddProject}/>
-                    <Route path={'/project/list'} exact component={ViewAllProject}/>
+                    <Route path={'/project/addProjectSm'} component={AddProjectSM}/>
+                    <Route path={'/project/listSm'} component={ViewAllProjectSM}/>
 
 
                     {/* ORDER */}
-                    <Route path={'/order/addOrder'} exact component={AddOrder}/>
-                    <Route path={'/order/list'} exact component={ViewAllOrder}/>
+                    <Route path={'/order/addOrderSm'} component={AddOrderSM}/>
+                    <Route path={'/order/listSm'} component={ViewAllOrderSM}/>
+
+
+                    {/* DRAFT ORDER */}
+                    <Route path={'/draft/listSm'} component={ViewAllDraftOrderSM}/>
+
+
+                    {/* DELIVERY */}
+                    <Route path={'/delivery/addDeliverySm/:id'} component={AddDeliverySm}/>
+
 
 
                     {/* DEFAULT PATH */}

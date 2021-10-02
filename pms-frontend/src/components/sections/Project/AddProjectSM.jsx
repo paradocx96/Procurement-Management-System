@@ -4,7 +4,7 @@ import ProjectService from "../../../services/ProjectService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import Toast1 from "../../Toasts/Toast1";
 
-class AddProject extends Component {
+class AddProjectSM extends Component {
 
     // Initializing state values and functions
     constructor(props) {
@@ -145,4 +145,4 @@ class AddProject extends Component {
     }
 }
 
-export default AddProject;
+export default AddProjectSM;

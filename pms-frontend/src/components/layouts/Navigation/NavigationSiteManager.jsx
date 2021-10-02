@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
-
-import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class NavigationSiteManager extends Component {
 
@@ -14,7 +13,7 @@ class NavigationSiteManager extends Component {
     render() {
         return (
             <div>
-                <Navbar collapseOnSelect expand="lg" style={this.backColor} variant="dark">
+                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Container>
                         <Navbar.Brand href="/dashboard/site">Dashboard</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
@@ -22,12 +21,14 @@ class NavigationSiteManager extends Component {
 
                             <Nav className="me-auto">
                                 <NavDropdown title="Project" id="collasible-nav-dropdown">
-                                    <Link to={'/project/list'} className={'dropdown-item'}>Projects</Link>
-                                    <Link to={'/project/addProject'} className={'dropdown-item'}>Add Project</Link>
+                                    <Link to={'/project/listSm'} className={'dropdown-item'}>Projects</Link>
+                                    <Link to={'/project/addProjectSm'} className={'dropdown-item'}>Add Project</Link>
                                 </NavDropdown>
                                 <NavDropdown title="Purchase Order" id="collasible-nav-dropdown">
-                                    <Link to={'/order/list'} className={'dropdown-item'}>Orders</Link>
-                                    <Link to={'/order/addOrder'} className={'dropdown-item'}>Purchase Order</Link>
+                                    <Link to={'/order/listSm'} className={'dropdown-item'}>Orders</Link>
+                                    <Link to={'/draft/listSm'} className={'dropdown-item'}>Draft Orders</Link>
+                                    <Link to={'/order/addOrderSm'} className={'dropdown-item'}>Purchase Order</Link>
+                                    <Link to={'/delivery/addDeliverySm'} className={'dropdown-item'}>Delivery Log</Link>
                                 </NavDropdown>
                             </Nav>
                         </Navbar.Collapse>

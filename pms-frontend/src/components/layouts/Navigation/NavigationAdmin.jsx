@@ -14,7 +14,7 @@ class NavigationAdmin extends Component {
     render() {
         return (
             <div>
-                <Navbar collapseOnSelect expand="lg" style={this.backColor} variant="dark">
+                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Container>
                         <Navbar.Brand href="/dashboard/admin">Dashboard</Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
