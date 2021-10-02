@@ -68,6 +68,9 @@ public class InternelUserAdapterImpl implements InternelUserDataAdapter{
 	@Autowired
 	RoleMongoRepository roleMongoRepository;
 	
+	@Autowired
+	private SupplierRepository supplierRepository;
+	
 	/**
      * Initialize Logger
      */
@@ -82,6 +85,10 @@ public class InternelUserAdapterImpl implements InternelUserDataAdapter{
 		 *  
 		 */
 		if(internelUserRepository.existsByEmail(internelUser.getEmail())) {
+			return ResponseEntity.badRequest().body(new SupplierMessageResponseDto(CommonConstants.SUPPLIER_EMAIL_REGISTRATION_ERROR_MSG));
+		}
+		
+		if(supplierRepository.existsByEmail(internelUser.getEmail())) {
 			return ResponseEntity.badRequest().body(new SupplierMessageResponseDto(CommonConstants.SUPPLIER_EMAIL_REGISTRATION_ERROR_MSG));
 		}
 		
