@@ -1,12 +1,17 @@
 package com.csse.pms.dal.adapter;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.csse.pms.dal.model.InternelUserModel;
 import com.csse.pms.dal.model.SupplierModel;
+import com.csse.pms.dal.repository.InternelUserRepository;
 import com.csse.pms.dal.repository.SupplierRepository;
 
 /**
@@ -22,20 +27,36 @@ import com.csse.pms.dal.repository.SupplierRepository;
  * @see # SupplierDetailsServiceImpl.build(supplier);
  *
  */
-
-public class SupplierDetailsImpl implements UserDetailsService{
+@Service
+public class UserDetailsServiceImpl implements UserDetailsService{
 	
 	@Autowired
 	SupplierRepository supplierRepository;
+	
+	@Autowired
+	InternelUserRepository internelUserRepository;
 
 	//Find the user email in the database if not throw custom exception error
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+		
+		Optional<SupplierModel> supplierObj = supplierRepository.findByEmail(email);
+		
+		if(supplierObj.isEmpty()) {
 			
-		SupplierModel supplier = supplierRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(email + " not found!"));
+			InternelUserModel internelUser = internelUserRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(email + " not found!"));
 
-		return SupplierDetailsServiceImpl.build(supplier);
+			return UserDetailsImpl.buildInternelUsers(internelUser);
+			
+		}else {
+			
+			SupplierModel supplier = supplierRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(email + " not found!"));
+			
+			return UserDetailsImpl.buildSupplier(supplier);
+
+		}
+		
 	}
 
 }
