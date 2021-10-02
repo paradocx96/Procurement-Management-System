@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.csse.pms.api.SupplierApi;
+import com.csse.pms.dal.model.InternelUserModel;
 import com.csse.pms.domain.Supplier;
 import com.csse.pms.util.CommonConstants;
 
@@ -28,6 +29,12 @@ public class SupplierController {
     @ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<?> registerSupplier(@RequestBody Supplier supplier){
 		return supplierApi.registerSupplier(supplier);
+	}
+	
+	@PostMapping(CommonConstants.SUPPLIER_POST_MAPPING_LOGIN)
+    @ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<?> loginSupplier(@RequestBody Supplier supplier){
+		return supplierApi.loginSupplier(supplier);
 	}
 
 }
