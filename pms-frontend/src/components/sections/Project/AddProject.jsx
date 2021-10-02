@@ -6,7 +6,7 @@ import Toast1 from "../../Toasts/Toast1";
 
 class AddProject extends Component {
 
-    // TODO: Initializing state values and functions
+    // Initializing state values and functions
     constructor(props) {
         super(props);
         this.state = this.initialState;
@@ -19,9 +19,10 @@ class AddProject extends Component {
         this.onReset = this.onReset.bind(this);
         this.onNameHandler = this.onNameHandler.bind();
         this.onDescriptionHandler = this.onDescriptionHandler.bind();
+        this.onBudgetHandler = this.onBudgetHandler.bind();
     }
 
-    // TODO: Initializing default values
+    // Initializing default values
     initialState = {
         projectName: '',
         description: '',
