@@ -8,6 +8,7 @@ public class InternelUser {
 	private String password;
 	private String contactNo;
 	private String address;
+	private String userType;
 
 	
 	public String getId() {
@@ -66,6 +67,16 @@ public class InternelUser {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+
+	public String getUserType() {
+		return userType;
+	}
+
+
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 
 }

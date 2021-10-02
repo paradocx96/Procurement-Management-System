@@ -17,6 +17,7 @@ public class InternelUserModel {
 	private String password;
 	private String contactNo;
 	private String address;
+	private String userType;
 	
 	@DBRef
 	private Set<Role> roles = new HashSet<>();
@@ -111,5 +112,13 @@ public class InternelUserModel {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 }
