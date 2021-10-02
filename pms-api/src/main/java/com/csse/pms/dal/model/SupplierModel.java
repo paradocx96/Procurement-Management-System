@@ -1,6 +1,10 @@
 package com.csse.pms.dal.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -15,6 +19,10 @@ public class SupplierModel {
 	private String address;
 	private String location;
 	private String status;
+	
+	
+	@DBRef
+	private Set<Role> roles = new HashSet<>();
 	
 	
 	public SupplierModel() {
@@ -123,5 +131,13 @@ public class SupplierModel {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
 }
