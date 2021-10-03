@@ -18,6 +18,7 @@ import ConsumeCountableItems from "./components/sections/Inventory/CountableItem
 import ReplenishCountableItems from "./components/sections/Inventory/CountableItems/ReplenishCountableItems";
 import AddUncountableItem from "./components/sections/Inventory/UncountableItems/AddUncountableItem";
 import ViewAllUncountableItems from "./components/sections/Inventory/UncountableItems/ViewAllUncountableItems";
+import ConsumeUncountableItems from "./components/sections/Inventory/UncountableItems/ConsumeUncountableItems";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
                     {/*uncountable items*/}
                     <Route path="/inventory/uncountable/addItem" component={AddUncountableItem}/>
                     <Route path="/inventory/uncountable/viewAll" component={ViewAllUncountableItems}/>
+                    <Route path="/inventory/uncountable/consume/:id" component={ConsumeUncountableItems}/>
 
 
                     {/* DEFAULT PATH */}
