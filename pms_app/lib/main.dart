@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pms_app/modules/inventory/screens/CountableItems.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +14,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        CountableItems.routeName: (context) => const CountableItems(),
+      },
     );
   }
 }
@@ -51,6 +55,14 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, CountableItems.routeName,
+                );
+              },
+              child: Text("Countable Items"),
+            )
           ],
         ),
       ),
