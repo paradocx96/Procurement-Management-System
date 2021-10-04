@@ -1,5 +1,7 @@
 package com.csse.pms.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
@@ -39,6 +41,10 @@ public class SupplierApi {
 	
 	public ResponseEntity<?> addItem(Item item){
 		return itemDataAdapter.addItem(item);
+	}
+	
+	public List<Item> getItemBySupplierID(String id){
+		return itemDataAdapter.getItemBySupplierID(id);
 	}
 	
 }

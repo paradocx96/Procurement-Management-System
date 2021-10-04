@@ -1,9 +1,13 @@
 package com.csse.pms.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.csse.pms.api.SupplierApi;
-import com.csse.pms.dal.model.InternelUserModel;
 import com.csse.pms.domain.Item;
 import com.csse.pms.domain.Supplier;
 import com.csse.pms.util.CommonConstants;
@@ -43,4 +46,12 @@ public class SupplierController {
 	public ResponseEntity<?> addItem(@RequestBody Item item){
 		return supplierApi.addItem(item);
 	}
+	
+	@GetMapping(CommonConstants.SUPPLIER_GET_MAPPING_BY_SUPPLIER_ID)
+    @ResponseStatus(HttpStatus.OK)
+	public List<Item> getItemBySupplierID(@PathVariable String id){
+		return supplierApi.getItemBySupplierID(id);
+	}
+	
+	
 }
