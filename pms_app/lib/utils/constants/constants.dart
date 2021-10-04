@@ -1,2 +1,2 @@
-const String TEST_USERNAME = "USERNAME";
-const String TEST_PASSWORD = "password";
+const String TEST_USERNAME = "admin";
+const String TEST_PASSWORD = "admin";
