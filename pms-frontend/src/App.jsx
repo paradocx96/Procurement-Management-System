@@ -18,6 +18,7 @@ import Dashboard from "./components/pages/Dashboard";
 import DashboardSiteManager from "./components/pages/DashboardSiteManager";
 import DashboardSeniorManager from "./components/pages/DashboardSeniorManager";
 import DashboardAccountant from "./components/pages/DashboardAccountant";
+import DashboardSupplier from "./components/pages/DashboardSupplier";
 
 
 //Order
@@ -76,6 +77,7 @@ function App() {
                     <Route path="/dashboard/site" component={DashboardSiteManager}/>
                     <Route path="/dashboard/senior" component={DashboardSeniorManager}/>
                     <Route path="/dashboard/accountant" component={DashboardAccountant}/>
+                    <Route path="/dashboard/supplier" component={DashboardSupplier}/>
 
 
                     {/* SITE */}

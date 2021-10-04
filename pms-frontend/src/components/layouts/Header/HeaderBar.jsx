@@ -62,7 +62,7 @@ class HeaderBar extends Component {
     }
 
     render() {
-        const {currentUser,adminDashboard,accountantDashboard, siteManagerDashboard,seniorManagerDashboard, supplierDashboards} = this.state;
+        const {currentUser,adminDashboard,accountantDashboard, siteManagerDashboard,seniorManagerDashboard, supplierDashboard} = this.state;
         return (
             <div>
                 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -94,17 +94,17 @@ class HeaderBar extends Component {
                                             </li>
                                         )}
                                         {siteManagerDashboard && (
-                                            <li className="nav-item">
+                                            <li className="nav-item text-uppercase">
                                                 <Link to={'/dashboard/site'} className={'nav-link'} > Dashboard </Link>
                                             </li>
                                         )}
                                         {seniorManagerDashboard && (
-                                            <li className="nav-item">
+                                            <li className="nav-item text-uppercase">
                                                 <Link to={'/dashboard/senior'} className={'nav-link'} > Dashboard </Link>
                                             </li>
                                         )}
-                                        {supplierDashboards && (
-                                            <li className="nav-item">
+                                        {supplierDashboard && (
+                                            <li className="nav-item text-uppercase">
                                                 <Link to={'/dashboard/supplier'} className={'nav-link'} > Dashboard </Link>
                                             </li>
                                         )}
