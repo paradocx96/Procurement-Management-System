@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pms_app/modules/inventory/screens/CountableItemSingleView.dart';
 import 'package:pms_app/modules/inventory/screens/CountableItems.dart';
 
 void main() {
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Flutter Demo Home Page'),
       routes: {
         CountableItems.routeName: (context) => const CountableItems(),
+        CountableItemSingleView.routeName: (context) => const CountableItemSingleView(),
       },
     );
   }

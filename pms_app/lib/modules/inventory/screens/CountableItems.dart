@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pms_app/modules/inventory/models/CountableItemsModel.dart';
+import 'package:pms_app/modules/inventory/routes/CountableItemSWArguments.dart';
+import 'package:pms_app/modules/inventory/screens/CountableItemSingleView.dart';
 import 'package:pms_app/utils/services/CountableItemService.dart' as CountableItemService;
 
 class CountableItems extends StatefulWidget {
   const CountableItems({Key? key}) : super(key: key);
 
-  static const routeName = "/inventory/countable/get";
+  static const routeName = "/inventory/countable/viewAll";
 
   @override
   _CountableItemsState createState() => _CountableItemsState();
@@ -37,8 +39,17 @@ class _CountableItemsState extends State<CountableItems> {
                 return ListView.builder(
                   itemCount: data!.length,
                     itemBuilder: (BuildContext context, int index){
-                  return ListTile(title: Text(data![index].name),);
-                });
+                  return ListTile(
+                    onTap: (){
+                      Navigator.pushNamed(context, CountableItemSingleView.routeName,
+                        arguments:CountableItemSWArguments(data![index].id)
+                      );
+                      print(data![index].id);
+                      print(data![index].name);
+                    },
+                    title: Text(data![index].name),);
+                }
+                );
               }
               else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
