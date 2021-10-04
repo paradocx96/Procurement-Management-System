@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Col, Container, Form, Row} from "react-bootstrap";
+import {Button, Col, Container, Form, Row, Table} from "react-bootstrap";
 import {v4 as uuid4} from 'uuid';
 import OrderService from "../../../services/OrderService";
 import DraftOrderService from "../../../services/DraftOrderService";
@@ -23,7 +23,7 @@ class AddOrderSM extends Component {
             show: false,
             itId: '',
             itName: '',
-            itCount: '',
+            itCount: 0,
         }
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -102,15 +102,22 @@ class AddOrderSM extends Component {
     }
 
     onHandlerItName = (event) => {
-        this.setState({
-            itId: event.target.id,
-            itName: event.target.value
-        });
+        this.setState({itId: event.target.value});
+        this.setState({itName: event.target.options[event.target.selectedIndex].text});
     }
 
     onHandlerItCount = (event) => {
         this.setState({itCount: event.target.value});
     }
+
+    // totalPriceCal = ({ products }) => (
+    //     <h3>
+    //         Price:
+    //         {products.reduce((sum, i) => (
+    //             sum += i.count * i.price
+    //         ), 0)}
+    //     </h3>
+    // )
 
     // Submit form values
     onSubmit = async (event) => {
@@ -121,7 +128,7 @@ class AddOrderSM extends Component {
         let value = {
             referenceNo: newRefNo,
             supplierId: this.state.supplierId,
-            itemList: this.state.itemList,
+            itemList: this.state.itemBucket,
             siteManagerId: this.state.siteManagerId,
             siteId: this.state.siteId,
             projectId: this.state.projectId,
@@ -152,7 +159,7 @@ class AddOrderSM extends Component {
 
         let value = {
             supplierId: this.state.supplierId,
-            itemList: this.state.itemList,
+            itemList: this.state.itemBucket,
             siteManagerId: this.state.siteManagerId,
             siteId: this.state.siteId,
             projectId: this.state.projectId,
@@ -179,30 +186,47 @@ class AddOrderSM extends Component {
     AddItemToBucket = async (event) => {
         event.preventDefault();
 
-        this.setState((prevState) => ({
+        await this.setState((prevState) => ({
             itemBucket: [
                 ...prevState.itemBucket,
                 {
-                    itemId : this.state.itId,
-                    itemName : this.state.itName,
-                    itemCount : this.state.itCount
+                    itemId: this.state.itId,
+                    itemName: this.state.itName,
+                    itemCount: this.state.itCount
                 },
             ],
         }));
 
         console.log(this.state.itemBucket);
 
-        // const value = {
-        //     itemId : this.state.itId,
-        //     itemName : this.state.itName,
-        //     itemCount : this.state.itCount
-        // }
-        // this.setState({itemBucket: value});
+        // await this.totalPriceCal();
+    }
+
+    clickOnDelete(record) {
+        this.setState({
+            itemBucket: this.state.itemBucket.filter((r) => r !== record),
+        });
+    }
+
+    deleteRow = (index) => {
+        this.setState({
+            itemBucket: this.state.itemBucket.filter((s, sindex) => index !== sindex),
+        });
+
+        console.log(this.state.itemBucket);
+    };
+
+    totalPriceCal = async () => {
+        const total = this.state.itemBucket.reduce((total, item) => total + item.itemCount)
+        console.log(total);
     }
 
     // Reset form values
     onReset = () => {
         this.setState(() => this.initialState);
+        this.setState({
+            itemBucket: []
+        })
         this.componentDidMount();
     }
 
@@ -248,19 +272,19 @@ class AddOrderSM extends Component {
 
                             <Form.Group as={Row} controlId="supplierId" className={'pt-3'}>
                                 <Col sm={6}>
-                                <Form.Control required as="select"
-                                              name="supplierId"
-                                              value={this.state.supplierId}
-                                              onChange={this.onHandlerSupplierId}>
+                                    <Form.Control required as="select"
+                                                  name="supplierId"
+                                                  value={this.state.supplierId}
+                                                  onChange={this.onHandlerSupplierId}>
 
-                                    <option>Supplier</option>
-                                    <option>Supplier 1</option>
-                                    <option>Supplier 2</option>
-                                </Form.Control>
+                                        <option>Supplier</option>
+                                        <option>Supplier 1</option>
+                                        <option>Supplier 2</option>
+                                    </Form.Control>
                                 </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row} controlId="projectId" className={'pt-3'}>
+                            <Form.Group as={Row} controlId="itemSelect" className={'pt-3'}>
                                 <Col sm={5}>
                                     <Form.Control required as="select"
                                                   name="itName"
@@ -268,11 +292,11 @@ class AddOrderSM extends Component {
                                                   onChange={this.onHandlerItName}>
 
                                         <option>ITEM</option>
-                                        <option id="10">Item 1</option>
-                                        <option id="20">Item 2</option>
-                                        <option id="30">Item 3</option>
-                                        <option id="40">Item 4</option>
-                                        <option id="50">Item 5</option>
+                                        <option value="10">Item 1</option>
+                                        <option value="20">Item 2</option>
+                                        <option value="30">Item 3</option>
+                                        <option value="40">Item 4</option>
+                                        <option value="50">Item 5</option>
                                     </Form.Control>
                                 </Col>
                                 <Col sm={5}>
@@ -283,11 +307,38 @@ class AddOrderSM extends Component {
                                                   onChange={this.onHandlerItCount}/>
                                 </Col>
                                 <Col sm={2}>
-                                    <Button onClick={this.AddItemToBucket.bind(this)}>+</Button>
+                                    <Button className={'btn btn-secondary'} onClick={this.AddItemToBucket.bind(this)}>+</Button>
                                 </Col>
-
                             </Form.Group>
 
+                            <section>
+                                <Table>
+                                    <thead>
+                                    <tr>
+                                        <th>Item Id</th>
+                                        <th>Item Name</th>
+                                        <th>Qty</th>
+                                        <th> </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {
+                                        this.state.itemBucket.map((item, index) => {
+                                            return (
+                                                <tr key={index}>
+                                                    <td>{item.itemId}</td>
+                                                    <td>{item.itemName}</td>
+                                                    <td>{item.itemCount}</td>
+                                                    <td>
+                                                        <Button className={'btn btn-danger'} onClick={this.deleteRow.bind(this, index)}>-</Button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                    </tbody>
+                                </Table>
+                            </section>
 
                             <Form.Group as={Row} controlId="contactDetails" className={'pt-3'}>
                                 <Col sm={6}>
@@ -295,7 +346,6 @@ class AddOrderSM extends Component {
                                                   name="contactDetails"
                                                   as="textarea"
                                                   rows={5}
-                                                  required
                                                   value={this.state.contactDetails}
                                                   onChange={this.onHandlerContactDetails}/>
                                 </Col>
@@ -304,7 +354,6 @@ class AddOrderSM extends Component {
                                                   name="comment"
                                                   as="textarea"
                                                   rows={5}
-                                                  required
                                                   value={this.state.comment}
                                                   onChange={this.onHandlerComment}/>
                                 </Col>
