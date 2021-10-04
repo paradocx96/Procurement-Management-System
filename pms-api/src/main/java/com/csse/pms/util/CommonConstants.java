@@ -231,6 +231,15 @@ public class CommonConstants {
     /** Constant for supplier register Path in Supplier Controller */
     public static final String SUPPLIER_POST_MAPPING_LOGIN = "login";
     
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_POST_MAPPING_ADD_ITEM = "add-item";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_ADD_ITEM_SUCCESS_MSG = "Item added successfully!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_GET_MAPPING_BY_SUPPLIER_ID = "get-item-by-supplier-id/{id}";
+    
     
     /******  Internal user Common Constants  ******/ 
     
