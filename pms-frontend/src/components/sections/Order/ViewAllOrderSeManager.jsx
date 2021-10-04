@@ -4,8 +4,9 @@ import OrderService from "../../../services/OrderService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import {Link} from "react-router-dom";
 import NavigationAccountant from "../../layouts/Navigation/NavigationAccountant";
+import NavigationSeniorManager from "../../layouts/Navigation/NavigationSeniorManager";
 
-class ViewAllOrderAccountant extends Component {
+class ViewAllOrderSeManager extends Component {
 
     // Initializing state values and functions
     constructor(props) {
@@ -20,7 +21,7 @@ class ViewAllOrderAccountant extends Component {
     }
 
     componentDidMount = async () => {
-        await OrderService.getAll()
+        await OrderService.getByStatus('Requisition Manager Approval')
             .then(response => response.data)
             .then((data) => {
                 this.setState({orderList: data});
@@ -54,7 +55,7 @@ class ViewAllOrderAccountant extends Component {
     render() {
         return (
             <div>
-                <NavigationAccountant/>
+                <NavigationSeniorManager/>
                 <Container>
                     <h2>PURCHASE HISTORY</h2>
 
@@ -95,7 +96,6 @@ class ViewAllOrderAccountant extends Component {
                                                         <option>Select Site</option>
                                                         <option>Pending</option>
                                                         <option>Waiting for Approval</option>
-                                                        <option>Requisition Manager Approval</option>
                                                         <option>Approved</option>
                                                         <option>Partially Approved</option>
                                                         <option>Declined</option>
@@ -125,4 +125,4 @@ class ViewAllOrderAccountant extends Component {
     }
 }
 
-export default ViewAllOrderAccountant;
+export default ViewAllOrderSeManager;
