@@ -1,11 +1,11 @@
 import React from "react";
-import CountableItemService from "../../../../services/CountableItemService";
-
-import {Button, Table} from "react-bootstrap";
+import UncountableItemService from "../../../../services/UncountableItemService";
+import data from "bootstrap/js/src/dom/data";
 import {confirmAlert} from "react-confirm-alert";
 import Toast1 from "../../../Toasts/Toast1";
+import {Button, Table} from "react-bootstrap";
 
-class DeleteCountableItems extends React.Component{
+class DeleteUncountableItems extends React.Component{
     constructor(props) {
         super(props);
         this.state = this.initialState;
@@ -18,16 +18,16 @@ class DeleteCountableItems extends React.Component{
     }
 
     initialState={
-        countableItems:[]
+        uncountableItems:[]
     }
 
-    componentDidMount= async () => {
-        await CountableItemService.getAllCountableItems()
+    componentDidMount = async () =>  {
+        await UncountableItemService.getAllUncountableItems()
             .then(response => response.data)
             .then((data) => {
-                this.setState({countableItems:data});
+                this.setState({uncountableItems:data});
             }).catch(error => {
-                console.log("Cannot get all countable items. Error : ",error);
+                console.log("Cannot get all uncountable items. Error : ",error);
             })
     }
 
@@ -52,15 +52,15 @@ class DeleteCountableItems extends React.Component{
     }
 
     performDelete = async (id) => {
-        await CountableItemService.deleteCountableItem(id)
+        await UncountableItemService.deleteUncountableItem(id)
             .then(response => response.data)
             .then((data) => {
                 if (data != null){
                     this.setState({"show":true});
                     setTimeout(() => this.setState({"show":false}),3000);
                     this.setState({
-                        countableItems:this.state.countableItems.filter(countableItems =>
-                            countableItems.id !== id)
+                        uncountableItems:this.state.uncountableItems.filter(uncountableItems =>
+                            uncountableItems.id !== id)
                     })
                 }
             }).catch(error => {
@@ -72,12 +72,11 @@ class DeleteCountableItems extends React.Component{
         alert("Deletion Cancelled");
     }
 
-
     render() {
         return (
             <div>
-                <div>
 
+                <div>
                     <div style={{"display": this.state.show ? "block" : "none"}}>
 
                         <Toast1
@@ -91,33 +90,36 @@ class DeleteCountableItems extends React.Component{
 
                     </div>
 
-                    <h2>Delete Countable Items</h2>
+                    <h2>Delete Uncountable Items</h2>
 
                     <Table striped bordered hover variant={'light'}>
+
                         <thead>
                         <tr>
                             <td>Id</td>
                             <td>Name</td>
                             <td>Type</td>
-                            <td>Quantity</td>
-                            <td>Minimum Quantity</td>
+                            <td>Unit</td>
+                            <td>Amount</td>
+                            <td>Minimum Amount</td>
                             <td>Site Id</td>
                             <td>Site Name</td>
                         </tr>
                         </thead>
                         <tbody>
                         {
-                            this.state.countableItems.length === 0?
+                            this.state.uncountableItems.length === 0?
                                 <tr align={'center'}>
-                                    <td colSpan={6}>{this.state.countableItems.length} records available</td>
+                                    <td colSpan={6}>{this.state.uncountableItems.length} records available</td>
                                 </tr>:
-                                this.state.countableItems.map((e) => (
+                                this.state.uncountableItems.map((e) => (
                                     <tr key={e.id}>
                                         <td>{e.id}</td>
                                         <td>{e.name}</td>
                                         <td>{e.type}</td>
-                                        <td>{e.quantity}</td>
-                                        <td>{e.minimumQuantity}</td>
+                                        <td>{e.unit}</td>
+                                        <td>{e.amount}</td>
+                                        <td>{e.minimumAmount}</td>
                                         <td>{e.siteid}</td>
                                         <td>{e.sitename}</td>
 
@@ -134,6 +136,7 @@ class DeleteCountableItems extends React.Component{
                                 ))
                         }
                         </tbody>
+
                     </Table>
                 </div>
 
@@ -142,4 +145,4 @@ class DeleteCountableItems extends React.Component{
     }
 
 }
-export default DeleteCountableItems;
+export default DeleteUncountableItems;

@@ -52,6 +52,8 @@ import ViewSingleOrderSM from "./components/sections/Order/ViewSingleOrderSM";
 import ViewAllOrderAccountant from "./components/sections/Order/ViewAllOrderAccountant";
 import ViewSingleOrderAccountant from "./components/sections/Order/ViewSingleOrderAccountant";
 import ViewAllOrderSeManager from "./components/sections/Order/ViewAllOrderSeManager";
+import DeleteUncountableItems from "./components/sections/Inventory/UncountableItems/DeleteUncountableItems";
+import DeleteCountableItems from "./components/sections/Inventory/CountableItems/DeleteCountableItems";
 
 
 
@@ -83,12 +85,14 @@ function App() {
                     {/*countable Items*/}
                     <Route path="/inventory/countable/addItem" component={AddCountableItem}/>
                     <Route path="/inventory/countable/viewAll" component={ViewAllCountableItems}/>
+                    <Route path="/inventory/countable/delete" component={DeleteCountableItems}/>
                     <Route path="/inventory/countable/consume/:id" component={ConsumeCountableItems}/>
                     <Route path="/inventory/countable/replenish/:id" component={ReplenishCountableItems}/>
 
                     {/*uncountable items*/}
                     <Route path="/inventory/uncountable/addItem" component={AddUncountableItem}/>
                     <Route path="/inventory/uncountable/viewAll" component={ViewAllUncountableItems}/>
+                    <Route path="/inventory/uncountable/delete" component={DeleteUncountableItems}/>
                     <Route path="/inventory/uncountable/consume/:id" component={ConsumeUncountableItems}/>
                     <Route path="/inventory/uncountable/replenish/:id" component={ReplenishUncountableItems}/>
 

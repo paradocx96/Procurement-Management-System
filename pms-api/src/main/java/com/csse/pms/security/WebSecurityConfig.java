@@ -82,7 +82,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			//inventory related access control
 			.antMatchers("/api/inventory/uncountable/**").permitAll()
 			
-			.antMatchers("/api/inventory/countable/**").hasAnyRole("ADMIN")
+			.antMatchers("/api/inventory/countable/**").permitAll()
 
 
 			.antMatchers("/api/site/**").permitAll()
