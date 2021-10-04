@@ -9,4 +9,6 @@ import java.util.List;
 public interface ProjectRepository extends MongoRepository<ProjectModel, String> {
 
     List<ProjectModel> findBySiteId(String siteId);
+
+    List<ProjectModel> findByManagerId(String managerId);
 }

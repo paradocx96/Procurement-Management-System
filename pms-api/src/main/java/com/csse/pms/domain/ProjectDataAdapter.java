@@ -13,6 +13,8 @@ public interface ProjectDataAdapter {
 
     List<Project> getProjectBySite(String siteId);
 
+    List<Project> getProjectByManagerId(String managerId);
+
     ResponseEntity<?> deleteProjectById(String id);
 
     ResponseEntity<?> updateProject(Project project);

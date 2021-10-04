@@ -91,6 +91,11 @@ class SupplierService extends Component {
         return axios.get(API_SUPPLIER_BACKEND_URL + "get-item-by-item-id/" + id);
     }
 
+    getAll() {
+        return axios.get(URL + "/get-all-supplier");
+    }
+
 }
 
 export default new SupplierService;
+

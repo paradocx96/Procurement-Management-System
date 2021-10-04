@@ -7,9 +7,9 @@ import DraftOrderService from "../../../services/DraftOrderService";
 import ProjectService from "../../../services/ProjectService";
 import SiteService from "../../../services/SiteService";
 import SupplierService from "../../../services/SupplierService";
-import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
+import NavigationAccountant from "../../layouts/Navigation/NavigationAccountant";
 
-class AddOrderSM extends Component {
+class AddOrderAcc extends Component {
 
     // Initializing state values and functions
     constructor(props) {
@@ -301,7 +301,7 @@ class AddOrderSM extends Component {
     render() {
         return (
             <div>
-                <NavigationSiteManager/>
+                <NavigationAccountant/>
                 <Container>
                     <h2>PURCHASE ORDER</h2>
                     <div>
@@ -471,7 +471,6 @@ class AddOrderSM extends Component {
 
                             <Form.Group className={'pt-2'}>
                                 <Col>
-                                    <Button onClick={this.onDraft.bind(this)}>DRAFT</Button>{'\u00A0'}
                                     <Button type="submit">PURCHASE</Button>{'\u00A0'}
                                     <Button type="reset" className="btn-danger">RESET</Button>{'\u00A0'}
                                 </Col>
@@ -486,4 +485,4 @@ class AddOrderSM extends Component {
     }
 }
 
-export default AddOrderSM;
+export default AddOrderAcc;

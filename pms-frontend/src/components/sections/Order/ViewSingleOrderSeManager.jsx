@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import OrderService from "../../../services/OrderService";
 import {Container, Table} from "react-bootstrap";
-import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
+import OrderService from "../../../services/OrderService";
 import SiteService from "../../../services/SiteService";
-import {Link} from "react-router-dom";
-import SupplierService from "../../../services/SupplierService";
+import NavigationSeniorManager from "../../layouts/Navigation/NavigationSeniorManager";
 
-class ViewSingleOrderSM extends Component {
+class ViewSingleOrderSeManager extends Component {
 
     // Initializing state values and functions
     constructor(props) {
@@ -16,7 +14,6 @@ class ViewSingleOrderSM extends Component {
             id: '',
             orderList: [],
             siteList: [],
-            supplierList: [],
             isLoading: true,
             errors: null,
             show: false
@@ -86,14 +83,6 @@ class ViewSingleOrderSM extends Component {
             }).catch(error =>
                 console.log(error.message)
             );
-
-        // await SupplierService.
-        //     .then(response => response.data)
-        //     .then((data) => {
-        //         this.setState({supplierList: data});
-        //     }).catch(error =>
-        //         console.log(error.message)
-        //     );
     }
 
     //Styles
@@ -134,7 +123,7 @@ class ViewSingleOrderSM extends Component {
     render() {
         return (
             <div>
-                <NavigationSiteManager/>
+                <NavigationSeniorManager/>
                 <Container style={this.divCon}>
                     <section style={this.divSection}>
                         <Table style={this.tabStyle}>
@@ -214,4 +203,4 @@ class ViewSingleOrderSM extends Component {
     }
 }
 
-export default ViewSingleOrderSM;
+export default ViewSingleOrderSeManager;

@@ -18,16 +18,15 @@ import Dashboard from "./components/pages/Dashboard";
 import DashboardSiteManager from "./components/pages/DashboardSiteManager";
 import DashboardSeniorManager from "./components/pages/DashboardSeniorManager";
 import DashboardAccountant from "./components/pages/DashboardAccountant";
+import ViewAllSupplierAdmin from "./components/sections/Supplier/ViewAllSupplierAdmin";
 import DashboardSupplier from "./components/pages/DashboardSupplier";
-
-
-//Order
 
 
 //Site
 import AddSite from "./components/sections/Site/AddSite";
 import Site from "./components/pages/Site";
 import ViewAllSites from "./components/sections/Site/ViewAllSites";
+import ViewAllSiteAdmin from "./components/sections/Site/ViewAllSiteAdmin";
 
 
 //Inventory
@@ -39,11 +38,16 @@ import AddUncountableItem from "./components/sections/Inventory/UncountableItems
 import ViewAllUncountableItems from "./components/sections/Inventory/UncountableItems/ViewAllUncountableItems";
 import ConsumeUncountableItems from "./components/sections/Inventory/UncountableItems/ConsumeUncountableItems";
 import ReplenishUncountableItems from "./components/sections/Inventory/UncountableItems/ReplenishUncountableItems";
+import DeleteUncountableItems from "./components/sections/Inventory/UncountableItems/DeleteUncountableItems";
+import DeleteCountableItems from "./components/sections/Inventory/CountableItems/DeleteCountableItems";
+import Inventory from "./components/pages/Inventory";
 
 
 //Project
 import AddProjectSM from "./components/sections/Project/AddProjectSM";
 import ViewAllProjectSM from "./components/sections/Project/ViewAllProjectSM";
+import ViewAllProjectAdmin from "./components/sections/Project/ViewAllProjectAdmin";
+import EditProjectSM from "./components/sections/Project/EditProjectSM";
 
 
 //Order
@@ -55,9 +59,11 @@ import ViewSingleOrderSM from "./components/sections/Order/ViewSingleOrderSM";
 import ViewAllOrderAccountant from "./components/sections/Order/ViewAllOrderAccountant";
 import ViewSingleOrderAccountant from "./components/sections/Order/ViewSingleOrderAccountant";
 import ViewAllOrderSeManager from "./components/sections/Order/ViewAllOrderSeManager";
-import DeleteUncountableItems from "./components/sections/Inventory/UncountableItems/DeleteUncountableItems";
-import DeleteCountableItems from "./components/sections/Inventory/CountableItems/DeleteCountableItems";
-import Inventory from "./components/pages/Inventory";
+import EditDraftOrderSm from "./components/sections/Order/EditDraftOrderSM";
+import AddOrderAcc from "./components/sections/Order/AddOrderAcc";
+import ViewAllOrderAdmin from "./components/sections/Order/ViewAllOrderAdmin";
+import ViewSingleOrderSeManager from "./components/sections/Order/ViewSingleOrderSeManager";
+
 
 //Supplier
 import AddSupplierItem from "./components/pages/AddSupplierItem";
@@ -83,6 +89,7 @@ function App() {
                     <Route path="/dashboard/site" component={DashboardSiteManager}/>
                     <Route path="/dashboard/senior" component={DashboardSeniorManager}/>
                     <Route path="/dashboard/accountant" component={DashboardAccountant}/>
+                    <Route path="/supplier/list" component={ViewAllSupplierAdmin}/>
                     <Route path="/dashboard/supplier" component={DashboardSupplier}/>
 
 
@@ -90,6 +97,7 @@ function App() {
                     <Route path={'/site'} exact component={Site}/>
                     <Route path="/site/addSite" component={AddSite}/>
                     <Route path="/site/viewAll" component={ViewAllSites}/>
+                    <Route path="/site/viewAllAdmin" component={ViewAllSiteAdmin}/>
 
                     {/* INVENTORY */}
                     {/*inventory*/}
@@ -112,20 +120,26 @@ function App() {
 
                     {/* PROJECT */}
                     <Route path={'/project/addProjectSm'} component={AddProjectSM}/>
+                    <Route path={'/project/editProjectSm/:id'} component={EditProjectSM}/>
                     <Route path={'/project/listSm'} component={ViewAllProjectSM}/>
+                    <Route path={'/project/list'} component={ViewAllProjectAdmin}/>
 
 
                     {/* ORDER */}
                     <Route path={'/order/addOrderSm'} component={AddOrderSM}/>
+                    <Route path={'/order/addOrderAcc'} component={AddOrderAcc}/>
+                    <Route path={'/order/list'} component={ViewAllOrderAdmin}/>
                     <Route path={'/order/listSm'} component={ViewAllOrderSM}/>
                     <Route path={'/order/listAcc'} component={ViewAllOrderAccountant}/>
                     <Route path={'/order/listSem'} component={ViewAllOrderSeManager}/>
                     <Route path={'/order/viewSm/:id'} component={ViewSingleOrderSM}/>
                     <Route path={'/order/viewAcc/:id'} component={ViewSingleOrderAccountant}/>
+                    <Route path={'/order/viewSem/:id'} component={ViewSingleOrderSeManager}/>
 
 
                     {/* DRAFT ORDER */}
                     <Route path={'/draft/listSm'} component={ViewAllDraftOrderSM}/>
+                    <Route path={'/draft/editSm/:id'} component={EditDraftOrderSm}/>
 
 
                     {/* DELIVERY */}

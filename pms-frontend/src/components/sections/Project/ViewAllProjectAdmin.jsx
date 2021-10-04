@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import {Container, Table} from "react-bootstrap";
 import ProjectService from "../../../services/ProjectService";
-import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
-import {Link} from "react-router-dom";
+import NavigationAdmin from "../../layouts/Navigation/NavigationAdmin";
 
-class ViewAllProjectSM extends Component {
+class ViewAllProjectAdmin extends Component {
 
     // Initializing state values and functions
     constructor(props) {
@@ -27,7 +26,7 @@ class ViewAllProjectSM extends Component {
     render() {
         return (
             <div>
-                <NavigationSiteManager/>
+                <NavigationAdmin/>
                 <Container>
                     <h2>PROJECT LIST</h2>
 
@@ -38,7 +37,6 @@ class ViewAllProjectSM extends Component {
                             <th>Description</th>
                             <th>Budget</th>
                             <th>Created Date</th>
-                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -54,12 +52,6 @@ class ViewAllProjectSM extends Component {
                                         <td>{item.description}</td>
                                         <td>{item.budget}</td>
                                         <td>{item.createDateTime}</td>
-                                        <td>
-                                            <Link to={`/project/editProjectSm/` + item.id}
-                                                  className={'btn btn-primary'}>
-                                                UPDATE
-                                            </Link>
-                                        </td>
                                     </tr>
                                 ))
                         }
@@ -71,4 +63,4 @@ class ViewAllProjectSM extends Component {
     }
 }
 
-export default ViewAllProjectSM;
+export default ViewAllProjectAdmin;

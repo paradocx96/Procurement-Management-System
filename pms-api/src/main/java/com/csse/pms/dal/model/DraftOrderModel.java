@@ -18,12 +18,13 @@ public class DraftOrderModel {
     private double amount;
     private String contactDetails;
     private String comment;
+    private String status;
     private LocalDateTime dateTime;
 
     public DraftOrderModel() {
     }
 
-    public DraftOrderModel(String id, String supplierId, List<OrderItemModel> itemList, String siteManagerId, String siteId, String projectId, double amount, String contactDetails, String comment, LocalDateTime dateTime) {
+    public DraftOrderModel(String id, String supplierId, List<OrderItemModel> itemList, String siteManagerId, String siteId, String projectId, double amount, String contactDetails, String comment, LocalDateTime dateTime, String status) {
         this.id = id;
         this.supplierId = supplierId;
         this.itemList = itemList;
@@ -33,6 +34,7 @@ public class DraftOrderModel {
         this.amount = amount;
         this.contactDetails = contactDetails;
         this.comment = comment;
+        this.status = status;
         this.dateTime = dateTime;
     }
 
@@ -48,6 +50,7 @@ public class DraftOrderModel {
                 ", amount=" + amount +
                 ", contactDetails='" + contactDetails + '\'' +
                 ", comment='" + comment + '\'' +
+                ", status='" + status + '\'' +
                 ", dateTime=" + dateTime +
                 '}';
     }
@@ -122,6 +125,14 @@ public class DraftOrderModel {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public LocalDateTime getDateTime() {

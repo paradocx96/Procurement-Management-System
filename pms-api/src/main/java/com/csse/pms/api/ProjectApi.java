@@ -52,7 +52,7 @@ public class ProjectApi {
     }
 
     /**
-     * This Method gets parameter as string project-id.
+     * This Method gets parameter as string siteId.
      * Then call get project by site id method in Adapter.
      *
      * @param siteId - Relevant project site-id from Controller.
@@ -61,6 +61,18 @@ public class ProjectApi {
      */
     public List<Project> getProjectBySite(String siteId) {
         return projectDataAdapter.getProjectBySite(siteId);
+    }
+
+    /**
+     * This Method gets parameter as string managerId.
+     * Then call get project by managerId method in Adapter.
+     *
+     * @param managerId - Relevant project managerId from Controller.
+     * @return List<Project> - Founded project will be return as project list object.
+     * @see #getProjectBySite(String)
+     */
+    public List<Project> getProjectByManagerId(String managerId) {
+        return projectDataAdapter.getProjectByManagerId(managerId);
     }
 
     /**

@@ -1,27 +1,28 @@
 import React, {Component} from 'react';
-import {Button, Col, Container, Form, Row, Table} from "react-bootstrap";
-import {confirmAlert} from "react-confirm-alert";
-import 'react-confirm-alert/src/react-confirm-alert.css';
 import OrderService from "../../../services/OrderService";
-import DraftOrderService from "../../../services/DraftOrderService";
-import ProjectService from "../../../services/ProjectService";
 import SiteService from "../../../services/SiteService";
-import SupplierService from "../../../services/SupplierService";
+import DraftOrderService from "../../../services/DraftOrderService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
+import {Button, Col, Container, Form, Row, Table} from "react-bootstrap";
+import ProjectService from "../../../services/ProjectService";
+import SupplierService from "../../../services/SupplierService";
+import {confirmAlert} from "react-confirm-alert";
 
-class AddOrderSM extends Component {
+class EditDraftOrderSm extends Component {
 
-    // Initializing state values and functions
+    // TODO: Initializing state values and functions
     constructor(props) {
         super(props);
         this.state = this.initialState;
         this.state = {
-            status: 'pending',
-            projectList: [],
+            id: '',
             siteList: [],
-            itemBucket: [],
+            siteListDetails: [],
+            projectList: [],
+            projectListDetails: [],
             supplierList: [],
             itemBySupplier: [],
+            itemBucket: [],
             priceList: [],
             siteManagerId: '5454654',
             message: '',
@@ -32,35 +33,71 @@ class AddOrderSM extends Component {
             itPrice: 0
         }
 
+        this.onHandlerProjectId = this.onHandlerProjectId.bind(this);
+        this.onHandlerSiteId = this.onHandlerSiteId.bind(this);
+        this.onHandlerSupplierId = this.onHandlerSupplierId.bind(this);
+        this.onHandlerAmount = this.onHandlerAmount.bind(this);
+        this.onHandlerContactDetails = this.onHandlerContactDetails.bind(this);
+        this.onHandlerComment = this.onHandlerComment.bind(this);
+
+        this.AddItemToBucket = this.AddItemToBucket.bind(this);
+        this.onHandlerItName = this.onHandlerItName.bind(this);
+        this.onHandlerItCount = this.onHandlerItCount.bind(this);
+
         this.onSubmit = this.onSubmit.bind(this);
         this.onReset = this.onReset.bind(this);
-        this.onDraft = this.onDraft.bind(this);
-        this.AddItemToBucket = this.AddItemToBucket.bind(this);
-        this.onHandlerProjectId = this.onHandlerProjectId.bind();
-        this.onHandlerSiteId = this.onHandlerSiteId.bind();
-        this.onHandlerSupplierId = this.onHandlerSupplierId.bind();
-        this.onHandlerAmount = this.onHandlerAmount.bind();
-        this.onHandlerContactDetails = this.onHandlerContactDetails.bind();
-        this.onHandlerItId = this.onHandlerItId.bind();
-        this.onHandlerItName = this.onHandlerItName.bind();
-        this.onHandlerItCount = this.onHandlerItCount.bind();
-        this.onHandlerComment = this.onHandlerComment.bind();
     }
 
     // Initializing default values
     initialState = {
         referenceNo: '',
-        projectId: '',
-        siteId: '',
         supplierId: '',
-        supplierStatus: '',
         itemList: [],
-        amount: 0.0,
+        siteId: '',
+        projectId: '',
+        amount: '',
         contactDetails: '',
         comment: '',
+        dateTime: '',
+        status: 'Pending',
     }
 
     componentDidMount = async () => {
+        const {match: {params}} = this.props;
+        await this.fetch(params.id);
+    }
+
+    componentDidUpdate = async () => {
+        const {match: {params}} = this.props;
+        const prevID = this.state.id
+        const currentID = params.id;
+        if (currentID && currentID != '' && prevID != currentID) {
+            await this.fetch(currentID);
+        }
+    }
+
+    fetch = async (id) => {
+        this.setState({id});
+
+        await DraftOrderService.getById(id)
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({
+                    supplierId: data.supplierId,
+                    itemBucket: data.itemList,
+                    siteManagerId: data.siteManagerId,
+                    siteId: data.siteId,
+                    projectId: data.projectId,
+                    priceList: data.amount,
+                    amount: data.amount,
+                    contactDetails: data.contactDetails,
+                    comment: data.comment,
+                    status: data.status
+                });
+            }).catch(error =>
+                console.log(error.message)
+            );
+
         await SiteService.getAllSites()
             .then(response => response.data)
             .then((data) => {
@@ -68,7 +105,152 @@ class AddOrderSM extends Component {
             }).catch(error =>
                 console.log(error.message)
             );
+
+        await SiteService.getSiteById(this.state.siteId)
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({siteListDetails: data});
+            }).catch(error =>
+                console.log(error.message)
+            );
+
+        await ProjectService.getById(this.state.projectId)
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({projectListDetails: data});
+            }).catch(error =>
+                console.log(error.message)
+            );
     }
+
+    // Submit form values
+    onSubmit = async (event) => {
+        event.preventDefault();
+
+        confirmAlert({
+            title: 'Do you want to purchase order?',
+            message: 'Total Price is Rs.' + this.state.amount,
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => {
+                        this.handleSubmitPurchase(event);
+                        console.log('Operation Proceed!');
+                    }
+                },
+                {
+                    label: 'No',
+                    onClick: () => {
+                        console.log('Operation Canceled!');
+                    }
+                }
+            ],
+            closeOnEscape: true,
+            closeOnClickOutside: true
+        });
+    }
+
+    // Purchase Order Method
+    handleSubmitPurchase = async (event) => {
+        event.preventDefault();
+        let newRefNo = 'REF-' + Date.now();
+        let value = {
+            referenceNo: newRefNo,
+            supplierId: this.state.supplierId,
+            itemList: this.state.itemBucket,
+            siteManagerId: this.state.siteManagerId,
+            siteId: this.state.siteId,
+            projectId: this.state.projectId,
+            amount: this.state.amount || 0,
+            contactDetails: this.state.contactDetails || '-',
+            comment: this.state.comment || '-',
+            status: this.state.status
+        }
+
+        console.log(value);
+
+        await OrderService.create(value)
+            .then(response => response.data)
+            .then((data) => {
+                if(data.message === 'Order Purchase Successfully') {
+                    this.deleteDraftOrder();
+                } else {
+                    console.log(data.message);
+                }
+            })
+            .catch(function (error) {
+                console.log(error.message);
+            });
+    }
+
+    deleteDraftOrder = async () => {
+        await DraftOrderService.deleteById(this.state.id)
+            .then(response => response.data)
+            .then((data) => {
+                console.log(data);
+                window.location.href = '/draft/listSm';
+            })
+            .catch(function (error) {
+                console.log(error.message);
+            });
+    }
+
+    // Reset form values
+    onReset = () => {
+        this.setState(() => this.initialState);
+        this.setState({
+            projectList: [],
+            itemBucket: [],
+            supplierList: [],
+            itemBySupplier: [],
+        })
+        this.componentDidMount();
+    }
+
+    AddItemToBucket = async (event) => {
+        event.preventDefault();
+
+        await this.setState((prevState) => ({
+            itemBucket: [
+                ...prevState.itemBucket,
+                {
+                    itemId: this.state.itId,
+                    itemName: this.state.itName,
+                    itemCount: this.state.itCount
+                },
+            ],
+        }));
+
+        await SupplierService.getItemById(this.state.itId)
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({
+                    itPrice: data.price
+                });
+                this.setState((prevState) => ({
+                    priceList: [...prevState.priceList, (data.price * this.state.itCount),],
+                }));
+                this.totalPriceCal();
+            }).catch(error =>
+                console.log(error.message)
+            );
+    }
+
+    totalPriceCal = async () => {
+        const total = this.state.priceList.reduce((total, item) => total + item);
+
+        this.setState({
+            amount: total,
+        });
+    }
+
+    deleteRow = (index) => {
+        this.setState({
+            itemBucket: this.state.itemBucket.filter((s, sindex) => index !== sindex),
+            priceList: this.state.priceList.filter((s, sindex) => index !== sindex),
+        });
+        this.totalPriceCal();
+    };
 
     // Assign form values to State variables
     onHandlerSiteId = async (event) => {
@@ -142,151 +324,6 @@ class AddOrderSM extends Component {
         this.setState({itCount: event.target.value});
     }
 
-    // Submit form values
-    onSubmit = async (event) => {
-        event.preventDefault();
-
-        confirmAlert({
-            title: 'Do you want to purchase order?',
-            message: 'Total Price is Rs.' + this.state.amount,
-            buttons: [
-                {
-                    label: 'Yes',
-                    onClick: () => {
-                        this.handleSubmitPurchase(event);
-                        console.log('Operation Proceed!');
-                    }
-                },
-                {
-                    label: 'No',
-                    onClick: () => {
-                        console.log('Operation Canceled!');
-                    }
-                }
-            ],
-            closeOnEscape: true,
-            closeOnClickOutside: true
-        });
-    }
-
-    // Purchase Order Method
-    handleSubmitPurchase = async (event) => {
-        event.preventDefault();
-        let newRefNo = 'REF-' + Date.now();
-        let value = {
-            referenceNo: newRefNo,
-            supplierId: this.state.supplierId,
-            itemList: this.state.itemBucket,
-            siteManagerId: this.state.siteManagerId,
-            siteId: this.state.siteId,
-            projectId: this.state.projectId,
-            amount: this.state.amount || 0,
-            contactDetails: this.state.contactDetails || '-',
-            comment: this.state.comment || '-',
-            status: this.state.status
-        }
-
-        await OrderService.create(value)
-            .then(response => response.data)
-            .then((data) => {
-                console.log(data);
-            })
-            .catch(function (error) {
-                console.log(error.message);
-            });
-
-        await this.componentDidMount();
-        await this.onReset();
-    }
-
-    // TODO : Draft form values
-    onDraft = async (event) => {
-        event.preventDefault();
-
-        let value = {
-            supplierId: this.state.supplierId,
-            itemList: this.state.itemBucket,
-            siteManagerId: this.state.siteManagerId,
-            siteId: this.state.siteId,
-            projectId: this.state.projectId,
-            amount: this.state.amount || 0,
-            contactDetails: this.state.contactDetails || '-',
-            comment: this.state.comment || '-',
-            status: this.state.status
-        }
-
-        console.log(value);
-
-        await DraftOrderService.create(value)
-            .then(response => response.data)
-            .then((data) => {
-                console.log(data);
-            })
-            .catch(function (error) {
-                console.log(error.message);
-            });
-
-        await this.componentDidMount();
-        await this.onReset();
-    }
-
-    AddItemToBucket = async (event) => {
-        event.preventDefault();
-
-        await this.setState((prevState) => ({
-            itemBucket: [
-                ...prevState.itemBucket,
-                {
-                    itemId: this.state.itId,
-                    itemName: this.state.itName,
-                    itemCount: this.state.itCount
-                },
-            ],
-        }));
-
-        await SupplierService.getItemById(this.state.itId)
-            .then(response => response.data)
-            .then((data) => {
-                this.setState({
-                    itPrice: data.price
-                });
-                this.setState((prevState) => ({
-                    priceList: [...prevState.priceList, (data.price * this.state.itCount),],
-                }));
-                this.totalPriceCal();
-            }).catch(error =>
-                console.log(error.message)
-            );
-    }
-
-    totalPriceCal = async () => {
-        const total = this.state.priceList.reduce((total, item) => total + item);
-
-        this.setState({
-            amount: total,
-        });
-    }
-
-    deleteRow = (index) => {
-        this.setState({
-            itemBucket: this.state.itemBucket.filter((s, sindex) => index !== sindex),
-            priceList: this.state.priceList.filter((s, sindex) => index !== sindex),
-        });
-        this.totalPriceCal();
-    };
-
-    // Reset form values
-    onReset = () => {
-        this.setState(() => this.initialState);
-        this.setState({
-            projectList: [],
-            itemBucket: [],
-            supplierList: [],
-            itemBySupplier: [],
-        })
-        this.componentDidMount();
-    }
-
     // CSS Styles
     secBox = {
         align: 'center',
@@ -303,7 +340,29 @@ class AddOrderSM extends Component {
             <div>
                 <NavigationSiteManager/>
                 <Container>
-                    <h2>PURCHASE ORDER</h2>
+                    <section>
+                        <Table variant={'dark'}>
+                            <tbody>
+                            <tr>
+                                <td>Site Manager</td>
+                                <td>{this.state.siteListDetails.siteManager}</td>
+                            </tr>
+                            <tr>
+                                <td>Site</td>
+                                <td>{this.state.siteListDetails.siteName}</td>
+                            </tr>
+                            <tr>
+                                <td>Project</td>
+                                <td>{this.state.projectListDetails.projectName}</td>
+                            </tr>
+                            <tr>
+                                <td>Supplier</td>
+                                <td>{this.state.supplierId}</td>
+                            </tr>
+                            </tbody>
+                        </Table>
+                    </section>
+
                     <div>
                         <Form onSubmit={this.onSubmit.bind(this)}
                               onReset={this.onReset.bind(this)}>
@@ -408,6 +467,7 @@ class AddOrderSM extends Component {
                                 <Col sm={5}>
                                     <Form.Control placeholder="Item Qty"
                                                   name="itCount"
+                                                  type="number"
                                                   value={this.state.itCount}
                                                   onChange={this.onHandlerItCount}/>
                                 </Col>
@@ -471,7 +531,6 @@ class AddOrderSM extends Component {
 
                             <Form.Group className={'pt-2'}>
                                 <Col>
-                                    <Button onClick={this.onDraft.bind(this)}>DRAFT</Button>{'\u00A0'}
                                     <Button type="submit">PURCHASE</Button>{'\u00A0'}
                                     <Button type="reset" className="btn-danger">RESET</Button>{'\u00A0'}
                                 </Col>
@@ -486,4 +545,4 @@ class AddOrderSM extends Component {
     }
 }
 
-export default AddOrderSM;
+export default EditDraftOrderSm;

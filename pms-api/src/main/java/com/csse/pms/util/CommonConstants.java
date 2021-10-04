@@ -38,6 +38,9 @@ public class CommonConstants {
     /** Constant for Get By Site ID - Mapping Path in Controller */
     public static final String GET_MAPPING_GET_BY_SITE_ID = "getBySiteId/{id}";
 
+    /** Constant for Get By Manager ID - Mapping Path in Controller */
+    public static final String GET_MAPPING_GET_BY_MANAGER_ID = "getByManagerId/{id}";
+
     /** Constant for Get By Project ID - Mapping Path in Controller */
     public static final String GET_MAPPING_GET_BY_PROJECT_ID = "getByProjectId/{id}";
 
