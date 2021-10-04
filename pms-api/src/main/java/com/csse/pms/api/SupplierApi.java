@@ -39,12 +39,28 @@ public class SupplierApi {
 		return supplierDataAdapter.loginSupplier(supplier);
 	}
 	
+	public List<Supplier> getAllSupplier(){
+		return supplierDataAdapter.getAllSupplier();
+	}
+	
+	public List<Supplier> getSupplierByStatus(String status){
+		return supplierDataAdapter.getSupplierByStatus(status);
+	}
+	
+	public ResponseEntity<?> updateSupplierStatus(Supplier supplier){
+		return supplierDataAdapter.updateSupplierStatus(supplier);
+	}
+	
 	public ResponseEntity<?> addItem(Item item){
 		return itemDataAdapter.addItem(item);
 	}
 	
 	public List<Item> getItemBySupplierID(String id){
 		return itemDataAdapter.getItemBySupplierID(id);
+	}
+	
+	public ResponseEntity<?> deleteByItemID(String id){
+		return itemDataAdapter.deleteByItemID(id);
 	}
 	
 }

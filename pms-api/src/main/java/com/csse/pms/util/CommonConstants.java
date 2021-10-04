@@ -232,6 +232,31 @@ public class CommonConstants {
     public static final String SUPPLIER_POST_MAPPING_LOGIN = "login";
     
     /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_GET_ALL = "get-all-supplier";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_GET_BY_STATUS = "get-supplier-by-status/{status}";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_STATUS = "status";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_STAUS_UPDATE_SUCCESSFULLY = "Status update successfully!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_DOESNT_EXIST = "Supplier doesn't exist!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_STAUS_UPDATE_ERROR = "Supplier status update error!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_PUT_MAPPING_STATUS_UPDATE = "update-status";
+    
+    
+    
+    
+    
+    /** Constant for supplier register Path in Supplier Controller */
     public static final String SUPPLIER_POST_MAPPING_ADD_ITEM = "add-item";
     
     /** Constant for supplier register Path in Supplier Controller */
@@ -239,6 +264,22 @@ public class CommonConstants {
     
     /** Constant for supplier register Path in Supplier Controller */
     public static final String SUPPLIER_GET_MAPPING_BY_SUPPLIER_ID = "get-item-by-supplier-id/{id}";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_DELETE_ITEM_SUCCESS_MSG = "Item deleted successfully!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_DELETE_ITEM_ERROR_MSG = "Something went wrong!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_DELETE_ITEM_NOT_EXIST_ERROR_MSG = "This item is not exist!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_DELETE_MAPPING_BY_ITEM_ID = "delete-item-by-id/{id}";
+    
+   
+    
+    
     
     
     /******  Internal user Common Constants  ******/ 
