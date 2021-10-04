@@ -109,7 +109,7 @@ class ViewAllOrderSeManager extends Component {
                                                     className="btn-success">Set Status</Button>
                                         </td>
                                         <td>
-                                            <Link to={`/order/viewAcc/` + item.id}
+                                            <Link to={`/order/viewSem/` + item.id}
                                                   className={'btn btn-primary'}>
                                                 View Order
                                             </Link>

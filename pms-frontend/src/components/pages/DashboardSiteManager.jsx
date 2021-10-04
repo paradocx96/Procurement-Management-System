@@ -67,7 +67,7 @@ class DashboardSiteManager extends Component {
                                 <Link to={'/project/listSm'} style={{textDecoration: 'none'}}>
                                     <Card>
                                         <Card.Body>
-                                            <Card.Title>PROJECTS LIST</Card.Title>
+                                            <Card.Title>PROJECTS</Card.Title>
                                         </Card.Body>
                                     </Card>
                                 </Link>
