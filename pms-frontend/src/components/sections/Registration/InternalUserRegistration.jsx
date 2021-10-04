@@ -122,6 +122,14 @@ class InternalUserRegistration extends Component {
 
         // TODO: Calling Registration Service function and check if there is any error
         if (this.checkBtn.context._errors.length === 0) {
+
+            console.log(this.state.name,
+                this.state.email,
+                this.state.password,
+                this.state.contactNo,
+                this.state.address,
+                this.state.userType)
+
             InternalUserService.register(
                 this.state.name,
                 this.state.email,
@@ -208,6 +216,19 @@ class InternalUserRegistration extends Component {
                                 </div>
                                 <br></br>
                                 <div className="form-group">
+                                    <label htmlFor="address">Employee ContactNo</label>
+                                    <Input
+                                        type="number"
+                                        placeholder="Enter Contact Number"
+                                        className="form-control"
+                                        name="contactNo"
+                                        value={this.state.contactNo}
+                                        onChange={this.onChange}
+                                        validations={[requiredField]}
+                                    />
+                                </div>
+                                <br></br>
+                                <div className="form-group">
                                     <label htmlFor="password">Employee password</label>
                                     <Input
                                         type="password"
@@ -238,6 +259,7 @@ class InternalUserRegistration extends Component {
                                     <label htmlFor="userType">Select employee type : </label>{' '}
                                     <select value={this.state.userType} onChange={this.onChangeUserType}
                                             className="dropdown">
+                                        <option></option>
                                         <option value={"accountant"}>Accountant</option>
                                         <option value={"seniorManager"}>Senior Manager</option>
                                         <option value={"siteManager"}>Site Manager</option>
