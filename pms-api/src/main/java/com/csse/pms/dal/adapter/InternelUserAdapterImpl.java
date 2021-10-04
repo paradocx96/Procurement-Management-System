@@ -16,6 +16,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.csse.pms.dal.model.ERole;
@@ -68,6 +69,9 @@ public class InternelUserAdapterImpl implements InternelUserDataAdapter{
 	@Autowired
 	private SupplierRepository supplierRepository;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	/**
      * Initialize Logger
      */
@@ -93,7 +97,7 @@ public class InternelUserAdapterImpl implements InternelUserDataAdapter{
 		InternelUserModel interelUserDetails = new InternelUserModel(
 				internelUser.getName(),
 				internelUser.getEmail(),
-				internelUser.getPassword(),
+				passwordEncoder.encode(internelUser.getPassword()),
 				internelUser.getContactNo(),
 				internelUser.getAddress()
 				);
