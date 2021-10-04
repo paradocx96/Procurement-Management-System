@@ -313,4 +313,7 @@ public class CommonConstants {
     /** Constant for supplier register Path in Supplier Controller */
     public static final String INTERNEL_USER_POST_MAPPING_LOGIN = "login";
     
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String INTERNAL_USER_GET_ALL = "get-all-internal-users";
+    
 }

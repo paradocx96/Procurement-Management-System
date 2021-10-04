@@ -1,5 +1,7 @@
 package com.csse.pms.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -32,4 +34,7 @@ public class InternelUserApi {
 		return internelUserDataAdapter.loginInternelUser(internelUser);
 	}
 	
+	public List<InternelUser> getAllInternalUsers(){
+		return internelUserDataAdapter.getAllInternalUsers();
+	}
 }
