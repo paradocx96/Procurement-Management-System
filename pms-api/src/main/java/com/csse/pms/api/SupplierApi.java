@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.csse.pms.dal.model.InternelUserModel;
 import com.csse.pms.domain.Supplier;
 import com.csse.pms.domain.SupplierDataAdapter;
 
@@ -26,5 +27,8 @@ public class SupplierApi {
 		return supplierDataAdapter.registerSupplier(supplier);
 	}
 
+	public ResponseEntity<?> loginSupplier(Supplier supplier){
+		return supplierDataAdapter.loginSupplier(supplier);
+	}
 	
 }

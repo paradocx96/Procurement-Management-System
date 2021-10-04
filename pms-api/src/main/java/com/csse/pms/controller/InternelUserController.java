@@ -10,31 +10,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.csse.pms.api.SupplierApi;
-import com.csse.pms.dal.model.InternelUserModel;
-import com.csse.pms.domain.Supplier;
+import com.csse.pms.api.InternelUserApi;
+import com.csse.pms.domain.InternelUser;
 import com.csse.pms.util.CommonConstants;
 
 @RestController
-@RequestMapping(CommonConstants.SUPPLIER_REQUEST_MAPPING)
+@RequestMapping(CommonConstants.INTERNEL_USER_REQUEST_MAPPING)
 @CrossOrigin(origins = CommonConstants.STAR, allowedHeaders = CommonConstants.STAR, exposedHeaders = CommonConstants.STAR)
 
-public class SupplierController {
+public class InternelUserController {
 	
 	@Autowired
-	private SupplierApi supplierApi;
+	private InternelUserApi internelUserApi;
 	
 	
-	@PostMapping(CommonConstants.SUPPLIER_POST_MAPPING_REGISTER)
+	@PostMapping(CommonConstants.INTERNEL_USER_POST_MAPPING_REGISTER)
     @ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<?> registerSupplier(@RequestBody Supplier supplier){
-		return supplierApi.registerSupplier(supplier);
+	public ResponseEntity<?> registerInternelUser(@RequestBody InternelUser internelUser){
+		return internelUserApi.registerInternelUser(internelUser);
 	}
 	
-	@PostMapping(CommonConstants.SUPPLIER_POST_MAPPING_LOGIN)
+	@PostMapping(CommonConstants.INTERNEL_USER_POST_MAPPING_LOGIN)
     @ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<?> loginSupplier(@RequestBody Supplier supplier){
-		return supplierApi.loginSupplier(supplier);
+	public ResponseEntity<?> loginInternelUser(@RequestBody InternelUser internelUser){
+		return internelUserApi.loginInternelUser(internelUser);
 	}
 
 }

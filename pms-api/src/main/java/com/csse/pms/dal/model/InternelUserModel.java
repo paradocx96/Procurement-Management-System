@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class SupplierModel {
-
+public class InternelUserModel {
+	
 	@Id
 	private String id;
 	private String name;
@@ -17,26 +17,22 @@ public class SupplierModel {
 	private String password;
 	private String contactNo;
 	private String address;
-	private String location;
-	private String status;
-	
+	private String userType;
 	
 	@DBRef
 	private Set<Role> roles = new HashSet<>();
 	
 	
-	public SupplierModel() {
+	public InternelUserModel() {
 		
 	}
 
-	public SupplierModel(String name,String email,String password,String contactNo, String address,String location,  String status) {
+	public InternelUserModel(String name,String email,String password,String contactNo, String address) {
 		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.contactNo = contactNo;
 		this.address = address;
-		this.location = location;
-		this.status = status;
 	}
 
 	 @Override
@@ -48,8 +44,6 @@ public class SupplierModel {
                 ", password='" + password + '\'' +
                 ", contacNo='" + contactNo + '\'' +
                 ", address=" + address +
-                ", location='" + location + '\'' +
-                ", status=" + status +
                 '}';
 		
 	}
@@ -83,17 +77,6 @@ public class SupplierModel {
 		return address;
 	}
 
-
-	public String getLocation() {
-		return location;
-	}
-
-
-	public String getStatus() {
-		return status;
-	}
-
-
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -123,21 +106,19 @@ public class SupplierModel {
 		this.address = address;
 	}
 
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 	public Set<Role> getRoles() {
 		return roles;
 	}
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 }
