@@ -17,10 +17,12 @@ class Site extends React.Component{
                 <h3>Countable Items</h3>
                 <Link to={'/inventory/countable/addItem'}>Add Countable Item</Link> <br/>
                 <Link to={'/inventory/countable/viewAll'}>View All Countable Items</Link> <br/>
+                <Link to={'/inventory/countable/delete'}>Delete Countable Items</Link> <br/>
 
                 <h3>Uncountable Items</h3>
                 <Link to={'/inventory/uncountable/addItem'}>Add Uncountable Item</Link> <br/>
                 <Link to={'/inventory/uncountable/viewAll'}>View all Uncountable Item</Link> <br/>
+                <Link to={'/inventory/uncountable/delete'}>Delete Uncountable Item</Link> <br/>
             </div>
         );
     }
