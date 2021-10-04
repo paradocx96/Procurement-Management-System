@@ -10,11 +10,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'PMS',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Procurement Management App'),
       routes: {
         CountableItems.routeName: (context) => const CountableItems(),
         CountableItemSingleView.routeName: (context) => const CountableItemSingleView(),
@@ -32,13 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +44,20 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, CountableItems.routeName,
+                );
+              },
+              child: Container(
+                height: 50,
+                width: 300,
+                child: Card(
+                  color: Colors.teal,
+                    child: Center(child: Text("Countable Items",
+                      style: TextStyle(fontSize: 20, color: Colors.white),))),
+              ),
             ),
 
             GestureDetector(
@@ -63,16 +65,34 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushNamed(context, CountableItems.routeName,
                 );
               },
-              child: Text("Countable Items"),
-            )
+              child: Container(
+                height: 50,
+                width: 300,
+                child: Card(
+                    color: Colors.green,
+                    child: Center(child: Text("Uncountable Items",
+                      style: TextStyle(fontSize: 20, color: Colors.white),))),
+              ),
+            ),
+
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, CountableItems.routeName,
+                );
+              },
+              child: Container(
+                height: 50,
+                width: 300,
+                child: Card(
+                    color: Colors.amber,
+                    child: Center(child: Text("Orders",
+                      style: TextStyle(fontSize: 20, color: Colors.black),))),
+              ),
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+
     );
   }
 }
