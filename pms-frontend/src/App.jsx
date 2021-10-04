@@ -54,6 +54,8 @@ import ViewSingleOrderSM from "./components/sections/Order/ViewSingleOrderSM";
 
 //Supplier
 import AddSupplierItem from "./components/pages/AddSupplierItem";
+import ViewAllItems from "./components/pages/ViewAllItems";
+import UpdateSupplierItem from "./components/sections/Supplier/UpdateSupplierItem";
 
 
 function App() {
@@ -117,6 +119,8 @@ function App() {
 
                     {/*SUPPLIER*/}
                     <Route path={'/add-items'} component={AddSupplierItem}/>
+                    <Route path={'/view-items'} component={ViewAllItems}/>
+                    <Route path={'/edit-item/:id'} component={UpdateSupplierItem}/>
 
                     {/* DEFAULT PATH */}
                     <Redirect to="/"/>
