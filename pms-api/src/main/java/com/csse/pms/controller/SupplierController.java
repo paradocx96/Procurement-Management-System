@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -41,6 +43,24 @@ public class SupplierController {
 		return supplierApi.loginSupplier(supplier);
 	}
 	
+	@GetMapping(CommonConstants.SUPPLIER_GET_ALL)
+    @ResponseStatus(HttpStatus.OK)
+	public List<Supplier> getAllSuppliers(){
+		return supplierApi.getAllSupplier();
+	}
+	
+	@GetMapping(CommonConstants.SUPPLIER_GET_BY_STATUS)
+    @ResponseStatus(HttpStatus.OK)
+	public List<Supplier> getSupplierByStatus(@PathVariable String status){
+		return supplierApi.getSupplierByStatus(status);
+	}
+	
+	@PutMapping(CommonConstants.SUPPLIER_PUT_MAPPING_STATUS_UPDATE)
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<?> updateSupplierStatus(@RequestBody Supplier supplier){
+		return supplierApi.updateSupplierStatus(supplier);
+	}
+	
 	@PostMapping(CommonConstants.SUPPLIER_POST_MAPPING_ADD_ITEM)
     @ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<?> addItem(@RequestBody Item item){
@@ -51,6 +71,12 @@ public class SupplierController {
     @ResponseStatus(HttpStatus.OK)
 	public List<Item> getItemBySupplierID(@PathVariable String id){
 		return supplierApi.getItemBySupplierID(id);
+	}
+	
+	@DeleteMapping(CommonConstants.SUPPLIER_DELETE_MAPPING_BY_ITEM_ID)
+    @ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<?> deleteItemByID(@PathVariable String id){
+		return supplierApi.deleteByItemID(id);
 	}
 	
 	

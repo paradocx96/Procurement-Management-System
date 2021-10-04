@@ -75,4 +75,32 @@ public class ItemAdapterImpl implements ItemDataAdapter {
 		return item;
 	}
 
+	@Override
+	public ResponseEntity<?> deleteByItemID(String id) {
+		
+		ItemModel itemModel= null;
+		
+		try {
+			
+			itemModel = itemReposirtory.findById(id).get();
+			
+			if(itemModel != null) {
+				itemReposirtory.deleteById(id);
+				
+				return ResponseEntity.ok(new ItemMessageResponseDto(CommonConstants.SUPPLIER_DELETE_ITEM_SUCCESS_MSG));
+			}else {
+				return ResponseEntity.ok(new ItemMessageResponseDto(CommonConstants.SUPPLIER_DELETE_ITEM_NOT_EXIST_ERROR_MSG));
+			}
+			
+		} catch (Exception e) {
+			 LOGGER.log(Level.SEVERE, e.getMessage());
+			return ResponseEntity.ok(new ItemMessageResponseDto(CommonConstants.SUPPLIER_DELETE_ITEM_ERROR_MSG));
+		}
+		
+		
+		
+	}
+	
+	
+
 }

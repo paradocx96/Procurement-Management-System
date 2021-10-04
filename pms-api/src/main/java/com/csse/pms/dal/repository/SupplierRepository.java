@@ -1,5 +1,6 @@
 package com.csse.pms.dal.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -16,4 +17,7 @@ public interface SupplierRepository extends MongoRepository<SupplierModel, Strin
 	
 	//Create this method to find out mail already in the Database or not
 	Boolean existsByEmail(String email);
+	
+	//Create this method to find out all status the Database
+	List<SupplierModel> findByStatus(String status);
 }
