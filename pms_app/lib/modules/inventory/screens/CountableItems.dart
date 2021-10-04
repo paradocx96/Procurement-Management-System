@@ -14,12 +14,14 @@ class CountableItems extends StatefulWidget {
 class _CountableItemsState extends State<CountableItems> {
 
   late Future<CountableItemsModel> futureCountableItem;
+  late Future <List<CountableItemsModel>> countableItemList;
 
 
   @override
   void initState() {
     super.initState();
     futureCountableItem = CountableItemService.fetchCountableItemById("6156daa173f71c13132c33b7");
+    countableItemList = CountableItemService.fetchAllCountableItems();
   }
 
   @override
@@ -27,12 +29,18 @@ class _CountableItemsState extends State<CountableItems> {
     return Scaffold(
       body: Container(
         child: Center(
-          child: FutureBuilder<CountableItemsModel>(
-            future: futureCountableItem,
+          child: FutureBuilder<List<CountableItemsModel>>(
+            future: countableItemList,
             builder: (context,snapshot){
               if(snapshot.hasData){
-                return Text(snapshot.data!.name);
-              }else if (snapshot.hasError) {
+                List<CountableItemsModel>? data = snapshot.data;
+                return ListView.builder(
+                  itemCount: data!.length,
+                    itemBuilder: (BuildContext context, int index){
+                  return ListTile(title: Text(data![index].name),);
+                });
+              }
+              else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
 
