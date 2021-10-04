@@ -15,6 +15,7 @@ import com.csse.pms.dal.repository.ItemReposirtory;
 import com.csse.pms.domain.Item;
 import com.csse.pms.domain.ItemDataAdapter;
 import com.csse.pms.dto.ItemMessageResponseDto;
+import com.csse.pms.dto.MessageResponseDto;
 import com.csse.pms.util.CommonConstants;
 
 @Component
@@ -120,6 +121,57 @@ public class ItemAdapterImpl implements ItemDataAdapter {
 			LOGGER.log(Level.SEVERE, e.getMessage());
 			return itemObj;
 		}
+	}
+
+	@Override
+	public ResponseEntity<?> updateSingleItem(Item item) {
+		
+		try {
+			
+			ItemModel itemModelObj = itemReposirtory.findById(item.getId()).get();
+			
+			if(itemModelObj != null) {
+				itemModelObj.setName(item.getName());
+				itemModelObj.setQuantity(item.getQuantity());
+				itemModelObj.setPrice(item.getPrice());
+				
+				itemReposirtory.save(itemModelObj);
+				
+				return ResponseEntity.ok(new MessageResponseDto(CommonConstants.ITEM_UPDATE_SUCCESSFULLY) );
+			}else {
+				return ResponseEntity.ok(new MessageResponseDto(CommonConstants.ITEM_DOESNT_EXITS) );
+			}
+			
+		} catch (Exception e) {
+			 LOGGER.log(Level.SEVERE, e.getMessage());
+			 return ResponseEntity.ok(new MessageResponseDto(CommonConstants.ITEM_UPDATE_ERROR) );
+		}
+		
+	}
+
+	@Override
+	public Item getItemByItemID(String id) {
+		
+		Item itemObj = new Item();
+		
+		try {
+			
+				ItemModel items = itemReposirtory.findById(id).get();
+				
+				itemObj.setId(items.getId());
+				itemObj.setSupplierID(items.getSupplierID());
+				itemObj.setName(items.getName());
+				itemObj.setQuantity(items.getQuantity());
+				itemObj.setPrice(items.getPrice());
+				
+			
+		} catch (Exception e) {
+			 LOGGER.log(Level.SEVERE, e.getMessage());
+
+		}
+		
+		return itemObj;
+		
 	}
 
 }

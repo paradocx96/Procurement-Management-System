@@ -64,7 +64,13 @@ class Dashboard extends Component {
                                 </Link>
                             </div>
                             <div className={'col'}>
-
+                              <Link to={'/inventory/main'} style={{textDecoration: 'none'}}>
+                                    <Card className={''}>
+                                        <Card.Body>
+                                            <Card.Title>INVENTORY</Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
                             </div>
                             <div className={'col'}>
 

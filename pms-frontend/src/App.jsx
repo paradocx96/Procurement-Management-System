@@ -7,9 +7,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import Components
-import Login from "./components/pages/Login";
+import LoginSupplier from "./components/pages/LoginSupplier";
 import HeaderBar from "./components/layouts/Header/HeaderBar";
-
+import LoginInternalUser from "./components/pages/LoginInternalUser";
+import RegistrationSupplier from "./components/pages/RegistrationSupplier";
+import RegistrationInternalUser from "./components/pages/RegistrationInternalUser";
 
 // Dashboard
 import Dashboard from "./components/pages/Dashboard";
@@ -17,9 +19,7 @@ import DashboardSiteManager from "./components/pages/DashboardSiteManager";
 import DashboardSeniorManager from "./components/pages/DashboardSeniorManager";
 import DashboardAccountant from "./components/pages/DashboardAccountant";
 import ViewAllSupplierAdmin from "./components/sections/Supplier/ViewAllSupplierAdmin";
-
-
-//Order
+import DashboardSupplier from "./components/pages/DashboardSupplier";
 
 
 //Site
@@ -38,6 +38,9 @@ import AddUncountableItem from "./components/sections/Inventory/UncountableItems
 import ViewAllUncountableItems from "./components/sections/Inventory/UncountableItems/ViewAllUncountableItems";
 import ConsumeUncountableItems from "./components/sections/Inventory/UncountableItems/ConsumeUncountableItems";
 import ReplenishUncountableItems from "./components/sections/Inventory/UncountableItems/ReplenishUncountableItems";
+import DeleteUncountableItems from "./components/sections/Inventory/UncountableItems/DeleteUncountableItems";
+import DeleteCountableItems from "./components/sections/Inventory/CountableItems/DeleteCountableItems";
+import Inventory from "./components/pages/Inventory";
 
 
 //Project
@@ -62,6 +65,11 @@ import ViewAllOrderAdmin from "./components/sections/Order/ViewAllOrderAdmin";
 import ViewSingleOrderSeManager from "./components/sections/Order/ViewSingleOrderSeManager";
 
 
+//Supplier
+import AddSupplierItem from "./components/pages/AddSupplierItem";
+import ViewAllItems from "./components/pages/ViewAllItems";
+import UpdateSupplierItem from "./components/sections/Supplier/UpdateSupplierItem";
+
 
 function App() {
     return (
@@ -70,7 +78,10 @@ function App() {
                 <HeaderBar/>
                 <Switch>
                     {/* USER MANAGEMENT */}
-                    <Route exact path="/" component={Login}/>
+                    <Route exact path="/" component={LoginSupplier}/>
+                    <Route exact path="/internal-user-login" component={LoginInternalUser}/>
+                    <Route exact path="/register" component={RegistrationSupplier}/>
+                    <Route exact path="/internal-user-register" component={RegistrationInternalUser}/>
 
 
                     {/* DASHBOARD */}
@@ -79,6 +90,7 @@ function App() {
                     <Route path="/dashboard/senior" component={DashboardSeniorManager}/>
                     <Route path="/dashboard/accountant" component={DashboardAccountant}/>
                     <Route path="/supplier/list" component={ViewAllSupplierAdmin}/>
+                    <Route path="/dashboard/supplier" component={DashboardSupplier}/>
 
 
                     {/* SITE */}
@@ -89,16 +101,19 @@ function App() {
 
                     {/* INVENTORY */}
                     {/*inventory*/}
+                    <Route path="/inventory/main" component={Inventory}/>
 
                     {/*countable Items*/}
                     <Route path="/inventory/countable/addItem" component={AddCountableItem}/>
                     <Route path="/inventory/countable/viewAll" component={ViewAllCountableItems}/>
+                    <Route path="/inventory/countable/delete" component={DeleteCountableItems}/>
                     <Route path="/inventory/countable/consume/:id" component={ConsumeCountableItems}/>
                     <Route path="/inventory/countable/replenish/:id" component={ReplenishCountableItems}/>
 
                     {/*uncountable items*/}
                     <Route path="/inventory/uncountable/addItem" component={AddUncountableItem}/>
                     <Route path="/inventory/uncountable/viewAll" component={ViewAllUncountableItems}/>
+                    <Route path="/inventory/uncountable/delete" component={DeleteUncountableItems}/>
                     <Route path="/inventory/uncountable/consume/:id" component={ConsumeUncountableItems}/>
                     <Route path="/inventory/uncountable/replenish/:id" component={ReplenishUncountableItems}/>
 
@@ -130,7 +145,10 @@ function App() {
                     {/* DELIVERY */}
                     <Route path={'/delivery/addDeliverySm/:id'} component={AddDeliverySm}/>
 
-
+                    {/*SUPPLIER*/}
+                    <Route path={'/add-items'} component={AddSupplierItem}/>
+                    <Route path={'/view-items'} component={ViewAllItems}/>
+                    <Route path={'/edit-item/:id'} component={UpdateSupplierItem}/>
 
                     {/* DEFAULT PATH */}
                     <Redirect to="/"/>

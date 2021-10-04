@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-
 import NavigationSiteManager from "../layouts/Navigation/NavigationSiteManager";
 import {Card, Container} from "react-bootstrap";
 import {Link} from "react-router-dom";
@@ -73,11 +72,16 @@ class DashboardSiteManager extends Component {
                                 </Link>
                             </div>
                             <div className={'col'}>
-
+                              <Link to={'/inventory/main'} style={{textDecoration: 'none'}}>
+                                    <Card>
+                                        <Card.Body>
+                                            <Card.Title>INVENTORY</Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
                             </div>
                         </div>
                     </section>
-
                 </Container>
             </div>
         );

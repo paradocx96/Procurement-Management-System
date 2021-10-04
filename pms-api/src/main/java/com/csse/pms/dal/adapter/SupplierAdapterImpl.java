@@ -22,6 +22,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.csse.pms.dal.model.ERole;
@@ -80,6 +81,10 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 	
 	private final MongoTemplate mongoTemplate = null;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
+	
 	/**
      * Initialize Logger
      */
@@ -104,7 +109,7 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 		SupplierModel supplierDetails = new SupplierModel(
 				supplier.getName(),
 				supplier.getEmail(),
-				supplier.getPassword(),
+				passwordEncoder.encode(supplier.getPassword()),
 				supplier.getContactNo(),
 				supplier.getAddress(),
 				supplier.getLocation(),

@@ -4,6 +4,7 @@ import NavigationSeniorManager from "../layouts/Navigation/NavigationSeniorManag
 import {Link} from "react-router-dom";
 import {Card, Container} from "react-bootstrap";
 
+
 class DashboardSeniorManager extends Component {
 
     divSection = {
@@ -51,6 +52,23 @@ class DashboardSeniorManager extends Component {
                                         </Card.Body>
                                     </Card>
                                 </Link>
+                            </div>
+                        </div>
+                        <div className={'row pt-5'}>
+                            <div className={'col'}>
+                                <Link to={'/inventory/main'} style={{textDecoration: 'none'}}>
+                                    <Card>
+                                        <Card.Body>
+                                            <Card.Title>INVENTORY</Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
+                            </div>
+                            <div className={'col'}>
+                                
+                            </div>
+                            <div className={'col'}>
+                                
                             </div>
                         </div>
                     </section>

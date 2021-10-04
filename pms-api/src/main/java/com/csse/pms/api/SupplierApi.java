@@ -67,4 +67,11 @@ public class SupplierApi {
 		return itemDataAdapter.getById(id);
 	}
 	
+	public ResponseEntity<?> updateSingleItem(Item item){
+		return itemDataAdapter.updateSingleItem(item);
+	}
+	
+	public Item getItemByItemID(String id) {
+		return itemDataAdapter.getItemByItemID(id);
+	}
 }

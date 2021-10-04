@@ -32,6 +32,9 @@ class NavigationAdmin extends Component {
                                 <NavDropdown title="Order" id="collasible-nav-dropdown">
                                     <Link to={'/order/list'} className={'dropdown-item'}>Orders</Link>
                                 </NavDropdown>
+                                <NavDropdown title="Internal Users" id="collasible-nav-dropdown">
+                                    <Link to={'/internal-user-register'} className={'dropdown-item'}>Register</Link>
+                                </NavDropdown>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>

@@ -283,6 +283,22 @@ public class CommonConstants {
     /** Constant for supplier register Path in Supplier Controller */
     public static final String SUPPLIER_GET_MAPPING_BY_ITEM_ID = "get-item-by-item-id/{id}";
     
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String ITEM_UPDATE_SUCCESSFULLY = "Item update successfully!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String ITEM_DOESNT_EXITS = "Item not exist!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String ITEM_UPDATE_ERROR = "Item update erro!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String ITEM_PUT_MAPPING_BY_ITEM_ID = "edit-item";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_GET_BY_ITEM_ID = "get-item-by-id/{id}";
+    
+    
     
     
     
@@ -302,5 +318,8 @@ public class CommonConstants {
     
     /** Constant for supplier register Path in Supplier Controller */
     public static final String INTERNEL_USER_POST_MAPPING_LOGIN = "login";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String INTERNAL_USER_GET_ALL = "get-all-internal-users";
     
 }
