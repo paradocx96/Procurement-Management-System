@@ -74,6 +74,11 @@ class SupplierService extends Component {
        return axios.delete(API_SUPPLIER_BACKEND_URL+"delete-item-by-id/"+id)
     }
 
+    //TODO: Get Item by Item ID
+    getItemByItemID(id){
+       return axios.get(API_SUPPLIER_BACKEND_URL+"get-item-by-id/"+id)
+    }
+
 }
 
 export default new SupplierService;

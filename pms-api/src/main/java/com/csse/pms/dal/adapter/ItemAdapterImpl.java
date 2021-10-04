@@ -127,7 +127,32 @@ public class ItemAdapterImpl implements ItemDataAdapter {
 		}
 		
 	}
-	
-	
 
+	@Override
+	public Item getItemByItemID(String id) {
+		
+		Item itemObj = new Item();
+		
+		try {
+			
+				ItemModel items = itemReposirtory.findById(id).get();
+				
+				itemObj.setId(items.getId());
+				itemObj.setSupplierID(items.getSupplierID());
+				itemObj.setName(items.getName());
+				itemObj.setQuantity(items.getQuantity());
+				itemObj.setPrice(items.getPrice());
+				
+			
+		} catch (Exception e) {
+			 LOGGER.log(Level.SEVERE, e.getMessage());
+
+		}
+		
+		return itemObj;
+		
+	}
+		
+	
+	
 }

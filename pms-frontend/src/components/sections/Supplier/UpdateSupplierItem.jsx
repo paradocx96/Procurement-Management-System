@@ -59,11 +59,35 @@ class AddSupplierItem extends Component {
 
     componentDidMount = async ()=>{
         const {match: {params}} = this.props;
+        await this.fetch(params.id);
+    }
 
-        console.log(params.id);
+    componentDidUpdate = async () => {
+        const {match: {params}} = this.props;
+        const prevID = this.state.id
+        const currentID = params.id;
+        if(currentID && currentID !="" && prevID != currentID){
+            await this.fetch(currentID);
+        }
+    }
+
+    fetch = async (id)=> {
         this.setState({
-            id: params.id,
-        })
+            id
+        });
+        await SupplierService.getItemByItemID(id)
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({
+                    name: data.name,
+                    quantity: data.quantity,
+                    price: data.price
+                });
+                console.log("VIEW ITEMS --- " + data);
+            }).catch(error =>
+                console.log(error.message)
+            );
+
     }
 
     // TODO: Set Values for state variables
