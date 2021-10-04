@@ -1,7 +1,7 @@
 import React from "react";
 import UncountableItemService from "../../../../services/UncountableItemService";
 import data from "bootstrap/js/src/dom/data";
-import {Table} from "react-bootstrap";
+import {Button, Table} from "react-bootstrap";
 
 class ViewAllUncountableItems extends React.Component{
     constructor(props) {
@@ -21,6 +21,18 @@ class ViewAllUncountableItems extends React.Component{
             }).catch(error => {
                 console.log("Cannot get all items. Error: ",error);
             })
+    }
+
+    navigateToConsumePage= (event,id) => {
+
+        window.location =`/inventory/uncountable/consume/${id}`;
+
+    }
+
+    navigateToReplenishPage= (event,id) => {
+
+        window.location =`/inventory/uncountable/replenish/${id}`;
+
     }
 
     render() {
@@ -58,6 +70,24 @@ class ViewAllUncountableItems extends React.Component{
                                         <td>{e.minimumAmount}</td>
                                         <td>{e.siteid}</td>
                                         <td>{e.sitename}</td>
+
+                                        <td>
+                                            <Button className={'btn btn-info'}
+                                                    onClick={event => this.navigateToConsumePage(this,e.id)}
+                                            >
+                                                Consume
+                                            </Button>
+
+
+                                        </td>
+
+                                        <td>
+                                            <Button className={'btn btn-success'}
+                                                    onClick={event => this.navigateToReplenishPage(this,e.id)}
+                                            >
+                                                Replenish
+                                            </Button>
+                                        </td>
                                     </tr>
                                 ))
                         }

@@ -128,6 +128,7 @@ class ConsumeCountableItems extends React.Component{
                             type={'number'}
                             placeholder = {'Enter consumed number of items'}
                             name={'consumedQuantity'}
+                            max={quantity}
                             value={consumedQuantity}
                             onChange={this.onChange}
 

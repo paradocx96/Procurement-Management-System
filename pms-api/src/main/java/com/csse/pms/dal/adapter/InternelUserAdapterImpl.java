@@ -20,13 +20,13 @@ import org.springframework.stereotype.Component;
 
 import com.csse.pms.dal.model.ERole;
 import com.csse.pms.dal.model.EmailSender;
+import com.csse.pms.dal.model.InternelUserModel;
 import com.csse.pms.dal.model.Role;
-import com.csse.pms.dal.model.SupplierModel;
 import com.csse.pms.dal.repository.InternelUserRepository;
 import com.csse.pms.dal.repository.RoleMongoRepository;
 import com.csse.pms.dal.repository.SupplierRepository;
-import com.csse.pms.domain.Supplier;
-import com.csse.pms.domain.SupplierDataAdapter;
+import com.csse.pms.domain.InternelUser;
+import com.csse.pms.domain.InternelUserDataAdapter;
 import com.csse.pms.dto.JwtResponseDto;
 import com.csse.pms.dto.SupplierMessageResponseDto;
 import com.csse.pms.security.jwt.JwtUtils;
@@ -38,21 +38,17 @@ import com.csse.pms.util.CommonConstants;
  * 
  * @author Malwatta H.G.
  * 
- * This class handle by the supplier related methods
- *     - register @see #registerSupplier(Supplier)
- *     - login
- *     - add items
- *     - view items
- *     - delete items
- *     - edit items
+ * This class handle by the Internal users related methods
+ *     - register @see #registerInternelUser(InternelUser)
+ *     - login @see #loginInternelUser(InternelUser)
  *
  */
 
 @Component
-public class SupplierAdapterImpl implements SupplierDataAdapter{
+public class InternelUserAdapterImpl implements InternelUserDataAdapter{
 
 	@Autowired
-	private SupplierRepository supplierRepository;
+	InternelUserRepository internelUserRepository;
 	
 	@Autowired
 	private EmailSender emailSender;
@@ -70,60 +66,82 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 	RoleMongoRepository roleMongoRepository;
 	
 	@Autowired
-	private InternelUserRepository internelUserRepository;
+	private SupplierRepository supplierRepository;
 	
 	/**
      * Initialize Logger
      */
-    public static final Logger LOGGER = Logger.getLogger(SupplierAdapterImpl.class.getName());
+    public static final Logger LOGGER = Logger.getLogger(InternelUserAdapterImpl.class.getName());
 
 	@Override
-	public ResponseEntity<?> registerSupplier(Supplier supplier) {
+	public ResponseEntity<?> registerInternelUser(InternelUser internelUser) {
 		
 		/**
 		 * Check whether user mail is already in the database,
 		 * because user mail should be unique 
 		 *  
 		 */
-		if(supplierRepository.existsByEmail(supplier.getEmail())) {
+		if(internelUserRepository.existsByEmail(internelUser.getEmail())) {
 			return ResponseEntity.badRequest().body(new SupplierMessageResponseDto(CommonConstants.SUPPLIER_EMAIL_REGISTRATION_ERROR_MSG));
 		}
 		
-		if(internelUserRepository.existsByEmail(supplier.getEmail())) {
+		if(supplierRepository.existsByEmail(internelUser.getEmail())) {
 			return ResponseEntity.badRequest().body(new SupplierMessageResponseDto(CommonConstants.SUPPLIER_EMAIL_REGISTRATION_ERROR_MSG));
 		}
 		
-		SupplierModel supplierDetails = new SupplierModel(
-				supplier.getName(),
-				supplier.getEmail(),
-				supplier.getPassword(),
-				supplier.getContactNo(),
-				supplier.getAddress(),
-				supplier.getLocation(),
-				supplier.getStatus()
+		
+		InternelUserModel interelUserDetails = new InternelUserModel(
+				internelUser.getName(),
+				internelUser.getEmail(),
+				internelUser.getPassword(),
+				internelUser.getContactNo(),
+				internelUser.getAddress()
 				);
 		
 		//Create new HashSet to store user Roles
 		Set<Role> roles = new HashSet<>();
 						
-		//If it is true, Add ROLE_USER to that user
-		Role userRole = roleMongoRepository.findByName(ERole.ROLE_SUPPLIER)
-								.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+		//Check user role and assigned
+		if(internelUser.getUserType().equals("accountant")) {
 				
-		roles.add(userRole);
+				//If it is true, Add ROLE_USER to that user
+				Role userAccount = roleMongoRepository.findByName(ERole.ROLE_ACCOUNTANT)
+						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+				
+				//add role into list
+				roles.add(userAccount);
+				
+			}else if(internelUser.getUserType().equals("seniorManager")) {
+				
+				Role userSeniorManager = roleMongoRepository.findByName(ERole.ROLE_SENIOR_MANAGER)
+						.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+				
+				//add role into list
+				roles.add(userSeniorManager);
+				
+				}else if(internelUser.getUserType().equals("siteManager")) {
+					
+					Role userSiteManager = roleMongoRepository.findByName(ERole.ROLE_SITE_MANAGER)
+							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+					
+					//add role into list
+					roles.add(userSiteManager);
+					
+					}
 		
+	
 		//set all roles to user object
-		supplierDetails.setRoles(roles);
+		interelUserDetails.setRoles(roles);
 		
-		supplierRepository.save(supplierDetails);
+		internelUserRepository.save(interelUserDetails);
 		
 		/**
 		 * Set the values to email sender class and call 
 		 * send email method to send the email
 		 * 
 		 */
-		emailSender.setEmail(supplier.getEmail());
-		emailSender.setUsername(supplier.getName());
+		emailSender.setEmail(internelUser.getEmail());
+		emailSender.setUsername(internelUser.getName());
 		
 		try {
 				emailSender.sendEmail();
@@ -138,12 +156,12 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 	}
 
 	@Override
-	public ResponseEntity<?> loginSupplier(Supplier supplier) {
+	public ResponseEntity<?> loginInternelUser(InternelUser internelUser) {
 		
 		
 				//Get user name and password and create new AuthenticationToken 
 				Authentication authentication = authenticationManager.authenticate(
-								new UsernamePasswordAuthenticationToken(supplier.getEmail(), supplier.getPassword()));
+								new UsernamePasswordAuthenticationToken(internelUser.getEmail(), internelUser.getPassword()));
 
 				//Set above assigned user credentials using Authentication object
 				SecurityContextHolder.getContext().setAuthentication(authentication);
