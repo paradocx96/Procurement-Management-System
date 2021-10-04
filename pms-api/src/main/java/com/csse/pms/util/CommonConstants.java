@@ -168,6 +168,21 @@ public class CommonConstants {
     /** Constant for supplier register Path in Supplier Controller */
     public static final String SUPPLIER_GET_MAPPING_BY_SUPPLIER_ID = "get-item-by-supplier-id/{id}";
     
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_DELETE_ITEM_SUCCESS_MSG = "Item deleted successfully!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_DELETE_ITEM_ERROR_MSG = "Something went wrong!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_DELETE_ITEM_NOT_EXIST_ERROR_MSG = "This item is not exist!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_DELETE_MAPPING_BY_ITEM_ID = "delete-item-by-id/{id}";
+    
+    
+    
+    
     
     /******  Internal user Common Constants  ******/ 
     
