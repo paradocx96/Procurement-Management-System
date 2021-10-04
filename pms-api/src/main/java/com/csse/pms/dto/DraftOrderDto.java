@@ -15,6 +15,7 @@ public class DraftOrderDto {
     private double amount;
     private String contactDetails;
     private String comment;
+    private String status;
     private LocalDateTime dateTime;
 
     public String getId() {
@@ -87,6 +88,14 @@ public class DraftOrderDto {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public LocalDateTime getDateTime() {

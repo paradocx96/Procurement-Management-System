@@ -59,6 +59,7 @@ public class DraftOrderAdapterImpl implements DraftOrderDataAdapter {
             draftOrderModel.setAmount(draftOrder.getAmount());
             draftOrderModel.setContactDetails(draftOrder.getContactDetails());
             draftOrderModel.setComment(draftOrder.getComment());
+            draftOrderModel.setStatus(draftOrder.getStatus());
             draftOrderModel.setDateTime(draftOrder.getDateTime());
 
             draftOrderModel = repository.save(draftOrderModel);
@@ -99,6 +100,7 @@ public class DraftOrderAdapterImpl implements DraftOrderDataAdapter {
                 draftOrder.setAmount(draftOrderModel.getAmount());
                 draftOrder.setContactDetails(draftOrderModel.getContactDetails());
                 draftOrder.setComment(draftOrderModel.getComment());
+                draftOrder.setStatus(draftOrderModel.getStatus());
                 draftOrder.setDateTime(draftOrderModel.getDateTime());
 
                 draftOrders.add(draftOrder);
@@ -138,6 +140,7 @@ public class DraftOrderAdapterImpl implements DraftOrderDataAdapter {
             draftOrder.setAmount(draftOrderModel.getAmount());
             draftOrder.setContactDetails(draftOrderModel.getContactDetails());
             draftOrder.setComment(draftOrderModel.getComment());
+            draftOrder.setStatus(draftOrderModel.getStatus());
             draftOrder.setDateTime(draftOrderModel.getDateTime());
 
             return draftOrder;
@@ -177,6 +180,7 @@ public class DraftOrderAdapterImpl implements DraftOrderDataAdapter {
                 draftOrder.setAmount(draftOrderModel.getAmount());
                 draftOrder.setContactDetails(draftOrderModel.getContactDetails());
                 draftOrder.setComment(draftOrderModel.getComment());
+                draftOrder.setStatus(draftOrderModel.getStatus());
                 draftOrder.setDateTime(draftOrderModel.getDateTime());
 
                 draftOrders.add(draftOrder);
@@ -218,6 +222,7 @@ public class DraftOrderAdapterImpl implements DraftOrderDataAdapter {
                 draftOrder.setAmount(draftOrderModel.getAmount());
                 draftOrder.setContactDetails(draftOrderModel.getContactDetails());
                 draftOrder.setComment(draftOrderModel.getComment());
+                draftOrder.setStatus(draftOrderModel.getStatus());
                 draftOrder.setDateTime(draftOrderModel.getDateTime());
 
                 draftOrders.add(draftOrder);
@@ -279,6 +284,7 @@ public class DraftOrderAdapterImpl implements DraftOrderDataAdapter {
                             .set(CommonConstants.AMOUNT, draftOrder.getAmount())
                             .set(CommonConstants.CONTACT_DETAILS, draftOrder.getContactDetails())
                             .set(CommonConstants.COMMENT, draftOrder.getComment())
+                            .set(CommonConstants.STATUS, draftOrder.getStatus())
                             .set(CommonConstants.DATE_TIME, draftOrder.getDateTime()),
                     DraftOrderModel.class
             );

@@ -36,6 +36,7 @@ public class DraftOrderController {
         draftOrder.setAmount(draftOrderDto.getAmount());
         draftOrder.setContactDetails(draftOrderDto.getContactDetails());
         draftOrder.setComment(draftOrderDto.getComment());
+        draftOrder.setStatus(draftOrderDto.getStatus());
         draftOrder.setDateTime(LocalDateTime.now());
 
         return draftOrderApi.saveDraftOrder(draftOrder);
@@ -83,6 +84,7 @@ public class DraftOrderController {
         draftOrder.setAmount(draftOrderDto.getAmount());
         draftOrder.setContactDetails(draftOrderDto.getContactDetails());
         draftOrder.setComment(draftOrderDto.getComment());
+        draftOrder.setStatus(draftOrderDto.getStatus());
         draftOrder.setDateTime(LocalDateTime.now());
 
         return draftOrderApi.updateDraftOrder(draftOrder);
