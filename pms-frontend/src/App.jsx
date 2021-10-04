@@ -46,6 +46,7 @@ import AddOrderSM from "./components/sections/Order/AddOrderSM";
 import ViewAllOrderSM from "./components/sections/Order/ViewAllOrderSM";
 import ViewAllDraftOrderSM from "./components/sections/Order/ViewAllDraftOrderSM";
 import AddDeliverySm from "./components/sections/Delivery/AddDeliverySm";
+import ViewSingleOrderSM from "./components/sections/Order/ViewSingleOrderSM";
 
 
 
@@ -93,6 +94,7 @@ function App() {
                     {/* ORDER */}
                     <Route path={'/order/addOrderSm'} component={AddOrderSM}/>
                     <Route path={'/order/listSm'} component={ViewAllOrderSM}/>
+                    <Route path={'/order/viewSm/:id'} component={ViewSingleOrderSM}/>
 
 
                     {/* DRAFT ORDER */}

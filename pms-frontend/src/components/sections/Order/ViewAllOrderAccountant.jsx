@@ -4,7 +4,7 @@ import OrderService from "../../../services/OrderService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import {Link} from "react-router-dom";
 
-class ViewAllOrderSM extends Component {
+class ViewAllOrderAccountant extends Component {
 
     // Initializing state values and functions
     constructor(props) {
@@ -59,10 +59,6 @@ class ViewAllOrderSM extends Component {
                                         <td>{item.amount}</td>
                                         <td>{item.status}</td>
                                         <td>
-                                            <Link to={`/order/viewSm/` + item.id}
-                                                  className={'btn btn-primary'}>
-                                                View
-                                            </Link>{'\u00A0'}
                                             <Link to={`/delivery/addDeliverySm/` + item.id}
                                                   className={'btn btn-primary'}>
                                                 Delivery Log
@@ -79,4 +75,4 @@ class ViewAllOrderSM extends Component {
     }
 }
 
-export default ViewAllOrderSM;
+export default ViewAllOrderAccountant;
