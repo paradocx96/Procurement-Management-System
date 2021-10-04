@@ -56,6 +56,12 @@ public class ProjectController {
         return projectApi.getProjectBySite(id);
     }
 
+    @GetMapping(CommonConstants.GET_MAPPING_GET_BY_MANAGER_ID)
+    @ResponseStatus(HttpStatus.OK)
+    public List<Project> getProjectByManagerId(@PathVariable String id) {
+        return projectApi.getProjectByManagerId(id);
+    }
+
     @DeleteMapping(CommonConstants.DELETE_MAPPING_DELETE_BY_ID)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteProjectById(@PathVariable String id) {

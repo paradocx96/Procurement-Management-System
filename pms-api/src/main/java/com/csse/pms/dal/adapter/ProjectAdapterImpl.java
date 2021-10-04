@@ -176,6 +176,44 @@ public class ProjectAdapterImpl implements ProjectDataAdapter {
     }
 
     /**
+     * This Method gets parameter as String manager-id.
+     * Then find the project using the manager-id of project saved in project collection in MongoDB Cluster database.
+     * Then founded project assign to project model list object.
+     * Then using for loop assign to project list object.
+     *
+     * @param managerId - Relevant project manager-id from ProjectApi class.
+     * @return List<Project> - Founded projects will be return as project list object.
+     * @throws Exception - If method cannot find the relevant project from database this will throw.
+     * @see #getProjectByManagerId(String)
+     */
+    @Override
+    public List<Project> getProjectByManagerId(String managerId) {
+        List<Project> projects = new ArrayList<>();
+
+        try {
+            List<ProjectModel> projectModels = repository.findByManagerId(managerId);
+
+            for (ProjectModel projectModel : projectModels) {
+                Project project = new Project();
+
+                project.setId(projectModel.getId());
+                project.setProjectName(projectModel.getProjectName());
+                project.setDescription(projectModel.getDescription());
+                project.setBudget(projectModel.getBudget());
+                project.setManagerId(projectModel.getManagerId());
+                project.setSiteId(projectModel.getSiteId());
+                project.setCreateDateTime(projectModel.getCreateDateTime());
+
+                projects.add(project);
+            }
+            return projects;
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, e.getMessage());
+            return projects;
+        }
+    }
+
+    /**
      * This Method gets parameter as String project id.
      * Then find the project using the id of project saved in project collection in MongoDB Cluster database.
      * Then delete project using id saved in project collection in MongoDB Cluster database.
