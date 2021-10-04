@@ -7,15 +7,18 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import Components
-import Login from "./components/pages/Login";
+import LoginSupplier from "./components/pages/LoginSupplier";
 import HeaderBar from "./components/layouts/Header/HeaderBar";
-
+import LoginInternalUser from "./components/pages/LoginInternalUser";
+import RegistrationSupplier from "./components/pages/RegistrationSupplier";
+import RegistrationInternalUser from "./components/pages/RegistrationInternalUser";
 
 // Dashboard
 import Dashboard from "./components/pages/Dashboard";
 import DashboardSiteManager from "./components/pages/DashboardSiteManager";
 import DashboardSeniorManager from "./components/pages/DashboardSeniorManager";
 import DashboardAccountant from "./components/pages/DashboardAccountant";
+import DashboardSupplier from "./components/pages/DashboardSupplier";
 
 
 //Order
@@ -56,6 +59,10 @@ import DeleteUncountableItems from "./components/sections/Inventory/UncountableI
 import DeleteCountableItems from "./components/sections/Inventory/CountableItems/DeleteCountableItems";
 import Inventory from "./components/pages/Inventory";
 
+//Supplier
+import AddSupplierItem from "./components/pages/AddSupplierItem";
+import ViewAllItems from "./components/pages/ViewAllItems";
+import UpdateSupplierItem from "./components/sections/Supplier/UpdateSupplierItem";
 
 
 function App() {
@@ -65,7 +72,10 @@ function App() {
                 <HeaderBar/>
                 <Switch>
                     {/* USER MANAGEMENT */}
-                    <Route exact path="/" component={Login}/>
+                    <Route exact path="/" component={LoginSupplier}/>
+                    <Route exact path="/internal-user-login" component={LoginInternalUser}/>
+                    <Route exact path="/register" component={RegistrationSupplier}/>
+                    <Route exact path="/internal-user-register" component={RegistrationInternalUser}/>
 
 
                     {/* DASHBOARD */}
@@ -73,6 +83,7 @@ function App() {
                     <Route path="/dashboard/site" component={DashboardSiteManager}/>
                     <Route path="/dashboard/senior" component={DashboardSeniorManager}/>
                     <Route path="/dashboard/accountant" component={DashboardAccountant}/>
+                    <Route path="/dashboard/supplier" component={DashboardSupplier}/>
 
 
                     {/* SITE */}
@@ -120,7 +131,10 @@ function App() {
                     {/* DELIVERY */}
                     <Route path={'/delivery/addDeliverySm/:id'} component={AddDeliverySm}/>
 
-
+                    {/*SUPPLIER*/}
+                    <Route path={'/add-items'} component={AddSupplierItem}/>
+                    <Route path={'/view-items'} component={ViewAllItems}/>
+                    <Route path={'/edit-item/:id'} component={UpdateSupplierItem}/>
 
                     {/* DEFAULT PATH */}
                     <Redirect to="/"/>

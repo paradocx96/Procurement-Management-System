@@ -1,6 +1,7 @@
 package com.csse.pms.dal.adapter;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -16,17 +17,20 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.csse.pms.dal.model.ERole;
 import com.csse.pms.dal.model.EmailSender;
 import com.csse.pms.dal.model.InternelUserModel;
 import com.csse.pms.dal.model.Role;
+
 import com.csse.pms.dal.repository.InternelUserRepository;
 import com.csse.pms.dal.repository.RoleMongoRepository;
 import com.csse.pms.dal.repository.SupplierRepository;
 import com.csse.pms.domain.InternelUser;
 import com.csse.pms.domain.InternelUserDataAdapter;
+
 import com.csse.pms.dto.JwtResponseDto;
 import com.csse.pms.dto.SupplierMessageResponseDto;
 import com.csse.pms.security.jwt.JwtUtils;
@@ -68,6 +72,9 @@ public class InternelUserAdapterImpl implements InternelUserDataAdapter{
 	@Autowired
 	private SupplierRepository supplierRepository;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	/**
      * Initialize Logger
      */
@@ -93,7 +100,7 @@ public class InternelUserAdapterImpl implements InternelUserDataAdapter{
 		InternelUserModel interelUserDetails = new InternelUserModel(
 				internelUser.getName(),
 				internelUser.getEmail(),
-				internelUser.getPassword(),
+				passwordEncoder.encode(internelUser.getPassword()),
 				internelUser.getContactNo(),
 				internelUser.getAddress()
 				);
@@ -190,6 +197,38 @@ public class InternelUserAdapterImpl implements InternelUserDataAdapter{
 															userDetails.getUsername(), 
 															userDetails.getName(), 
 															roles));
+	}
+
+	@Override
+	public List<InternelUser> getAllInternalUsers() {
+		
+		List<InternelUserModel> userList;
+		List<InternelUser> userListReturn = new ArrayList<>();
+		
+		try {
+			userList = internelUserRepository.findAll();
+			
+			for(InternelUserModel userModel: userList) {
+				
+				InternelUser userobj = new InternelUser();
+				
+				userobj.setId(userModel.getId());
+				userobj.setName(userModel.getName());
+				userobj.setEmail(userModel.getEmail());
+				userobj.setAddress(userModel.getAddress());
+				userobj.setContactNo(userModel.getContactNo());
+				userobj.setUserType(userModel.getUserType());
+		
+				
+				userListReturn.add(userobj);
+				
+			}
+			
+		} catch (Exception e) {
+			 LOGGER.log(Level.SEVERE, e.getMessage());
+		}
+		
+		return userListReturn;
 	}
 	
 }

@@ -81,7 +81,20 @@ public class SupplierController {
 
 	@GetMapping(CommonConstants.SUPPLIER_GET_MAPPING_BY_ITEM_ID)
 	@ResponseStatus(HttpStatus.OK)
-	public Item getItemByItemID(@PathVariable String id){
+	public Item getItemById(@PathVariable String id){
 		return supplierApi.getItemById(id);
 	}
+	
+	@PutMapping(CommonConstants.ITEM_PUT_MAPPING_BY_ITEM_ID)
+    @ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<?> updateSingleItem(@RequestBody Item item){
+		return supplierApi.updateSingleItem(item);
+	}
+	
+	@GetMapping(CommonConstants.SUPPLIER_GET_BY_ITEM_ID)
+    @ResponseStatus(HttpStatus.OK)
+	public Item getItemByItemID(@PathVariable String id){
+		return supplierApi.getItemByItemID(id);
+	}
+	
 }
