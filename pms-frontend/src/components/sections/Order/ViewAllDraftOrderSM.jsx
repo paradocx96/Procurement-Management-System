@@ -4,6 +4,7 @@ import DraftOrderService from "../../../services/DraftOrderService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import ProjectService from "../../../services/ProjectService";
 import SiteService from "../../../services/SiteService";
+import {Link} from "react-router-dom";
 
 class ViewAllDraftOrderSM extends Component {
 
@@ -99,9 +100,10 @@ class ViewAllDraftOrderSM extends Component {
                                         <td>{item.amount}</td>
                                         <td>{item.dateTime}</td>
                                         <td>
-                                            <Button>
-                                                PURCHASE
-                                            </Button>
+                                            <Link to={`/draft/editSm/` + item.id}
+                                                  className={'btn btn-primary'}>
+                                                PURCHASE DRAFT
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))

@@ -52,6 +52,7 @@ import ViewSingleOrderSM from "./components/sections/Order/ViewSingleOrderSM";
 import ViewAllOrderAccountant from "./components/sections/Order/ViewAllOrderAccountant";
 import ViewSingleOrderAccountant from "./components/sections/Order/ViewSingleOrderAccountant";
 import ViewAllOrderSeManager from "./components/sections/Order/ViewAllOrderSeManager";
+import EditDraftOrderSm from "./components/sections/Order/EditDraftOrderSM";
 
 
 
@@ -109,6 +110,7 @@ function App() {
 
                     {/* DRAFT ORDER */}
                     <Route path={'/draft/listSm'} component={ViewAllDraftOrderSM}/>
+                    <Route path={'/draft/editSm/:id'} component={EditDraftOrderSm}/>
 
 
                     {/* DELIVERY */}

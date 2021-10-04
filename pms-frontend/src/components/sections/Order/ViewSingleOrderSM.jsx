@@ -4,6 +4,7 @@ import {Container, Table} from "react-bootstrap";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import SiteService from "../../../services/SiteService";
 import {Link} from "react-router-dom";
+import SupplierService from "../../../services/SupplierService";
 
 class ViewSingleOrderSM extends Component {
 
@@ -15,6 +16,7 @@ class ViewSingleOrderSM extends Component {
             id: '',
             orderList: [],
             siteList: [],
+            supplierList: [],
             isLoading: true,
             errors: null,
             show: false
@@ -84,6 +86,14 @@ class ViewSingleOrderSM extends Component {
             }).catch(error =>
                 console.log(error.message)
             );
+
+        // await SupplierService.
+        //     .then(response => response.data)
+        //     .then((data) => {
+        //         this.setState({supplierList: data});
+        //     }).catch(error =>
+        //         console.log(error.message)
+        //     );
     }
 
     //Styles
