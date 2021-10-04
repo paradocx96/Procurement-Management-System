@@ -39,6 +39,10 @@ public class SupplierApi {
 		return supplierDataAdapter.loginSupplier(supplier);
 	}
 	
+	public List<Supplier> getAllSupplier(){
+		return supplierDataAdapter.getAllSupplier();
+	}
+	
 	public ResponseEntity<?> addItem(Item item){
 		return itemDataAdapter.addItem(item);
 	}

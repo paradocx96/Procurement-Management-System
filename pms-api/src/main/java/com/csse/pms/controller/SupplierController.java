@@ -42,6 +42,13 @@ public class SupplierController {
 		return supplierApi.loginSupplier(supplier);
 	}
 	
+	@GetMapping(CommonConstants.SUPPLIER_GET_ALL)
+    @ResponseStatus(HttpStatus.OK)
+	public List<Supplier> getAllSuppliers(){
+		return supplierApi.getAllSupplier();
+	}
+	
+	
 	@PostMapping(CommonConstants.SUPPLIER_POST_MAPPING_ADD_ITEM)
     @ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<?> addItem(@RequestBody Item item){

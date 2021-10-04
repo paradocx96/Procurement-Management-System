@@ -1,7 +1,9 @@
 package com.csse.pms.dal.adapter;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
@@ -172,6 +174,38 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 															userDetails.getUsername(), 
 															userDetails.getName(), 
 															roles));
+	}
+
+	@Override
+	public List<Supplier> getAllSupplier() {
+		
+		List<SupplierModel> suppList;
+		List<Supplier> suppListReturn = new ArrayList<>();
+		
+		try {
+			suppList = supplierRepository.findAll();
+			
+			for(SupplierModel supplierModel: suppList) {
+				
+				Supplier supplierObj = new Supplier();
+				
+				supplierObj.setId(supplierModel.getId());
+				supplierObj.setName(supplierModel.getName());
+				supplierObj.setEmail(supplierModel.getEmail());
+				supplierObj.setAddress(supplierModel.getAddress());
+				supplierObj.setContactNo(supplierModel.getContactNo());
+				supplierObj.setLocation(supplierModel.getLocation());
+				supplierObj.setStatus(supplierModel.getStatus());
+				
+				suppListReturn.add(supplierObj);
+				
+			}
+			
+		} catch (Exception e) {
+			 LOGGER.log(Level.SEVERE, e.getMessage());
+		}
+		
+		return suppListReturn;
 	}
 	
 }
