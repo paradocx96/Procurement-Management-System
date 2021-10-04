@@ -52,7 +52,8 @@ import ViewAllDraftOrderSM from "./components/sections/Order/ViewAllDraftOrderSM
 import AddDeliverySm from "./components/sections/Delivery/AddDeliverySm";
 import ViewSingleOrderSM from "./components/sections/Order/ViewSingleOrderSM";
 
-
+//Supplier
+import AddSupplierItem from "./components/pages/AddSupplierItem";
 
 
 function App() {
@@ -114,7 +115,8 @@ function App() {
                     {/* DELIVERY */}
                     <Route path={'/delivery/addDeliverySm/:id'} component={AddDeliverySm}/>
 
-
+                    {/*SUPPLIER*/}
+                    <Route path={'/add-items'} component={AddSupplierItem}/>
 
                     {/* DEFAULT PATH */}
                     <Redirect to="/"/>

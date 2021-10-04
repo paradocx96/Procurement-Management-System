@@ -29,9 +29,18 @@ class SupplierService extends Component {
             password,
             contactNo,
             address,
-            location, 
+            location,
             status
         });
+    }
+
+    addItem(supplierID, name, quantity, price){
+       return axios.post(API_SUPPLIER_BACKEND_URL+"add-item",{
+           supplierID,
+           name,
+           quantity,
+           price
+       })
     }
 
 }
