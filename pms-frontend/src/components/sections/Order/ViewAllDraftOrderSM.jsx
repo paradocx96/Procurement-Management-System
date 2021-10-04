@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Col, Container, Form, Row, Table} from "react-bootstrap";
+import {Col, Container, Form, Row, Table} from "react-bootstrap";
 import DraftOrderService from "../../../services/DraftOrderService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import ProjectService from "../../../services/ProjectService";
@@ -100,10 +100,12 @@ class ViewAllDraftOrderSM extends Component {
                                         <td>{item.amount}</td>
                                         <td>{item.dateTime}</td>
                                         <td>
-                                            <Link to={`/draft/editSm/` + item.id}
-                                                  className={'btn btn-primary'}>
-                                                PURCHASE DRAFT
-                                            </Link>
+                                            <td>
+                                                <Link to={`/draft/editSm/` + item.id}
+                                                      className={'btn btn-primary'}>
+                                                    PURCHASE DRAFT
+                                                </Link>
+                                            </td>
                                         </td>
                                     </tr>
                                 ))

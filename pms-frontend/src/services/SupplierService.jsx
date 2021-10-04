@@ -18,4 +18,7 @@ export default new class OrderService {
         return axios.get(URL + "/get-item-by-item-id/" + id);
     }
 
+    getAll() {
+        return axios.get(URL + "/get-all-supplier");
+    }
 }
