@@ -54,6 +54,7 @@ import ViewSingleOrderAccountant from "./components/sections/Order/ViewSingleOrd
 import ViewAllOrderSeManager from "./components/sections/Order/ViewAllOrderSeManager";
 import DeleteUncountableItems from "./components/sections/Inventory/UncountableItems/DeleteUncountableItems";
 import DeleteCountableItems from "./components/sections/Inventory/CountableItems/DeleteCountableItems";
+import Inventory from "./components/pages/Inventory";
 
 
 
@@ -81,6 +82,7 @@ function App() {
 
                     {/* INVENTORY */}
                     {/*inventory*/}
+                    <Route path="/inventory/main" component={Inventory}/>
 
                     {/*countable Items*/}
                     <Route path="/inventory/countable/addItem" component={AddCountableItem}/>
