@@ -14,6 +14,7 @@ class SupplierService extends Component {
         }).then(response =>{
             console.log(response.data);
             if(response.data.accessToken){
+                console.log(response.data);
                 sessionStorage.setItem("supplier", JSON.stringify(response.data));
                 console.log(JSON.stringify(response.data));
             }
@@ -51,6 +52,26 @@ class SupplierService extends Component {
     //TODO: Remove current user
     logoutSupplier() {
         sessionStorage.removeItem("supplier");
+    }
+
+    //TODO: Get Items by Supplier ID
+    getItemsBySupplierID(id){
+       return axios.get(API_SUPPLIER_BACKEND_URL+"get-item-by-supplier-id/"+id)
+    }
+
+    //TODO: Update Single Item
+    updateItem(id, name, quantity, price){
+       return axios.put(API_SUPPLIER_BACKEND_URL + "edit-item",{
+           id,
+           name,
+           quantity,
+           price
+       })
+    }
+
+    //TODO: Delete Item By ID
+    deleteItemByID(id){
+       return axios.delete(API_SUPPLIER_BACKEND_URL+"delete-item-by-id/"+id)
     }
 
 }

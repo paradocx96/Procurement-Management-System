@@ -5,7 +5,7 @@ import Form from "react-validation/build/form";
 //import {Link}  from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 import "../../../assets/style/Login.css";
-import SupplierService from "../../../services/SupplierService";
+import InternalUserService from "../../../services/InternalUserService";
 
 
 // TODO: create to validate form fields
@@ -20,7 +20,7 @@ const requiredField = data => {
     }
 };
 
-class LoginSupplier extends Component {
+class LoginInternalUser extends Component {
 
     backColor = {
         'background-color' : '#24a0ed',
@@ -69,7 +69,7 @@ class LoginSupplier extends Component {
 
         // TODO: Calling LoginSupplier Service function and check if user is available or not
         if (this.checkBtn.context._errors.length === 0) {
-            SupplierService.login(this.state.email, this.state.password).then(
+            InternalUserService.login(this.state.email, this.state.password).then(
                 () => {
                     this.props.history.push("/");
                     window.location.reload();
@@ -102,7 +102,7 @@ class LoginSupplier extends Component {
                 <div className="auth-inner-login">
 
                     <Form onSubmit={this.handleLogin} ref={check => {this.form = check; }}>
-                        <h3>Sign In</h3>
+                        <h3>Internal user sign in</h3>
                         <div className="form-group">
                             <label htmlFor="username">Email</label>
                             <Input
@@ -152,11 +152,6 @@ class LoginSupplier extends Component {
                             </button>
                         </div>
 
-                        <p className="forgot-password text-right">
-                            Are you not register yet <a href="/register">sign up?</a>
-                        </p>
-
-
                         {this.state.message && (
                             <div className="form-group">
                                 <div className="alert alert-danger text-center" role="alert">
@@ -173,4 +168,4 @@ class LoginSupplier extends Component {
         );
     }
 }
-export default withRouter(LoginSupplier);
+export default withRouter(LoginInternalUser);

@@ -61,7 +61,7 @@ const userConfirmPassword = (value, props) => {
         );
     }
 };
-class SupplierRegistration extends Component {
+class InternalUserRegistration extends Component {
     backColor = {
         'background-color': '#24a0ed',
         color: 'white'
@@ -258,10 +258,6 @@ class SupplierRegistration extends Component {
                                 </div>
                             </div>
                         )}
-                        <p className="forgot-password text-lg-end">
-                            Already registered ?<Link to="/login">sign in</Link>
-
-                        </p>
                         <br></br>
 
                         {this.state.message && (
@@ -284,4 +280,4 @@ class SupplierRegistration extends Component {
     }
 }
 
-export default SupplierRegistration;
+export default InternalUserRegistration;

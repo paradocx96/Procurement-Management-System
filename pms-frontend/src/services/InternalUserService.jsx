@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import axios from "axios";
+import AuthHeaderInternalUser from "./AuthHeaderInternalUser";
+
 
 const API_SUPPLIER_BACKEND_URL = "http://localhost:5000/api/v1/internel-user/";
-class SupplierService extends Component {
+class InternalUserService extends Component {
    constructor(props) {
        super(props);
    }
@@ -12,7 +14,7 @@ class SupplierService extends Component {
             email,
             password
         }).then(response =>{
-            console.log(response.data);
+
             if(response.data.accessToken){
                 sessionStorage.setItem("internalUser", JSON.stringify(response.data));
                 console.log(JSON.stringify(response.data));
@@ -30,9 +32,19 @@ class SupplierService extends Component {
             contactNo,
             address,
             userType
-        });
+        },{headers: AuthHeaderInternalUser()});
+    }
+
+    //TODO: Get current user
+    getCurrentInternalUser() {
+        return JSON.parse(sessionStorage.getItem('internalUser'));
+    }
+
+    //TODO: Remove current user
+    logoutInteralUser() {
+        sessionStorage.removeItem("internalUser");
     }
 
 }
 
-export default new SupplierService;
+export default new InternalUserService;

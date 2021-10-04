@@ -3,9 +3,10 @@ import CheckButton from "react-validation/build/button";
 import Input from "react-validation/build/input";
 import Form from "react-validation/build/form";
 //import {Link}  from "react-router-dom";
-import { withRouter } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import "../../../assets/style/Login.css";
 import SupplierService from "../../../services/SupplierService";
+import {Button} from "react-bootstrap";
 
 
 // TODO: create to validate form fields
@@ -97,7 +98,11 @@ class LoginSupplier extends Component {
     render() {
         return (
             // <div style={{ backgroundImage: `url(${LoginImage})`, backgroundSize: 'cover', overflow: 'hidden', }}>
-
+            <div>
+                <Link to={'/internal-user-login'}
+                      className={'btn btn-primary'}>
+                    INTERNAL USER LOGIN
+                </Link>
                 <div className="auth-wrapper-login">
                     <div className="auth-inner-login">
 
@@ -169,7 +174,7 @@ class LoginSupplier extends Component {
                         </Form>
                     </div>
                 </div>
-            //</div>
+            </div>
         );
     }
 }
