@@ -62,5 +62,9 @@ public class SupplierApi {
 	public ResponseEntity<?> deleteByItemID(String id){
 		return itemDataAdapter.deleteByItemID(id);
 	}
+
+	public Item getItemById(String id) {
+		return itemDataAdapter.getById(id);
+	}
 	
 }

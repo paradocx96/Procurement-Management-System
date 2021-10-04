@@ -25,6 +25,9 @@ class NavigationSeniorManager extends Component {
                                     <Link to={'/site/viewAll'} className={'dropdown-item'}>Sites</Link>
                                     <Link to={'/site/addSite'} className={'dropdown-item'}>Add Site</Link>
                                 </NavDropdown>
+                                <NavDropdown title="View Requisitions" id="collasible-nav-dropdown">
+                                    <Link to={'/order/listSem'} className={'dropdown-item'}>Orders</Link>
+                                </NavDropdown>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>

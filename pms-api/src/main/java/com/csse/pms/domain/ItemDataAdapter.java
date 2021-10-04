@@ -9,5 +9,6 @@ public interface ItemDataAdapter {
 	ResponseEntity<?> addItem(Item item);
 	List<Item> getItemBySupplierID(String id);
 	ResponseEntity<?> deleteByItemID(String id);
+	Item getById(String id);
 	
 }

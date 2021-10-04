@@ -49,6 +49,9 @@ import ViewAllOrderSM from "./components/sections/Order/ViewAllOrderSM";
 import ViewAllDraftOrderSM from "./components/sections/Order/ViewAllDraftOrderSM";
 import AddDeliverySm from "./components/sections/Delivery/AddDeliverySm";
 import ViewSingleOrderSM from "./components/sections/Order/ViewSingleOrderSM";
+import ViewAllOrderAccountant from "./components/sections/Order/ViewAllOrderAccountant";
+import ViewSingleOrderAccountant from "./components/sections/Order/ViewSingleOrderAccountant";
+import ViewAllOrderSeManager from "./components/sections/Order/ViewAllOrderSeManager";
 
 
 
@@ -98,7 +101,10 @@ function App() {
                     {/* ORDER */}
                     <Route path={'/order/addOrderSm'} component={AddOrderSM}/>
                     <Route path={'/order/listSm'} component={ViewAllOrderSM}/>
+                    <Route path={'/order/listAcc'} component={ViewAllOrderAccountant}/>
+                    <Route path={'/order/listSem'} component={ViewAllOrderSeManager}/>
                     <Route path={'/order/viewSm/:id'} component={ViewSingleOrderSM}/>
+                    <Route path={'/order/viewAcc/:id'} component={ViewSingleOrderAccountant}/>
 
 
                     {/* DRAFT ORDER */}

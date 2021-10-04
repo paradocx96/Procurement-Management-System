@@ -43,7 +43,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 		
 		Optional<SupplierModel> supplierObj = supplierRepository.findByEmail(email);
 		
-		if(supplierObj.isEmpty()) {
+		if(supplierObj == null) {
 			
 			InternelUserModel internelUser = internelUserRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(email + " not found!"));
 

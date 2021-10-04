@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {Container, Table} from "react-bootstrap";
+import {Button, Col, Container, Form, Row, Table} from "react-bootstrap";
 import DraftOrderService from "../../../services/DraftOrderService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
+import ProjectService from "../../../services/ProjectService";
+import SiteService from "../../../services/SiteService";
 
 class ViewAllDraftOrderSM extends Component {
 
@@ -9,12 +11,25 @@ class ViewAllDraftOrderSM extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            DraftOrderList: []
+            siteList: [],
+            projectList: [],
+            DraftOrderList: [],
         }
+        this.onHandlerSiteId = this.onHandlerSiteId.bind(this);
     }
 
     componentDidMount = async () => {
-        await DraftOrderService.getAll()
+        await SiteService.getAllSites()
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({siteList: data});
+            }).catch(error =>
+                console.log(error.message)
+            );
+    }
+
+    onHandlerSiteId = async (event) => {
+        await DraftOrderService.getBySiteId(event.target.value)
             .then(response => response.data)
             .then((data) => {
                 this.setState({DraftOrderList: data});
@@ -23,12 +38,38 @@ class ViewAllDraftOrderSM extends Component {
             );
     }
 
+    divBox = {
+        height: '50px'
+    }
+
     render() {
         return (
             <div>
                 <NavigationSiteManager/>
                 <Container>
-                    <h2>PURCHASE HISTORY</h2>
+                    <h2>DRAFT ORDER HISTORY</h2>
+
+                    <div>
+                        <Form>
+                            <Form.Group as={Row} controlId="siteId" className={'pt-3'}>
+                                <Col sm={4}>
+                                    <Form.Control required as="select"
+                                                  name="siteId"
+                                                  onChange={this.onHandlerSiteId}>
+
+                                        <option>Select Site</option>
+                                        {this.state.siteList.map(item => (
+                                            <option key={item.id} value={item.id}>
+                                                {item.siteName}
+                                            </option>
+                                        ))}
+                                    </Form.Control>
+                                </Col>
+                            </Form.Group>
+                        </Form>
+                    </div>
+
+                    <div style={this.divBox}/>
 
                     <Table striped bordered hover variant="dark" size="sm">
                         <thead>
@@ -39,6 +80,7 @@ class ViewAllDraftOrderSM extends Component {
                             <th>Project ID</th>
                             <th>Amount</th>
                             <th>Date Time</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -56,6 +98,11 @@ class ViewAllDraftOrderSM extends Component {
                                         <td>{item.projectId}</td>
                                         <td>{item.amount}</td>
                                         <td>{item.dateTime}</td>
+                                        <td>
+                                            <Button>
+                                                PURCHASE
+                                            </Button>
+                                        </td>
                                     </tr>
                                 ))
                         }
