@@ -75,7 +75,7 @@ class LoginSupplier extends Component {
                     window.location.reload();
                 },
                 error => {
-                    const userMessage = "Username or password incorrect!";
+                    const userMessage = "Email or password incorrect!";
                     const resMessage = (error.response && error.response.data.message && error.response.data) || userMessage || error.message || error.toString();
 
                     this.setState({
@@ -107,7 +107,7 @@ class LoginSupplier extends Component {
                                 <label htmlFor="username">Email</label>
                                 <Input
                                     type="text"
-                                    placeholder="Enter username"
+                                    placeholder="Enter email"
                                     className="form-control"
                                     name="username"
                                     value={this.state.email}
