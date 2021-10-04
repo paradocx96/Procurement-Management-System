@@ -26,7 +26,7 @@ class HeaderBar extends Component {
     render() {
         return (
             <div>
-                <Navbar collapseOnSelect expand="lg" style={this.backColor} variant="dark">
+                <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                     <Container>
                         <Navbar.Brand>
                             <img
@@ -47,6 +47,7 @@ class HeaderBar extends Component {
                                         <Link to={"/dashboard/admin"} className="dropdown-item">Administrator</Link>
                                         <Link to={"/dashboard/site"} className="dropdown-item">Site manager</Link>
                                         <Link to={"/dashboard/senior"} className="dropdown-item">Senior Manager</Link>
+                                        <Link to={"/dashboard/accountant"} className="dropdown-item">Accountant</Link>
                                     </NavDropdown>
                                     <li className="nav-item text-uppercase">
                                         <Link to={"/register"}

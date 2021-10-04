@@ -1,24 +1,23 @@
 import React, {Component} from 'react';
 import {Container, Table} from "react-bootstrap";
-import OrderService from "../../../services/OrderService";
+import ProjectService from "../../../services/ProjectService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 
-class ViewAllOrder extends Component {
+class ViewAllProjectSM extends Component {
 
     // Initializing state values and functions
     constructor(props) {
         super(props);
         this.state = {
-            orderList: []
+            projectList: []
         }
     }
 
-    // Function for get all teachers details
     componentDidMount = async () => {
-        await OrderService.getAll()
+        await ProjectService.getAll()
             .then(response => response.data)
             .then((data) => {
-                this.setState({orderList: data});
+                this.setState({projectList: data});
             }).catch(error =>
                 console.log(error.message)
             );
@@ -29,34 +28,30 @@ class ViewAllOrder extends Component {
             <div>
                 <NavigationSiteManager/>
                 <Container>
-                    <h2>PURCHASE HISTORY</h2>
+                    <h2>PROJECT LIST</h2>
 
                     <Table striped bordered hover variant="dark" size="sm">
                         <thead>
                         <tr>
-                            <th>Reference No</th>
-                            <th>Manager ID</th>
-                            <th>Site ID</th>
-                            <th>Project ID</th>
-                            <th>Amount</th>
-                            <th>Status</th>
+                            <th>Project Name</th>
+                            <th>Description</th>
+                            <th>Budget</th>
+                            <th>Created Date</th>
                         </tr>
                         </thead>
                         <tbody>
                         {
-                            this.state.orderList.length === 0 ?
+                            this.state.projectList.length === 0 ?
                                 <tr>
                                     <td>{'Data Not Available!'}</td>
                                 </tr>
                                 :
-                                this.state.orderList.map((item) => (
+                                this.state.projectList.map((item) => (
                                     <tr key={item.id}>
-                                        <td>{item.referenceNo}</td>
-                                        <td>{item.siteManagerId}</td>
-                                        <td>{item.siteId}</td>
-                                        <td>{item.projectId}</td>
-                                        <td>{item.amount}</td>
-                                        <td>{item.status}</td>
+                                        <td>{item.projectName}</td>
+                                        <td>{item.description}</td>
+                                        <td>{item.budget}</td>
+                                        <td>{item.createDateTime}</td>
                                     </tr>
                                 ))
                         }
@@ -68,4 +63,4 @@ class ViewAllOrder extends Component {
     }
 }
 
-export default ViewAllOrder;
+export default ViewAllProjectSM;

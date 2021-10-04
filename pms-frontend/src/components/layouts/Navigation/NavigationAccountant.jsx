@@ -3,7 +3,7 @@ import {Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-class NavigationSiteManager extends Component {
+class NavigationAccountant extends Component {
 
     backColor = {
         backgroundColor: '#283593',
@@ -38,4 +38,4 @@ class NavigationSiteManager extends Component {
     }
 }
 
-export default NavigationSiteManager;
+export default NavigationAccountant;
