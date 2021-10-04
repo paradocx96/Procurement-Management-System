@@ -207,5 +207,40 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 		
 		return suppListReturn;
 	}
+
+	@Override
+	public List<Supplier> getSupplierByStatus(String status) {
+		
+		List<SupplierModel> suppList;
+		List<Supplier> suppListReturn = new ArrayList<>();
+		
+		try {
+			
+			suppList = supplierRepository.findByStatus(status);
+			
+
+			for(SupplierModel supplierModel: suppList) {
+				
+				Supplier supplierObj = new Supplier();
+				
+				supplierObj.setId(supplierModel.getId());
+				supplierObj.setName(supplierModel.getName());
+				supplierObj.setEmail(supplierModel.getEmail());
+				supplierObj.setAddress(supplierModel.getAddress());
+				supplierObj.setContactNo(supplierModel.getContactNo());
+				supplierObj.setLocation(supplierModel.getLocation());
+				supplierObj.setStatus(supplierModel.getStatus());
+				
+				suppListReturn.add(supplierObj);
+				
+			}
+			
+			
+		} catch (Exception e) {
+			 LOGGER.log(Level.SEVERE, e.getMessage());
+		}
+		
+		return suppListReturn;
+	}
 	
 }

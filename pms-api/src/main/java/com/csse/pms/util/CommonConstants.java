@@ -162,6 +162,9 @@ public class CommonConstants {
     /** Constant for supplier register Path in Supplier Controller */
     public static final String SUPPLIER_GET_ALL = "get-all-supplier";
     
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_GET_BY_STATUS = "get-supplier-by-status/{status}";
+    
     
     /** Constant for supplier register Path in Supplier Controller */
     public static final String SUPPLIER_POST_MAPPING_ADD_ITEM = "add-item";
@@ -184,6 +187,7 @@ public class CommonConstants {
     /** Constant for supplier register Path in Supplier Controller */
     public static final String SUPPLIER_DELETE_MAPPING_BY_ITEM_ID = "delete-item-by-id/{id}";
     
+   
     
     
     

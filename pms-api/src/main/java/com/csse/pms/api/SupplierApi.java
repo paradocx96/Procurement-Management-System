@@ -43,6 +43,10 @@ public class SupplierApi {
 		return supplierDataAdapter.getAllSupplier();
 	}
 	
+	public List<Supplier> getSupplierByStatus(String status){
+		return supplierDataAdapter.getSupplierByStatus(status);
+	}
+	
 	public ResponseEntity<?> addItem(Item item){
 		return itemDataAdapter.addItem(item);
 	}

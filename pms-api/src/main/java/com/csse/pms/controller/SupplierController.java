@@ -48,6 +48,11 @@ public class SupplierController {
 		return supplierApi.getAllSupplier();
 	}
 	
+	@GetMapping(CommonConstants.SUPPLIER_GET_BY_STATUS)
+    @ResponseStatus(HttpStatus.OK)
+	public List<Supplier> getSupplierByStatus(@PathVariable String status){
+		return supplierApi.getSupplierByStatus(status);
+	}
 	
 	@PostMapping(CommonConstants.SUPPLIER_POST_MAPPING_ADD_ITEM)
     @ResponseStatus(HttpStatus.CREATED)

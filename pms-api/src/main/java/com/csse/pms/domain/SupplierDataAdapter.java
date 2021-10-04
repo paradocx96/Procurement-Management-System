@@ -10,6 +10,7 @@ public interface SupplierDataAdapter {
 	ResponseEntity<?> registerSupplier(Supplier supplier);
 	ResponseEntity<?> loginSupplier(Supplier supplier);
 	List<Supplier> getAllSupplier();
+	List<Supplier> getSupplierByStatus(String status);
 	
 	
 }
