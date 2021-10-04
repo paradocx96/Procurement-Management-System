@@ -29,3 +29,45 @@ Future <List<CountableItemsModel>> fetchAllCountableItems() async{
     throw Exception('Failed to fetch all countable items');
   }
 }
+
+Future<String> consumeCountableItem(String id, int consumedQuantity) async{
+  final response =  await http.put(Uri.parse(BASE_URL + "consumeItem"),
+  headers: <String, String>{
+    'Content-Type': 'application/json; charset=UTF-8',
+  },
+    body: jsonEncode(<String, dynamic> {
+      'id' : id,
+      'quantity': consumedQuantity
+    })
+  );
+
+  if(response.statusCode == 200){
+    return "success" ;
+    //return true;
+  }
+  else{
+    throw Exception('Failed to update quantity');
+  }
+
+}
+
+Future<String> replenishCountableItem(String id, int replenishedQuantity) async{
+  final response =  await http.put(Uri.parse(BASE_URL + "replenishItem"),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, dynamic> {
+        'id' : id,
+        'quantity': replenishedQuantity
+      })
+  );
+
+  if(response.statusCode == 200){
+    //return response.body;
+    return "success";
+  }
+  else{
+    throw Exception('Failed to update quantity');
+  }
+
+}
