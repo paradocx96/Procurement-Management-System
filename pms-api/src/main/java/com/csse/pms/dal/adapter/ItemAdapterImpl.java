@@ -19,88 +19,107 @@ import com.csse.pms.util.CommonConstants;
 
 @Component
 public class ItemAdapterImpl implements ItemDataAdapter {
-	
+
 	 /**
      * Initialize Logger
      */
     public static final Logger LOGGER = Logger.getLogger(ItemAdapterImpl.class.getName());
 
-  
-	
+
+
 	@Autowired
 	private ItemReposirtory itemReposirtory;
 
 	@Override
 	public ResponseEntity<?> addItem(Item item) {
-		
+
 		ItemModel itemObj = new ItemModel( item.getSupplierID(),
 											item.getName(),
 											item.getQuantity(),
 											item.getPrice()
 										 );
 		itemReposirtory.save(itemObj);
-		
+
 		return ResponseEntity.ok(new ItemMessageResponseDto(CommonConstants.SUPPLIER_ADD_ITEM_SUCCESS_MSG));
 	}
 
 	@Override
 	public List<Item> getItemBySupplierID(String id) {
-		
+
 		List<ItemModel> items;
 		List<Item> item = new ArrayList<>();
-		
+
 		try {
-			
+
 			items = itemReposirtory.findBySupplierID(id);
-			
+
 			for(ItemModel itemModel: items) {
-				
+
 				Item itemObj = new Item();
-				
+
 				itemObj.setId(itemModel.getId());
 				itemObj.setSupplierID(itemModel.getSupplierID());
 				itemObj.setName(itemModel.getName());
 				itemObj.setQuantity(itemModel.getQuantity());
 				itemObj.setPrice(itemModel.getPrice());
-				
+
 				item.add(itemObj);
-				
+
 			}
-			
+
 		} catch (Exception e) {
 			 LOGGER.log(Level.SEVERE, e.getMessage());
 		}
-		
-		
+
+
 		return item;
 	}
 
 	@Override
 	public ResponseEntity<?> deleteByItemID(String id) {
-		
+
 		ItemModel itemModel= null;
-		
+
 		try {
-			
+
 			itemModel = itemReposirtory.findById(id).get();
-			
+
 			if(itemModel != null) {
 				itemReposirtory.deleteById(id);
-				
+
 				return ResponseEntity.ok(new ItemMessageResponseDto(CommonConstants.SUPPLIER_DELETE_ITEM_SUCCESS_MSG));
 			}else {
 				return ResponseEntity.ok(new ItemMessageResponseDto(CommonConstants.SUPPLIER_DELETE_ITEM_NOT_EXIST_ERROR_MSG));
 			}
-			
+
 		} catch (Exception e) {
 			 LOGGER.log(Level.SEVERE, e.getMessage());
 			return ResponseEntity.ok(new ItemMessageResponseDto(CommonConstants.SUPPLIER_DELETE_ITEM_ERROR_MSG));
 		}
-		
-		
-		
+
+
+
 	}
-	
-	
+
+	@Override
+	public Item getById(String id) {
+		ItemModel itemModel;
+		Item itemObj = new Item();
+
+		try{
+			itemModel = itemReposirtory.findById(id).get();
+
+            itemObj.setId(itemModel.getId());
+            itemObj.setSupplierID(itemModel.getSupplierID());
+            itemObj.setName(itemModel.getName());
+            itemObj.setQuantity(itemModel.getQuantity());
+            itemObj.setPrice(itemModel.getPrice());
+
+			return itemObj;
+		} catch (Exception e) {
+			LOGGER.log(Level.SEVERE, e.getMessage());
+			return itemObj;
+		}
+	}
 
 }

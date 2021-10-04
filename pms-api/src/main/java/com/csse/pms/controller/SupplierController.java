@@ -78,6 +78,10 @@ public class SupplierController {
 	public ResponseEntity<?> deleteItemByID(@PathVariable String id){
 		return supplierApi.deleteByItemID(id);
 	}
-	
-	
+
+	@GetMapping(CommonConstants.SUPPLIER_GET_MAPPING_BY_ITEM_ID)
+	@ResponseStatus(HttpStatus.OK)
+	public Item getItemByItemID(@PathVariable String id){
+		return supplierApi.getItemById(id);
+	}
 }
