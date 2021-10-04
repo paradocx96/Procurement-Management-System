@@ -67,10 +67,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 			//All Permit Access Control
 			.antMatchers("/api/v1/supplier/**").permitAll()
-			
+
 			//All Permit Access Control
 			.antMatchers("/api/v1/internel-user/login").permitAll()
 			.antMatchers("/api/v1/internel-user/register").hasAnyRole("ADMIN")
+
+
+			.antMatchers("/api/v1/order/**").permitAll()
+			.antMatchers("/api/v1/draft/**").permitAll()
+			.antMatchers("/api/v1/delivery/**").permitAll()
+			.antMatchers("/api/v1/project/**").permitAll()
+
+
+			.antMatchers("/api/inventory/**").permitAll()
+
+
+			.antMatchers("/api/site/**").permitAll()
 
 
 			.anyRequest().authenticated();
