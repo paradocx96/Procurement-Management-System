@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import {Button, Col, Container, Form, Row, Table} from "react-bootstrap";
+import {confirmAlert} from "react-confirm-alert";
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import OrderService from "../../../services/OrderService";
 import DraftOrderService from "../../../services/DraftOrderService";
 import ProjectService from "../../../services/ProjectService";
 import SiteService from "../../../services/SiteService";
 import SupplierService from "../../../services/SupplierService";
-
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
-import {confirmAlert} from "react-confirm-alert";
-import 'react-confirm-alert/src/react-confirm-alert.css';
 
 class AddOrderSM extends Component {
 
@@ -37,7 +36,6 @@ class AddOrderSM extends Component {
         this.onReset = this.onReset.bind(this);
         this.onDraft = this.onDraft.bind(this);
         this.AddItemToBucket = this.AddItemToBucket.bind(this);
-
         this.onHandlerProjectId = this.onHandlerProjectId.bind();
         this.onHandlerSiteId = this.onHandlerSiteId.bind();
         this.onHandlerSupplierId = this.onHandlerSupplierId.bind();
@@ -88,12 +86,9 @@ class AddOrderSM extends Component {
     onHandlerSupplierId = async (event) => {
         this.setState({supplierId: event.target.value});
 
-        console.log(event.target.value);
-
         await SupplierService.getItemBySupplierId(event.target.value)
             .then(response => response.data)
             .then((data) => {
-                console.log(data);
                 this.setState({itemBySupplier: data});
             }).catch(error =>
                 console.log(error.message)
@@ -103,18 +98,15 @@ class AddOrderSM extends Component {
     onHandlerSupplierStatus = async (event) => {
         this.setState({supplierStatus: event.target.value});
 
-        console.log(event.target.value);
-
         await SupplierService.getSupplierByStatus(event.target.value)
             .then(response => response.data)
             .then((data) => {
-                console.log(data);
                 this.setState({supplierList: data});
             }).catch(error =>
                 console.log(error.message)
             );
 
-        if(event.target.value === 'PreApproved') {
+        if (event.target.value === 'PreApproved') {
             this.setState({
                 status: 'Approved'
             })
@@ -217,21 +209,21 @@ class AddOrderSM extends Component {
             siteManagerId: this.state.siteManagerId,
             siteId: this.state.siteId,
             projectId: this.state.projectId,
-            amount: this.state.amount,
-            contactDetails: this.state.contactDetails,
-            comment: this.state.comment
+            amount: this.state.amount || 0,
+            contactDetails: this.state.contactDetails || '-',
+            comment: this.state.comment || '-',
         }
 
         console.log(value);
 
-        // await DraftOrderService.create(value)
-        //     .then(response => response.data)
-        //     .then((data) => {
-        //         console.log(data);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error.message);
-        //     });
+        await DraftOrderService.create(value)
+            .then(response => response.data)
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(function (error) {
+                console.log(error.message);
+            });
 
         await this.componentDidMount();
         await this.onReset();
@@ -251,8 +243,6 @@ class AddOrderSM extends Component {
             ],
         }));
 
-        console.log(this.state.itemBucket);
-
         await SupplierService.getItemById(this.state.itId)
             .then(response => response.data)
             .then((data) => {
@@ -266,21 +256,13 @@ class AddOrderSM extends Component {
             }).catch(error =>
                 console.log(error.message)
             );
-
-        // await this.totalPriceCal();
     }
 
     totalPriceCal = async () => {
         const total = this.state.priceList.reduce((total, item) => total + item);
-        console.log(total);
+
         this.setState({
             amount: total,
-        });
-    }
-
-    clickOnDelete(record) {
-        this.setState({
-            itemBucket: this.state.itemBucket.filter((r) => r !== record),
         });
     }
 
@@ -290,8 +272,6 @@ class AddOrderSM extends Component {
             priceList: this.state.priceList.filter((s, sindex) => index !== sindex),
         });
         this.totalPriceCal();
-        console.log(this.state.itemBucket);
-        console.log(this.state.priceList);
     };
 
     // Reset form values
@@ -306,10 +286,15 @@ class AddOrderSM extends Component {
         this.componentDidMount();
     }
 
+    // CSS Styles
     secBox = {
         align: 'center',
         margin: 'auto',
         width: '500px'
+    }
+
+    divBox = {
+        height: '100px'
     }
 
     render() {
@@ -318,7 +303,6 @@ class AddOrderSM extends Component {
                 <NavigationSiteManager/>
                 <Container>
                     <h2>PURCHASE ORDER</h2>
-
                     <div>
                         <Form onSubmit={this.onSubmit.bind(this)}
                               onReset={this.onReset.bind(this)}>
@@ -440,7 +424,7 @@ class AddOrderSM extends Component {
                                         <th>Item Id</th>
                                         <th>Item Name</th>
                                         <th>Qty</th>
-                                        <th></th>
+                                        <th>#</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -496,6 +480,7 @@ class AddOrderSM extends Component {
                         </Form>
                     </div>
                 </Container>
+                <div style={this.divBox}/>
             </div>
         );
     }
