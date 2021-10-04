@@ -277,6 +277,18 @@ public class CommonConstants {
     /** Constant for supplier register Path in Supplier Controller */
     public static final String SUPPLIER_DELETE_MAPPING_BY_ITEM_ID = "delete-item-by-id/{id}";
     
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String ITEM_UPDATE_SUCCESSFULLY = "Item update successfully!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String ITEM_DOESNT_EXITS = "Item not exist!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String ITEM_UPDATE_ERROR = "Item update erro!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String ITEM_PUT_MAPPING_BY_ITEM_ID = "edit-item";
+    
    
     
     

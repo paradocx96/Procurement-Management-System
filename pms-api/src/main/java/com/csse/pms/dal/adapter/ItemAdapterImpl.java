@@ -15,6 +15,7 @@ import com.csse.pms.dal.repository.ItemReposirtory;
 import com.csse.pms.domain.Item;
 import com.csse.pms.domain.ItemDataAdapter;
 import com.csse.pms.dto.ItemMessageResponseDto;
+import com.csse.pms.dto.MessageResponseDto;
 import com.csse.pms.util.CommonConstants;
 
 @Component
@@ -98,6 +99,32 @@ public class ItemAdapterImpl implements ItemDataAdapter {
 		}
 		
 		
+		
+	}
+
+	@Override
+	public ResponseEntity<?> updateSingleItem(Item item) {
+		
+		try {
+			
+			ItemModel itemModelObj = itemReposirtory.findById(item.getId()).get();
+			
+			if(itemModelObj != null) {
+				itemModelObj.setName(item.getName());
+				itemModelObj.setQuantity(item.getQuantity());
+				itemModelObj.setPrice(item.getPrice());
+				
+				itemReposirtory.save(itemModelObj);
+				
+				return ResponseEntity.ok(new MessageResponseDto(CommonConstants.ITEM_UPDATE_SUCCESSFULLY) );
+			}else {
+				return ResponseEntity.ok(new MessageResponseDto(CommonConstants.ITEM_DOESNT_EXITS) );
+			}
+			
+		} catch (Exception e) {
+			 LOGGER.log(Level.SEVERE, e.getMessage());
+			 return ResponseEntity.ok(new MessageResponseDto(CommonConstants.ITEM_UPDATE_ERROR) );
+		}
 		
 	}
 	

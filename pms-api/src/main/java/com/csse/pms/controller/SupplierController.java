@@ -79,5 +79,11 @@ public class SupplierController {
 		return supplierApi.deleteByItemID(id);
 	}
 	
+	@PutMapping(CommonConstants.ITEM_PUT_MAPPING_BY_ITEM_ID)
+    @ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<?> updateSingleItem(@RequestBody Item item){
+		return supplierApi.updateSingleItem(item);
+	}
+	
 	
 }

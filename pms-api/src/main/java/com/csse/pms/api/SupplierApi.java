@@ -63,4 +63,7 @@ public class SupplierApi {
 		return itemDataAdapter.deleteByItemID(id);
 	}
 	
+	public ResponseEntity<?> updateSingleItem(Item item){
+		return itemDataAdapter.updateSingleItem(item);
+	}
 }
