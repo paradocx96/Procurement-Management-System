@@ -9,7 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Import Components
 import LoginSupplier from "./components/pages/LoginSupplier";
 import HeaderBar from "./components/layouts/Header/HeaderBar";
-
+import LoginInternalUser from "./components/pages/LoginInternalUser";
+import RegistrationSupplier from "./components/pages/RegistrationSupplier";
 
 // Dashboard
 import Dashboard from "./components/pages/Dashboard";
@@ -49,7 +50,7 @@ import ViewAllOrderSM from "./components/sections/Order/ViewAllOrderSM";
 import ViewAllDraftOrderSM from "./components/sections/Order/ViewAllDraftOrderSM";
 import AddDeliverySm from "./components/sections/Delivery/AddDeliverySm";
 import ViewSingleOrderSM from "./components/sections/Order/ViewSingleOrderSM";
-import LoginInternalUser from "./components/pages/LoginInternalUser";
+
 
 
 
@@ -62,6 +63,7 @@ function App() {
                     {/* USER MANAGEMENT */}
                     <Route exact path="/" component={LoginSupplier}/>
                     <Route exact path="/internal-user-login" component={LoginInternalUser}/>
+                    <Route exact path="/register" component={RegistrationSupplier}/>
 
 
                     {/* DASHBOARD */}

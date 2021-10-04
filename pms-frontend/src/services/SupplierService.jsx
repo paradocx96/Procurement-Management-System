@@ -22,6 +22,18 @@ class SupplierService extends Component {
         });
     }
 
+    register(name,email,password,contactNo, address, location, status){
+        return axios.post(API_SUPPLIER_BACKEND_URL+"register",{
+            name,
+            email,
+            password,
+            contactNo,
+            address,
+            location, 
+            status
+        });
+    }
+
 }
 
 export default new SupplierService;
