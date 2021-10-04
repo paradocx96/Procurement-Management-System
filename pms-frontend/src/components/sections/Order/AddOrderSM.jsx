@@ -17,20 +17,28 @@ class AddOrderSM extends Component {
             status: 'pending',
             projectList: [],
             siteList: [],
+            itemBucket: [],
             siteManagerId: '5454654',
             message: '',
             show: false,
+            itId: '',
+            itName: '',
+            itCount: '',
         }
 
         this.onSubmit = this.onSubmit.bind(this);
         this.onReset = this.onReset.bind(this);
         this.onDraft = this.onDraft.bind(this);
+        this.AddItemToBucket = this.AddItemToBucket.bind(this);
 
         this.onHandlerProjectId = this.onHandlerProjectId.bind();
         this.onHandlerSiteId = this.onHandlerSiteId.bind();
         this.onHandlerSupplierId = this.onHandlerSupplierId.bind();
         this.onHandlerAmount = this.onHandlerAmount.bind();
         this.onHandlerContactDetails = this.onHandlerContactDetails.bind();
+        this.onHandlerItId = this.onHandlerItId.bind();
+        this.onHandlerItName = this.onHandlerItName.bind();
+        this.onHandlerItCount = this.onHandlerItCount.bind();
         this.onHandlerComment = this.onHandlerComment.bind();
     }
 
@@ -43,7 +51,7 @@ class AddOrderSM extends Component {
         itemList: [],
         amount: 0.0,
         contactDetails: '',
-        comment: ''
+        comment: '',
     }
 
     componentDidMount = async () => {
@@ -87,6 +95,21 @@ class AddOrderSM extends Component {
 
     onHandlerComment = (event) => {
         this.setState({comment: event.target.value});
+    }
+
+    onHandlerItId = (event) => {
+        this.setState({itId: event.target.value});
+    }
+
+    onHandlerItName = (event) => {
+        this.setState({
+            itId: event.target.id,
+            itName: event.target.value
+        });
+    }
+
+    onHandlerItCount = (event) => {
+        this.setState({itCount: event.target.value});
     }
 
     // Submit form values
@@ -153,6 +176,30 @@ class AddOrderSM extends Component {
         await this.onReset();
     }
 
+    AddItemToBucket = async (event) => {
+        event.preventDefault();
+
+        this.setState((prevState) => ({
+            itemBucket: [
+                ...prevState.itemBucket,
+                {
+                    itemId : this.state.itId,
+                    itemName : this.state.itName,
+                    itemCount : this.state.itCount
+                },
+            ],
+        }));
+
+        console.log(this.state.itemBucket);
+
+        // const value = {
+        //     itemId : this.state.itId,
+        //     itemName : this.state.itName,
+        //     itemCount : this.state.itCount
+        // }
+        // this.setState({itemBucket: value});
+    }
+
     // Reset form values
     onReset = () => {
         this.setState(() => this.initialState);
@@ -170,36 +217,37 @@ class AddOrderSM extends Component {
                         <Form onSubmit={this.onSubmit.bind(this)}
                               onReset={this.onReset.bind(this)}>
 
-                            <Form.Group controlId="siteId" className={'pt-3'}>
-                                <Form.Control required as="select"
-                                              name="siteId"
-                                              onChange={this.onHandlerSiteId}>
+                            <Form.Group as={Row} controlId="siteId" className={'pt-3'}>
+                                <Col sm={6}>
+                                    <Form.Control required as="select"
+                                                  name="siteId"
+                                                  onChange={this.onHandlerSiteId}>
 
-                                    <option>Select Site</option>
-                                    {this.state.siteList.map(item => (
-                                        <option key={item.id} value={item.id}>
-                                            {item.siteName}
-                                        </option>
-                                    ))}
-                                </Form.Control>
+                                        <option>Select Site</option>
+                                        {this.state.siteList.map(item => (
+                                            <option key={item.id} value={item.id}>
+                                                {item.siteName}
+                                            </option>
+                                        ))}
+                                    </Form.Control>
+                                </Col>
+                                <Col sm={6}>
+                                    <Form.Control required as="select"
+                                                  name="projectId"
+                                                  onChange={this.onHandlerProjectId}>
+
+                                        <option>Select Project</option>
+                                        {this.state.projectList.map(item => (
+                                            <option key={item.id} value={item.id}>
+                                                {item.projectName}
+                                            </option>
+                                        ))}
+                                    </Form.Control>
+                                </Col>
                             </Form.Group>
 
-                            <Form.Group controlId="projectId" className={'pt-3'}>
-                                <Form.Control required as="select"
-                                              name="projectId"
-                                              onChange={this.onHandlerProjectId}>
-
-                                    <option>Select Project</option>
-                                    {this.state.projectList.map(item => (
-                                        <option key={item.id} value={item.id}>
-                                            {item.projectName}
-                                        </option>
-                                    ))}
-                                </Form.Control>
-                            </Form.Group>
-
-
-                            <Form.Group controlId="supplierId" className={'pt-3'}>
+                            <Form.Group as={Row} controlId="supplierId" className={'pt-3'}>
+                                <Col sm={6}>
                                 <Form.Control required as="select"
                                               name="supplierId"
                                               value={this.state.supplierId}
@@ -209,6 +257,35 @@ class AddOrderSM extends Component {
                                     <option>Supplier 1</option>
                                     <option>Supplier 2</option>
                                 </Form.Control>
+                                </Col>
+                            </Form.Group>
+
+                            <Form.Group as={Row} controlId="projectId" className={'pt-3'}>
+                                <Col sm={5}>
+                                    <Form.Control required as="select"
+                                                  name="itName"
+                                                  value={this.state.itName}
+                                                  onChange={this.onHandlerItName}>
+
+                                        <option>ITEM</option>
+                                        <option id="10">Item 1</option>
+                                        <option id="20">Item 2</option>
+                                        <option id="30">Item 3</option>
+                                        <option id="40">Item 4</option>
+                                        <option id="50">Item 5</option>
+                                    </Form.Control>
+                                </Col>
+                                <Col sm={5}>
+                                    <Form.Control placeholder="Item Qty"
+                                                  name="itCount"
+                                                  required
+                                                  value={this.state.itCount}
+                                                  onChange={this.onHandlerItCount}/>
+                                </Col>
+                                <Col sm={2}>
+                                    <Button onClick={this.AddItemToBucket.bind(this)}>+</Button>
+                                </Col>
+
                             </Form.Group>
 
 
