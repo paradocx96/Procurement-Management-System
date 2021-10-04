@@ -35,8 +35,7 @@ class HeaderBar extends Component {
         const userSupplier = SupplierService.getCurrentSupplier();
         const userInternal = InternalUserService.getCurrentInternalUser();
 
-        //console.log("INTERNAL USER " + userInternal.email);
-        //console.log("INTERNAL USER " + userInternal.name);
+        console.log("INTERNAL USER " + userInternal);
 
         if (userSupplier) {
             this.setState({
@@ -44,7 +43,6 @@ class HeaderBar extends Component {
                 supplierDashboard: userSupplier.roles.includes("ROLE_SUPPLIER"),
             });
         }
-
         if (userInternal) {
             this.setState({
                 currentUser: userInternal,
@@ -55,6 +53,31 @@ class HeaderBar extends Component {
             });
         }
     }
+
+    // componentDidUpdate(){
+    //     const userSupplier = SupplierService.getCurrentSupplier();
+    //     const userInternal = InternalUserService.getCurrentInternalUser();
+    //
+    //     //console.log("INTERNAL USER " + userInternal.email);
+    //     //console.log("INTERNAL USER " + userInternal);
+    //
+    //     if (userSupplier) {
+    //         this.setState({
+    //             currentUser: userSupplier,
+    //             supplierDashboard: userSupplier.roles.includes("ROLE_SUPPLIER"),
+    //         });
+    //     }
+    //
+    //     if (userInternal) {
+    //         this.setState({
+    //             currentUser: userInternal,
+    //             adminDashboard: userInternal.roles.includes("ROLE_ADMIN"),
+    //             accountantDashboard: userInternal.roles.includes("ROLE_ACCOUNTANT"),
+    //             siteManagerDashboard: userInternal.roles.includes("ROLE_SITE_MANAGER"),
+    //             seniorManagerDashboard: userInternal.roles.includes("ROLE_SENIOR_MANAGER"),
+    //         });
+    //     }
+    // }
 
     logout() {
         SupplierService.logoutSupplier();
@@ -89,7 +112,7 @@ class HeaderBar extends Component {
                                             </li>
                                         )}
                                         {accountantDashboard && (
-                                            <li className="nav-item">
+                                            <li className="nav-item text-uppercase">
                                                 <Link to={'/dashboard/accountant'} className={'nav-link'} > Dashboard </Link>
                                             </li>
                                         )}

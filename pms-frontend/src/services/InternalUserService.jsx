@@ -19,7 +19,7 @@ class InternalUserService extends Component {
                 sessionStorage.setItem("internalUser", JSON.stringify(response.data));
                 console.log(JSON.stringify(response.data));
             }
-            console.log(response.data);
+            console.log("Internal Users ---- ", response.data);
             return response.data;
         });
     }

@@ -202,6 +202,19 @@ class SupplierRegistration extends Component {
                                 </div>
                                 <br></br>
                                 <div className="form-group">
+                                    <label htmlFor="address">Contact Number</label>
+                                    <Input
+                                        type="number"
+                                        placeholder="Enter Contact Number"
+                                        className="form-control"
+                                        name="contactNo"
+                                        value={this.state.contactNo}
+                                        onChange={this.onChange}
+                                        validations={[requiredField]}
+                                    />
+                                </div>
+                                <br></br>
+                                <div className="form-group">
                                     <label htmlFor="username">Your shop location</label>
                                     <Input
                                         type="text"
