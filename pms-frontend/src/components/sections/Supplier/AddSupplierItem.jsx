@@ -33,7 +33,7 @@ class AddSupplierItem extends Component {
             supplierID: "",
             name: "",
             quantity: "",
-            price: 0.00,
+            price: 0,
             successful: false,
             message: "",
             loading: false,
@@ -58,6 +58,16 @@ class AddSupplierItem extends Component {
            })
     }
 
+    componentDidMount() {
+        const user = SupplierService.getCurrentSupplier();
+        console.log(user);
+        if (user) {
+            this.setState({
+                supplierID: user.id,
+            });
+        }
+    }
+
     // TODO: Set Values for state variables
     handleSubmit(event) {
         event.preventDefault();
@@ -73,6 +83,20 @@ class AddSupplierItem extends Component {
 
         // TODO: Calling Registration Service function and check if there is any error
         if (this.checkBtn.context._errors.length === 0) {
+
+            // const  qty = this.state.quantity;
+            // const quantityItem = qty.toString();
+            //
+            // const price1 = this.state.price;
+            // const priceItem = parseFloat(price1);
+
+            // let values = {
+            //     supplierID: this.state.supplierID,
+            //     name: this.state.name,
+            //     quantity: this.state.quantity,
+            //     price: this.state.price,
+            // }
+
             SupplierService.addItem(
                 this.state.supplierID,
                 this.state.name,
@@ -133,11 +157,11 @@ class AddSupplierItem extends Component {
                                 <div className="form-group">
                                     <label htmlFor="email">Item Quantity</label>
                                     <Input
-                                        type="number"
-                                        placeholder="Enter email"
+                                        type="text"
+                                        placeholder="Enter Quantity"
                                         className="form-control"
-                                        name="email"
-                                        value={this.state.email}
+                                        name="quantity"
+                                        value={this.state.quantity}
                                         onChange={this.onChange}
                                         validations={[requiredField]}
                                     />
@@ -146,11 +170,11 @@ class AddSupplierItem extends Component {
                                 <div className="form-group">
                                     <label htmlFor="address">Item Price</label>
                                     <Input
-                                        type="text"
-                                        placeholder="Enter address"
+                                        type="number"
+                                        placeholder="Enter Price"
                                         className="form-control"
-                                        name="address"
-                                        value={this.state.address}
+                                        name="price"
+                                        value={this.state.price}
                                         onChange={this.onChange}
                                         validations={[requiredField]}
                                     />
@@ -171,7 +195,7 @@ class AddSupplierItem extends Component {
                             </div>
                         )}
                         <p className="forgot-password text-lg-end">
-                            Already registered ?<Link to="/login">sign in</Link>
+                            Do you want to see <Link to="/view-items">Item List ?</Link>
 
                         </p>
                         <br></br>

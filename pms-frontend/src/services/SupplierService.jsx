@@ -43,6 +43,16 @@ class SupplierService extends Component {
        })
     }
 
+    //TODO: Get current user
+    getCurrentSupplier() {
+        return JSON.parse(sessionStorage.getItem('supplier'));
+    }
+
+    //TODO: Remove current user
+    logoutSupplier() {
+        sessionStorage.removeItem("supplier");
+    }
+
 }
 
 export default new SupplierService;
