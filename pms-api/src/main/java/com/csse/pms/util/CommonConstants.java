@@ -165,6 +165,24 @@ public class CommonConstants {
     /** Constant for supplier register Path in Supplier Controller */
     public static final String SUPPLIER_GET_BY_STATUS = "get-supplier-by-status/{status}";
     
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_STATUS = "status";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_STAUS_UPDATE_SUCCESSFULLY = "Status update successfully!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_DOESNT_EXIST = "Supplier doesn't exist!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_STAUS_UPDATE_ERROR = "Supplier status update error!";
+    
+    /** Constant for supplier register Path in Supplier Controller */
+    public static final String SUPPLIER_PUT_MAPPING_STATUS_UPDATE = "update-status";
+    
+    
+    
+    
     
     /** Constant for supplier register Path in Supplier Controller */
     public static final String SUPPLIER_POST_MAPPING_ADD_ITEM = "add-item";

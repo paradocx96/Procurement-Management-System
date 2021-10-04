@@ -13,6 +13,10 @@ import java.util.stream.Collectors;
 import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -73,6 +77,8 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 	
 	@Autowired
 	private InternelUserRepository internelUserRepository;
+	
+	private final MongoTemplate mongoTemplate = null;
 	
 	/**
      * Initialize Logger
@@ -241,6 +247,37 @@ public class SupplierAdapterImpl implements SupplierDataAdapter{
 		}
 		
 		return suppListReturn;
+	}
+
+	@Override
+	public ResponseEntity<?> updateSupplierStatus(Supplier supplier) {
+		
+		try {
+			
+			SupplierModel supplierObj = supplierRepository.findById(supplier.getId()).get();
+			
+			
+//			SupplierModel supplierObj = mongoTemplate.findAndModify(
+//					Query.query(Criteria.where(CommonConstants.ID).is(supplier.getId())),
+//					new Update()
+//					.set(CommonConstants.SUPPLIER_STATUS, supplier.getStatus()), 
+//					SupplierModel.class);
+			
+			if(supplierObj != null) {
+				
+				supplierObj.setStatus(supplier.getStatus());
+				supplierRepository.save(supplierObj);
+				
+				return ResponseEntity.ok(new SupplierMessageResponseDto(CommonConstants.SUPPLIER_STAUS_UPDATE_SUCCESSFULLY));
+			}else {
+				return ResponseEntity.badRequest().body(new SupplierMessageResponseDto(CommonConstants.SUPPLIER_DOESNT_EXIST));
+			}
+			
+		} catch (Exception e) {
+			 LOGGER.log(Level.SEVERE, e.getMessage());
+			 return ResponseEntity.badRequest().body(new SupplierMessageResponseDto(CommonConstants.SUPPLIER_STAUS_UPDATE_ERROR));
+		}
+	
 	}
 	
 }

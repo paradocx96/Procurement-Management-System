@@ -11,6 +11,7 @@ public interface SupplierDataAdapter {
 	ResponseEntity<?> loginSupplier(Supplier supplier);
 	List<Supplier> getAllSupplier();
 	List<Supplier> getSupplierByStatus(String status);
+	ResponseEntity<?> updateSupplierStatus(Supplier supplier);
 	
 	
 }

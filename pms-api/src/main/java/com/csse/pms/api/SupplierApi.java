@@ -47,6 +47,10 @@ public class SupplierApi {
 		return supplierDataAdapter.getSupplierByStatus(status);
 	}
 	
+	public ResponseEntity<?> updateSupplierStatus(Supplier supplier){
+		return supplierDataAdapter.updateSupplierStatus(supplier);
+	}
+	
 	public ResponseEntity<?> addItem(Item item){
 		return itemDataAdapter.addItem(item);
 	}
