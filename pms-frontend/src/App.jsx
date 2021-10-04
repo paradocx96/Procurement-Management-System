@@ -11,6 +11,7 @@ import LoginSupplier from "./components/pages/LoginSupplier";
 import HeaderBar from "./components/layouts/Header/HeaderBar";
 import LoginInternalUser from "./components/pages/LoginInternalUser";
 import RegistrationSupplier from "./components/pages/RegistrationSupplier";
+import RegistrationInternalUser from "./components/pages/RegistrationInternalUser";
 
 // Dashboard
 import Dashboard from "./components/pages/Dashboard";
@@ -64,6 +65,7 @@ function App() {
                     <Route exact path="/" component={LoginSupplier}/>
                     <Route exact path="/internal-user-login" component={LoginInternalUser}/>
                     <Route exact path="/register" component={RegistrationSupplier}/>
+                    <Route exact path="/internal-user-register" component={RegistrationInternalUser}/>
 
 
                     {/* DASHBOARD */}
