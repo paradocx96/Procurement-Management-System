@@ -49,6 +49,7 @@ import ViewAllOrderSM from "./components/sections/Order/ViewAllOrderSM";
 import ViewAllDraftOrderSM from "./components/sections/Order/ViewAllDraftOrderSM";
 import AddDeliverySm from "./components/sections/Delivery/AddDeliverySm";
 import ViewSingleOrderSM from "./components/sections/Order/ViewSingleOrderSM";
+import LoginInternalUser from "./components/pages/LoginInternalUser";
 
 
 
@@ -60,6 +61,7 @@ function App() {
                 <Switch>
                     {/* USER MANAGEMENT */}
                     <Route exact path="/" component={LoginSupplier}/>
+                    <Route exact path="/internal-user-login" component={LoginInternalUser}/>
 
 
                     {/* DASHBOARD */}

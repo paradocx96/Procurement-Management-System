@@ -7,3 +7,13 @@ export default function AuthHeaderSupplier() {
         return {};
     }
 }
+
+export default function AuthHeaderInternelUser() {
+    const user = JSON.parse(sessionStorage.getItem('internalUser'));
+
+    if (user && user.accessToken) {
+        return { Authorization: 'Bearer ' + user.accessToken };
+    } else {
+        return {};
+    }
+}
