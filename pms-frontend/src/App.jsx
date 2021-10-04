@@ -7,7 +7,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import Components
-import Login from "./components/pages/Login";
+import LoginSupplier from "./components/pages/LoginSupplier";
 import HeaderBar from "./components/layouts/Header/HeaderBar";
 
 
@@ -59,7 +59,7 @@ function App() {
                 <HeaderBar/>
                 <Switch>
                     {/* USER MANAGEMENT */}
-                    <Route exact path="/" component={Login}/>
+                    <Route exact path="/" component={LoginSupplier}/>
 
 
                     {/* DASHBOARD */}
