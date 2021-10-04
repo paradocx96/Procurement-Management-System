@@ -4,6 +4,7 @@ import {Container, Table} from "react-bootstrap";
 import SiteService from "../../../services/SiteService";
 import {Link} from "react-router-dom";
 import NavigationAccountant from "../../layouts/Navigation/NavigationAccountant";
+import DeliveryLogService from "../../../services/DeliveryLogService";
 
 class ViewSingleOrderAccountant extends Component {
 
@@ -15,6 +16,7 @@ class ViewSingleOrderAccountant extends Component {
             id: '',
             orderList: [],
             siteList: [],
+            deliveryList: [],
             isLoading: true,
             errors: null,
             show: false
@@ -81,6 +83,14 @@ class ViewSingleOrderAccountant extends Component {
             .then(response => response.data)
             .then((data) => {
                 this.setState({siteList: data});
+            }).catch(error =>
+                console.log(error.message)
+            );
+
+        await DeliveryLogService.getByReferenceNo(this.state.referenceNo)
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({deliveryList: data});
             }).catch(error =>
                 console.log(error.message)
             );
@@ -195,6 +205,34 @@ class ViewSingleOrderAccountant extends Component {
                                 <td><h5>Total Amount</h5></td>
                                 <td>{this.state.amount}</td>
                             </tr>
+                            </tbody>
+                        </Table>
+                    </section>
+
+                    <div style={this.divBox}/>
+
+                    <section style={this.divSection}>
+                        <Table striped bordered hover variant="dark" size="sm">
+                            <thead>
+                            <tr>
+                                <th>Delivery Remark</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {
+                                this.state.orderList.length === 0 ?
+                                    <tr>
+                                        <td>{'Data Not Available!'}</td>
+                                    </tr>
+                                    :
+                                    this.state.deliveryList.map((item) => (
+                                        <tr key={item.id}>
+                                            <td>{item.remark}</td>
+                                            <td>{item.status}</td>
+                                        </tr>
+                                    ))
+                            }
                             </tbody>
                         </Table>
                     </section>
