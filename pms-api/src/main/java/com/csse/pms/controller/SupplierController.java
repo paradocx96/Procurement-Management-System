@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.csse.pms.api.SupplierApi;
 import com.csse.pms.dal.model.InternelUserModel;
+import com.csse.pms.domain.Item;
 import com.csse.pms.domain.Supplier;
 import com.csse.pms.util.CommonConstants;
 
@@ -36,5 +37,10 @@ public class SupplierController {
 	public ResponseEntity<?> loginSupplier(@RequestBody Supplier supplier){
 		return supplierApi.loginSupplier(supplier);
 	}
-
+	
+	@PostMapping(CommonConstants.SUPPLIER_POST_MAPPING_ADD_ITEM)
+    @ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<?> addItem(@RequestBody Item item){
+		return supplierApi.addItem(item);
+	}
 }
