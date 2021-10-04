@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import {Button, Col, Container, Form, Row, Table} from "react-bootstrap";
-import {v4 as uuid4} from 'uuid';
 import OrderService from "../../../services/OrderService";
 import DraftOrderService from "../../../services/DraftOrderService";
 import ProjectService from "../../../services/ProjectService";
-import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import SiteService from "../../../services/SiteService";
+import SupplierService from "../../../services/SupplierService";
+
+import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
+import {confirmAlert} from "react-confirm-alert";
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 class AddOrderSM extends Component {
 
@@ -18,12 +21,16 @@ class AddOrderSM extends Component {
             projectList: [],
             siteList: [],
             itemBucket: [],
+            supplierList: [],
+            itemBySupplier: [],
+            priceList: [],
             siteManagerId: '5454654',
             message: '',
             show: false,
             itId: '',
             itName: '',
             itCount: 0,
+            itPrice: 0
         }
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -48,6 +55,7 @@ class AddOrderSM extends Component {
         projectId: '',
         siteId: '',
         supplierId: '',
+        supplierStatus: '',
         itemList: [],
         amount: 0.0,
         contactDetails: '',
@@ -65,10 +73,6 @@ class AddOrderSM extends Component {
     }
 
     // Assign form values to State variables
-    onHandlerProjectId = (event) => {
-        this.setState({projectId: event.target.value});
-    }
-
     onHandlerSiteId = async (event) => {
         this.setState({siteId: event.target.value});
 
@@ -81,8 +85,44 @@ class AddOrderSM extends Component {
             );
     }
 
-    onHandlerSupplierId = (event) => {
+    onHandlerSupplierId = async (event) => {
         this.setState({supplierId: event.target.value});
+
+        console.log(event.target.value);
+
+        await SupplierService.getItemBySupplierId(event.target.value)
+            .then(response => response.data)
+            .then((data) => {
+                console.log(data);
+                this.setState({itemBySupplier: data});
+            }).catch(error =>
+                console.log(error.message)
+            );
+    }
+
+    onHandlerSupplierStatus = async (event) => {
+        this.setState({supplierStatus: event.target.value});
+
+        console.log(event.target.value);
+
+        await SupplierService.getSupplierByStatus(event.target.value)
+            .then(response => response.data)
+            .then((data) => {
+                console.log(data);
+                this.setState({supplierList: data});
+            }).catch(error =>
+                console.log(error.message)
+            );
+
+        if(event.target.value === 'PreApproved') {
+            this.setState({
+                status: 'Approved'
+            })
+        }
+    }
+
+    onHandlerProjectId = (event) => {
+        this.setState({projectId: event.target.value});
     }
 
     onHandlerAmount = (event) => {
@@ -110,21 +150,37 @@ class AddOrderSM extends Component {
         this.setState({itCount: event.target.value});
     }
 
-    // totalPriceCal = ({ products }) => (
-    //     <h3>
-    //         Price:
-    //         {products.reduce((sum, i) => (
-    //             sum += i.count * i.price
-    //         ), 0)}
-    //     </h3>
-    // )
-
     // Submit form values
     onSubmit = async (event) => {
         event.preventDefault();
 
-        let newRefNo = uuid4();
+        confirmAlert({
+            title: 'Do you want to purchase order?',
+            message: 'Total Price is Rs.' + this.state.amount,
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => {
+                        this.handleSubmitPurchase(event);
+                        console.log('Operation Proceed!');
+                    }
+                },
+                {
+                    label: 'No',
+                    onClick: () => {
+                        console.log('Operation Canceled!');
+                    }
+                }
+            ],
+            closeOnEscape: true,
+            closeOnClickOutside: true
+        });
+    }
 
+    // Purchase Order Method
+    handleSubmitPurchase = async (event) => {
+        event.preventDefault();
+        let newRefNo = 'REF-' + Date.now();
         let value = {
             referenceNo: newRefNo,
             supplierId: this.state.supplierId,
@@ -132,22 +188,20 @@ class AddOrderSM extends Component {
             siteManagerId: this.state.siteManagerId,
             siteId: this.state.siteId,
             projectId: this.state.projectId,
-            amount: this.state.amount,
-            contactDetails: this.state.contactDetails,
-            comment: this.state.comment,
+            amount: this.state.amount || 0,
+            contactDetails: this.state.contactDetails || '-',
+            comment: this.state.comment || '-',
             status: this.state.status
         }
 
-        console.log(value);
-
-        // await OrderService.create(value)
-        //     .then(response => response.data)
-        //     .then((data) => {
-        //         console.log(data);
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error.message);
-        //     });
+        await OrderService.create(value)
+            .then(response => response.data)
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(function (error) {
+                console.log(error.message);
+            });
 
         await this.componentDidMount();
         await this.onReset();
@@ -199,7 +253,29 @@ class AddOrderSM extends Component {
 
         console.log(this.state.itemBucket);
 
+        await SupplierService.getItemById(this.state.itId)
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({
+                    itPrice: data.price
+                });
+                this.setState((prevState) => ({
+                    priceList: [...prevState.priceList, (data.price * this.state.itCount),],
+                }));
+                this.totalPriceCal();
+            }).catch(error =>
+                console.log(error.message)
+            );
+
         // await this.totalPriceCal();
+    }
+
+    totalPriceCal = async () => {
+        const total = this.state.priceList.reduce((total, item) => total + item);
+        console.log(total);
+        this.setState({
+            amount: total,
+        });
     }
 
     clickOnDelete(record) {
@@ -211,23 +287,29 @@ class AddOrderSM extends Component {
     deleteRow = (index) => {
         this.setState({
             itemBucket: this.state.itemBucket.filter((s, sindex) => index !== sindex),
+            priceList: this.state.priceList.filter((s, sindex) => index !== sindex),
         });
-
+        this.totalPriceCal();
         console.log(this.state.itemBucket);
+        console.log(this.state.priceList);
     };
-
-    totalPriceCal = async () => {
-        const total = this.state.itemBucket.reduce((total, item) => total + item.itemCount)
-        console.log(total);
-    }
 
     // Reset form values
     onReset = () => {
         this.setState(() => this.initialState);
         this.setState({
-            itemBucket: []
+            projectList: [],
+            itemBucket: [],
+            supplierList: [],
+            itemBySupplier: [],
         })
         this.componentDidMount();
+    }
+
+    secBox = {
+        align: 'center',
+        margin: 'auto',
+        width: '500px'
     }
 
     render() {
@@ -270,33 +352,72 @@ class AddOrderSM extends Component {
                                 </Col>
                             </Form.Group>
 
-                            <Form.Group as={Row} controlId="supplierId" className={'pt-3'}>
+                            <Form.Group as={Row} controlId="supplierStatus" className={'pt-3'}>
+                                <Col sm={6}>
+                                    <Form.Control required as="select"
+                                                  name="supplierStatus"
+                                                  value={this.state.supplierStatus}
+                                                  onChange={this.onHandlerSupplierStatus}>
+
+                                        <option>Select Supplier Type</option>
+                                        <option>PreApproved</option>
+                                        <option>pending</option>
+                                    </Form.Control>
+                                </Col>
                                 <Col sm={6}>
                                     <Form.Control required as="select"
                                                   name="supplierId"
                                                   value={this.state.supplierId}
                                                   onChange={this.onHandlerSupplierId}>
 
-                                        <option>Supplier</option>
-                                        <option>Supplier 1</option>
-                                        <option>Supplier 2</option>
+                                        <option>Select Supplier</option>
+                                        {this.state.supplierList.map(item => (
+                                            <option key={item.id} value={item.id}>
+                                                {item.name}
+                                            </option>
+                                        ))}
                                     </Form.Control>
                                 </Col>
                             </Form.Group>
 
+                            <section style={this.secBox}>
+                                <Table>
+                                    <thead>
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Available Qty</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {
+                                        this.state.itemBySupplier.map((item, index) => {
+                                            return (
+                                                <tr key={index}>
+                                                    <td>{item.name}</td>
+                                                    <td>{item.quantity}</td>
+                                                    <td>{item.price}</td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                    </tbody>
+                                </Table>
+                            </section>
+
                             <Form.Group as={Row} controlId="itemSelect" className={'pt-3'}>
-                                <Col sm={5}>
+                                <Col sm={6}>
                                     <Form.Control required as="select"
                                                   name="itName"
                                                   value={this.state.itName}
                                                   onChange={this.onHandlerItName}>
 
-                                        <option>ITEM</option>
-                                        <option value="10">Item 1</option>
-                                        <option value="20">Item 2</option>
-                                        <option value="30">Item 3</option>
-                                        <option value="40">Item 4</option>
-                                        <option value="50">Item 5</option>
+                                        <option>Select Item</option>
+                                        {this.state.itemBySupplier.map(item => (
+                                            <option key={item.id} value={item.id}>
+                                                {item.name}
+                                            </option>
+                                        ))}
                                     </Form.Control>
                                 </Col>
                                 <Col sm={5}>
@@ -306,8 +427,9 @@ class AddOrderSM extends Component {
                                                   value={this.state.itCount}
                                                   onChange={this.onHandlerItCount}/>
                                 </Col>
-                                <Col sm={2}>
-                                    <Button className={'btn btn-secondary'} onClick={this.AddItemToBucket.bind(this)}>+</Button>
+                                <Col sm={1}>
+                                    <Button className={'btn btn-secondary'}
+                                            onClick={this.AddItemToBucket.bind(this)}>+</Button>
                                 </Col>
                             </Form.Group>
 
@@ -318,7 +440,7 @@ class AddOrderSM extends Component {
                                         <th>Item Id</th>
                                         <th>Item Name</th>
                                         <th>Qty</th>
-                                        <th> </th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -330,7 +452,8 @@ class AddOrderSM extends Component {
                                                     <td>{item.itemName}</td>
                                                     <td>{item.itemCount}</td>
                                                     <td>
-                                                        <Button className={'btn btn-danger'} onClick={this.deleteRow.bind(this, index)}>-</Button>
+                                                        <Button className={'btn btn-danger'}
+                                                                onClick={this.deleteRow.bind(this, index)}>-</Button>
                                                     </td>
                                                 </tr>
                                             )
@@ -338,6 +461,9 @@ class AddOrderSM extends Component {
                                     }
                                     </tbody>
                                 </Table>
+                                <br/>
+                                <br/>
+                                <h4>Total Price : {this.state.amount || 0.00}</h4>
                             </section>
 
                             <Form.Group as={Row} controlId="contactDetails" className={'pt-3'}>
