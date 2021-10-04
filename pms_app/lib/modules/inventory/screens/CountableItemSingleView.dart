@@ -101,6 +101,9 @@ class _CountableItemSingleViewState extends State<CountableItemSingleView> {
     futureCountableItem = CountableItemService.fetchCountableItemById(args.id);
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Countable Item Single View"),
+      ),
       //resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: SingleChildScrollView(

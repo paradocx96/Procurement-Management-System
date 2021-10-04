@@ -29,6 +29,9 @@ class _CountableItemsState extends State<CountableItems> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Countable Items"),
+      ),
       body: Container(
         child: Center(
           child: FutureBuilder<List<CountableItemsModel>>(
