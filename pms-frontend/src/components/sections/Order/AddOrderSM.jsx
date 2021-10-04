@@ -5,6 +5,7 @@ import OrderService from "../../../services/OrderService";
 import DraftOrderService from "../../../services/DraftOrderService";
 import ProjectService from "../../../services/ProjectService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
+import SiteService from "../../../services/SiteService";
 
 class AddOrderSM extends Component {
 
@@ -13,10 +14,10 @@ class AddOrderSM extends Component {
         super(props);
         this.state = this.initialState;
         this.state = {
-            siteManagerId: '100',
-            siteId: '200',
             status: 'pending',
             projectList: [],
+            siteList: [],
+            siteManagerId: '5454654',
             message: '',
             show: false,
         }
@@ -26,6 +27,7 @@ class AddOrderSM extends Component {
         this.onDraft = this.onDraft.bind(this);
 
         this.onHandlerProjectId = this.onHandlerProjectId.bind();
+        this.onHandlerSiteId = this.onHandlerSiteId.bind();
         this.onHandlerSupplierId = this.onHandlerSupplierId.bind();
         this.onHandlerAmount = this.onHandlerAmount.bind();
         this.onHandlerContactDetails = this.onHandlerContactDetails.bind();
@@ -36,6 +38,7 @@ class AddOrderSM extends Component {
     initialState = {
         referenceNo: '',
         projectId: '',
+        siteId: '',
         supplierId: '',
         itemList: [],
         amount: 0.0,
@@ -44,10 +47,10 @@ class AddOrderSM extends Component {
     }
 
     componentDidMount = async () => {
-        await ProjectService.getAll()
+        await SiteService.getAllSites()
             .then(response => response.data)
             .then((data) => {
-                this.setState({projectList: data});
+                this.setState({siteList: data});
             }).catch(error =>
                 console.log(error.message)
             );
@@ -56,6 +59,18 @@ class AddOrderSM extends Component {
     // Assign form values to State variables
     onHandlerProjectId = (event) => {
         this.setState({projectId: event.target.value});
+    }
+
+    onHandlerSiteId = async (event) => {
+        this.setState({siteId: event.target.value});
+
+        await ProjectService.getBySiteId(event.target.value)
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({projectList: data});
+            }).catch(error =>
+                console.log(error.message)
+            );
     }
 
     onHandlerSupplierId = (event) => {
@@ -155,12 +170,26 @@ class AddOrderSM extends Component {
                         <Form onSubmit={this.onSubmit.bind(this)}
                               onReset={this.onReset.bind(this)}>
 
+                            <Form.Group controlId="siteId" className={'pt-3'}>
+                                <Form.Control required as="select"
+                                              name="siteId"
+                                              onChange={this.onHandlerSiteId}>
+
+                                    <option>Select Site</option>
+                                    {this.state.siteList.map(item => (
+                                        <option key={item.id} value={item.id}>
+                                            {item.siteName}
+                                        </option>
+                                    ))}
+                                </Form.Control>
+                            </Form.Group>
+
                             <Form.Group controlId="projectId" className={'pt-3'}>
                                 <Form.Control required as="select"
                                               name="projectId"
                                               onChange={this.onHandlerProjectId}>
 
-                                    <option>Project</option>
+                                    <option>Select Project</option>
                                     {this.state.projectList.map(item => (
                                         <option key={item.id} value={item.id}>
                                             {item.projectName}

@@ -3,6 +3,7 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import ProjectService from "../../../services/ProjectService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import Toast1 from "../../Toasts/Toast1";
+import SiteService from "../../../services/SiteService";
 
 class AddProjectSM extends Component {
 
@@ -10,8 +11,8 @@ class AddProjectSM extends Component {
     constructor(props) {
         super(props);
         this.state = this.initialState;
-        this.state.managerId = '100';
-        this.state.siteId = '200';
+        this.state.managerId = '5454654';
+        this.state.siteList = [];
         this.state.show = false;
         this.state.message = '';
 
@@ -20,16 +21,22 @@ class AddProjectSM extends Component {
         this.onNameHandler = this.onNameHandler.bind();
         this.onDescriptionHandler = this.onDescriptionHandler.bind();
         this.onBudgetHandler = this.onBudgetHandler.bind();
+        this.onHandlerSiteId = this.onHandlerSiteId.bind();
     }
 
     // Initializing default values
     initialState = {
+        siteId: '',
         projectName: '',
         description: '',
         budget: 0.0
     }
 
     // Assign form values to State variables
+    onHandlerSiteId = (event) => {
+        this.setState({siteId: event.target.value});
+    }
+
     onNameHandler = (event) => {
         this.setState({projectName: event.target.value});
     }
@@ -40,6 +47,16 @@ class AddProjectSM extends Component {
 
     onBudgetHandler = (event) => {
         this.setState({budget: event.target.value});
+    }
+
+    componentDidMount = async () => {
+        await SiteService.getAllSites()
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({siteList: data});
+            }).catch(error =>
+                console.log(error.message)
+            );
     }
 
     // Submit form values
@@ -65,12 +82,14 @@ class AddProjectSM extends Component {
                 console.log(error.message);
             });
 
-        this.onReset();
+        await this.onReset();
+        await this.componentDidMount();
     }
 
     // Reset form values
     onReset = () => {
         this.setState(() => this.initialState)
+        this.componentDidMount();
     }
 
     render() {
@@ -93,6 +112,21 @@ class AddProjectSM extends Component {
                     <div>
                         <Form onSubmit={this.onSubmit.bind(this)}
                               onReset={this.onReset.bind(this)}>
+
+                            <Form.Group as={Row} controlId="siteId" className={'pt-3'}>
+                                <Form.Label column sm={2}>Site</Form.Label>
+                                <Col sm={5}>
+                                    <Form.Control required as="select"
+                                                  name="siteId"
+                                                  onChange={this.onHandlerSiteId}>
+                                        {this.state.siteList.map(item => (
+                                            <option key={item.id} value={item.id}>
+                                                {item.siteName}({item.location})
+                                            </option>
+                                        ))}
+                                    </Form.Control>
+                                </Col>
+                            </Form.Group>
 
                             <Form.Group as={Row} controlId="projectName" className={'pt-3'}>
                                 <Form.Label column sm={2}>Project Name</Form.Label>
