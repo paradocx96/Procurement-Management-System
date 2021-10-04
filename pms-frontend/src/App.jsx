@@ -63,12 +63,14 @@ import EditDraftOrderSm from "./components/sections/Order/EditDraftOrderSM";
 import AddOrderAcc from "./components/sections/Order/AddOrderAcc";
 import ViewAllOrderAdmin from "./components/sections/Order/ViewAllOrderAdmin";
 import ViewSingleOrderSeManager from "./components/sections/Order/ViewSingleOrderSeManager";
+import ViewAllOrderSupplier from "./components/sections/Order/ViewAllOrderSupplier";
 
 
 //Supplier
 import AddSupplierItem from "./components/pages/AddSupplierItem";
 import ViewAllItems from "./components/pages/ViewAllItems";
 import UpdateSupplierItem from "./components/sections/Supplier/UpdateSupplierItem";
+import ViewSingleOrderSupplier from "./components/sections/Order/ViewSingleOrderSupplier";
 
 
 function App() {
@@ -132,9 +134,11 @@ function App() {
                     <Route path={'/order/listSm'} component={ViewAllOrderSM}/>
                     <Route path={'/order/listAcc'} component={ViewAllOrderAccountant}/>
                     <Route path={'/order/listSem'} component={ViewAllOrderSeManager}/>
+                    <Route path={'/order/listSup'} component={ViewAllOrderSupplier}/>
                     <Route path={'/order/viewSm/:id'} component={ViewSingleOrderSM}/>
                     <Route path={'/order/viewAcc/:id'} component={ViewSingleOrderAccountant}/>
                     <Route path={'/order/viewSem/:id'} component={ViewSingleOrderSeManager}/>
+                    <Route path={'/order/viewSup/:id'} component={ViewSingleOrderSupplier}/>
 
 
                     {/* DRAFT ORDER */}

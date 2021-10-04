@@ -189,7 +189,6 @@ class AddDeliverySm extends Component {
                             }
                             </tbody>
                         </Table>
-
                     </section>
                 </Container>
             </div>

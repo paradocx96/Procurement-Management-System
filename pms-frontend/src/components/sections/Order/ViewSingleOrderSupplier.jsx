@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {Container, Table} from "react-bootstrap";
+import {Button, Container, Table} from "react-bootstrap";
 import OrderService from "../../../services/OrderService";
 import SiteService from "../../../services/SiteService";
 import NavigationSeniorManager from "../../layouts/Navigation/NavigationSeniorManager";
+import NavigationSupplier from "../../layouts/Navigation/NavigationSupplier";
 import DeliveryLogService from "../../../services/DeliveryLogService";
 
-class ViewSingleOrderSeManager extends Component {
+class ViewSingleOrderSupplier extends Component {
 
     // Initializing state values and functions
     constructor(props) {
@@ -133,7 +134,7 @@ class ViewSingleOrderSeManager extends Component {
     render() {
         return (
             <div>
-                <NavigationSeniorManager/>
+                <NavigationSupplier/>
                 <Container style={this.divCon}>
                     <section style={this.divSection}>
                         <Table style={this.tabStyle}>
@@ -206,6 +207,22 @@ class ViewSingleOrderSeManager extends Component {
                             </tr>
                             </tbody>
                         </Table>
+
+                        <div className={'row'}>
+                            <div className={'col'}>
+                                Comment : {this.state.comment}
+                            </div>
+                        </div>
+                        <div className={'row'}>
+                            <div className={'col'}>
+                                Contact Details : {this.state.comment}
+                            </div>
+                        </div>
+                        <div className={'row'}>
+                            <div className={'col'}>
+                                Purchased Date : {this.state.dateTime}
+                            </div>
+                        </div>
                     </section>
 
                     <div style={this.divBox}/>
@@ -235,11 +252,10 @@ class ViewSingleOrderSeManager extends Component {
                             </tbody>
                         </Table>
                     </section>
-
                 </Container>
             </div>
         );
     }
 }
 
-export default ViewSingleOrderSeManager;
+export default ViewSingleOrderSupplier;
