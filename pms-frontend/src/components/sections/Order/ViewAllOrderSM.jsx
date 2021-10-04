@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Container, Table} from "react-bootstrap";
+import {Col, Container, Form, Row, Table} from "react-bootstrap";
 import OrderService from "../../../services/OrderService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import {Link} from "react-router-dom";
+import ProjectService from "../../../services/ProjectService";
+import DraftOrderService from "../../../services/DraftOrderService";
 
 class ViewAllOrderSM extends Component {
 
@@ -10,12 +12,25 @@ class ViewAllOrderSM extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            orderList: []
+            projectList: [],
+            orderList: [],
+            siteManagerId: '5454654',
         }
+        this.onHandlerProject = this.onHandlerProject.bind(this);
     }
 
     componentDidMount = async () => {
-        await OrderService.getAll()
+        await ProjectService.getByManagerId(this.state.siteManagerId)
+            .then(response => response.data)
+            .then((data) => {
+                this.setState({projectList: data});
+            }).catch(error =>
+                console.log(error.message)
+            );
+    }
+
+    onHandlerProject = async (event) => {
+        await OrderService.getByProjectId(event.target.value)
             .then(response => response.data)
             .then((data) => {
                 this.setState({orderList: data});
@@ -24,12 +39,39 @@ class ViewAllOrderSM extends Component {
             );
     }
 
+    divBox = {
+        height: '50px'
+    }
+
     render() {
         return (
             <div>
                 <NavigationSiteManager/>
                 <Container>
                     <h2>PURCHASE HISTORY</h2>
+
+                    <section>
+                        <div>
+                            <Form>
+                                <Form.Group as={Row} controlId="projectId" className={'pt-3'}>
+                                    <Col sm={4}>
+                                        <Form.Control required as="select"
+                                                      name="projectId"
+                                                      onChange={this.onHandlerProject}>
+
+                                            <option>Select Project</option>
+                                            {this.state.projectList.map(item => (
+                                                <option key={item.id} value={item.id}>
+                                                    {item.projectName}
+                                                </option>
+                                            ))}
+                                        </Form.Control>
+                                    </Col>
+                                </Form.Group>
+                            </Form>
+                        </div>
+                    </section>
+                    <div style={this.divBox}/>
 
                     <Table striped bordered hover variant="dark" size="sm">
                         <thead>

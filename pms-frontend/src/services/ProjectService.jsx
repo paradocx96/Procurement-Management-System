@@ -22,6 +22,10 @@ export default new class ProjectService {
         return axios.get(URL + "/getBySiteId/" + id);
     }
 
+    getByManagerId(id) {
+        return axios.get(URL + "/getByManagerId/" + id);
+    }
+
     deleteById(id) {
         return axios.delete(URL + "/deleteById/" + id);
     }
