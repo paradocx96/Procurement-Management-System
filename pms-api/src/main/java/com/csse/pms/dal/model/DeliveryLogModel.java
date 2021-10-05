@@ -3,6 +3,12 @@ package com.csse.pms.dal.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * @author Chandrasiri S.A.N.L.D.
+ *
+ * This Class for Delivery Log related implementation
+ */
+
 @Document
 public class DeliveryLogModel {
 

@@ -3,6 +3,12 @@ package com.csse.pms.domain;
 import org.springframework.http.ResponseEntity;
 import java.util.List;
 
+/**
+ * @author Chandrasiri S.A.N.L.D.
+ *
+ * This Interface for Delivery Log related implementation
+ */
+
 public interface DeliveryLogDataAdapter {
 
     ResponseEntity<?> createDeliveryLog(DeliveryLog deliveryLog);
