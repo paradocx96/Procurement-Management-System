@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import ProjectService from "../../../services/ProjectService";
 import SiteService from "../../../services/SiteService";
-import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
+import NavigationSeniorManager from "../../layouts/Navigation/NavigationSeniorManager";
 
 class EditProjectSM extends Component {
 
@@ -98,6 +98,7 @@ class EditProjectSM extends Component {
         event.preventDefault();
 
         let value = {
+            id: this.state.id,
             projectName: this.state.projectName,
             description: this.state.description,
             budget: this.state.budget,
@@ -127,7 +128,7 @@ class EditProjectSM extends Component {
     render() {
         return (
             <div>
-                <NavigationSiteManager/>
+                <NavigationSeniorManager/>
                 <Container>
                     <h2>UPDATE PROJECT</h2>
 

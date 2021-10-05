@@ -71,6 +71,7 @@ import AddSupplierItem from "./components/pages/AddSupplierItem";
 import ViewAllItems from "./components/pages/ViewAllItems";
 import UpdateSupplierItem from "./components/sections/Supplier/UpdateSupplierItem";
 import ViewSingleOrderSupplier from "./components/sections/Order/ViewSingleOrderSupplier";
+import FooterBar from "./components/layouts/Footer/FooterBar";
 
 
 function App() {
@@ -158,6 +159,7 @@ function App() {
                     <Redirect to="/"/>
                 </Switch>
             </Router>
+            <FooterBar/>
         </div>
     );
 }

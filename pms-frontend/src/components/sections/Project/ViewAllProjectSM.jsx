@@ -3,6 +3,7 @@ import {Container, Table} from "react-bootstrap";
 import ProjectService from "../../../services/ProjectService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import {Link} from "react-router-dom";
+import NavigationSeniorManager from "../../layouts/Navigation/NavigationSeniorManager";
 
 class ViewAllProjectSM extends Component {
 
@@ -27,7 +28,7 @@ class ViewAllProjectSM extends Component {
     render() {
         return (
             <div>
-                <NavigationSiteManager/>
+                <NavigationSeniorManager/>
                 <Container>
                     <h2>PROJECT LIST</h2>
 
