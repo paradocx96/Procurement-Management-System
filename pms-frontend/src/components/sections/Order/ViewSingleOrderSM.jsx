@@ -1,10 +1,10 @@
+// @author IT19180526 - Chandrasiri SANLD
+
 import React, {Component} from 'react';
 import OrderService from "../../../services/OrderService";
 import {Container, Table} from "react-bootstrap";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import SiteService from "../../../services/SiteService";
-import {Link} from "react-router-dom";
-import SupplierService from "../../../services/SupplierService";
 import DeliveryLogService from "../../../services/DeliveryLogService";
 
 class ViewSingleOrderSM extends Component {
