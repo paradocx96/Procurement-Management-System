@@ -1,6 +1,7 @@
 import React from "react";
 import CountableItemService from "../../../../services/CountableItemService";
 import {Button, Table} from "react-bootstrap";
+import CommonCheckAuthForInternalUsers from "../../../../services/CommonCheckAuthForInternalUsers";
 
 class ViewAllCountableItems extends React.Component{
     constructor(props) {
@@ -95,4 +96,4 @@ class ViewAllCountableItems extends React.Component{
     }
 
 }
-export default ViewAllCountableItems;
+export default CommonCheckAuthForInternalUsers(ViewAllCountableItems);

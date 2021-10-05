@@ -4,6 +4,7 @@ import data from "bootstrap/js/src/dom/data";
 import {confirmAlert} from "react-confirm-alert";
 import Toast1 from "../../../Toasts/Toast1";
 import {Button, Table} from "react-bootstrap";
+import CommonCheckAuthForInternalUsers from "../../../../services/CommonCheckAuthForInternalUsers";
 
 class DeleteUncountableItems extends React.Component{
     constructor(props) {
@@ -145,4 +146,4 @@ class DeleteUncountableItems extends React.Component{
     }
 
 }
-export default DeleteUncountableItems;
+export default CommonCheckAuthForInternalUsers(DeleteUncountableItems);

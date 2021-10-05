@@ -4,6 +4,7 @@ import SiteService from "../../../../services/SiteService";
 import data from "bootstrap/js/src/dom/data";
 import CountableItemService from "../../../../services/CountableItemService";
 import Toast1 from "../../../Toasts/Toast1";
+import CommonCheckAuthForInternalUsers from "../../../../services/CommonCheckAuthForInternalUsers";
 
 class AddCountableItem extends React.Component{
     constructor(props) {
@@ -205,4 +206,4 @@ class AddCountableItem extends React.Component{
 
 }
 
-export default AddCountableItem;
+export default CommonCheckAuthForInternalUsers(AddCountableItem);

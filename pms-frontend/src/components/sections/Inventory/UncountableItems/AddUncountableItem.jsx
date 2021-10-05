@@ -3,7 +3,7 @@ import SiteService from "../../../../services/SiteService";
 import Toast1 from "../../../Toasts/Toast1";
 import {Button, Form} from "react-bootstrap";
 import UncountableItemService from "../../../../services/UncountableItemService";
-import data from "bootstrap/js/src/dom/data";
+import CommonCheckAuthForInternalUsers from "../../../../services/CommonCheckAuthForInternalUsers";
 
 class AddUncountableItem extends React.Component{
     constructor(props) {
@@ -219,4 +219,4 @@ class AddUncountableItem extends React.Component{
     }
 
 }
-export default AddUncountableItem;
+export default CommonCheckAuthForInternalUsers(AddUncountableItem);

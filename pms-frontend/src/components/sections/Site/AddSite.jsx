@@ -3,6 +3,7 @@ import {Button, Form} from "react-bootstrap";
 import SiteService from "../../../services/SiteService";
 import data from "bootstrap/js/src/dom/data";
 import Toast1 from "../../Toasts/Toast1";
+import CommonCheckAuthForInternalUsers from "../../../services/CommonCheckAuthForInternalUsers";
 
 class AddSite extends React.Component{
     constructor(props) {
@@ -119,4 +120,4 @@ class AddSite extends React.Component{
 
 }
 
-export default AddSite;
+export default CommonCheckAuthForInternalUsers(AddSite);
