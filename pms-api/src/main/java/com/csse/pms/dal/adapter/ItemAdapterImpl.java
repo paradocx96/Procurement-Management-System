@@ -18,6 +18,19 @@ import com.csse.pms.dto.ItemMessageResponseDto;
 import com.csse.pms.dto.MessageResponseDto;
 import com.csse.pms.util.CommonConstants;
 
+/**
+ * 
+ * @author Malwatta H.G.- IT19240848
+ * 
+ * This class handle all items related methods
+ * - @see #addItem(Item) - add items 
+ * - @see #updateSingleItem(Item) - edit items
+ * - @see #getItemByItemID(String) - view items
+ * - @see #deleteByItemID(String) - delete items 
+ * 
+ *
+ */
+
 @Component
 public class ItemAdapterImpl implements ItemDataAdapter {
 

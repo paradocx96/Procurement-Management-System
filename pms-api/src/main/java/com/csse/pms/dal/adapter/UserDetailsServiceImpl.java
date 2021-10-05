@@ -16,7 +16,7 @@ import com.csse.pms.dal.repository.SupplierRepository;
 
 /**
  * 
- * @author Malwatta H.G.
+ * @author Malwatta H.G.- IT19240848
  * 
  * This class is for find the by their unique data
  * like email(in here i get email instead of username)

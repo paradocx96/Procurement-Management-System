@@ -40,11 +40,12 @@ import com.csse.pms.util.CommonConstants;
 
 /**
  * 
- * @author Malwatta H.G.
+ * @author Malwatta H.G.- IT19240848
  * 
  * This class handle by the Internal users related methods
- *     - register @see #registerInternelUser(InternelUser)
- *     - login @see #loginInternelUser(InternelUser)
+ *     - @see #registerInternelUser(InternelUser) - register 
+ *     - @see #loginInternelUser(InternelUser) - login 
+ *     - @see #getAllInternalUsers() - get all internal users
  *
  */
 
@@ -199,6 +200,11 @@ public class InternelUserAdapterImpl implements InternelUserDataAdapter{
 															roles));
 	}
 
+	/**
+	 *  This method returns List of internal user object
+	 *  and that contains all user details
+	 *  
+	 */
 	@Override
 	public List<InternelUser> getAllInternalUsers() {
 		

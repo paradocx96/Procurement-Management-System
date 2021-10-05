@@ -43,15 +43,15 @@ import com.csse.pms.util.CommonConstants;
 
 /**
  * 
- * @author Malwatta H.G.
+ * @author Malwatta H.G.- IT19240848
  * 
  * This class handle by the supplier related methods
- *     - register @see #registerSupplier(Supplier)
- *     - login
- *     - add items
- *     - view items
- *     - delete items
- *     - edit items
+ *     - @see #registerSupplier(Supplier) - register 
+ *     - @see #loginSupplier(Supplier) - login
+ *     - @see #getAllSupplier() - get all suppliers
+ *     - @see #getSupplierByStatus(String) - get supplier by status
+ *     - @see #updateSupplierStatus(Supplier) - update supplier status
+ *    
  *
  */
 
