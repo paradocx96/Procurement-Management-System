@@ -54,31 +54,19 @@ class DashboardSiteManager extends Component {
                         </div>
                         <div className={'row pt-3'}>
                             <div className={'col'}>
-                                <Link to={'/project/addProjectSm'} style={{textDecoration: 'none'}}>
-                                    <Card className={''}>
-                                        <Card.Body>
-                                            <Card.Title>NEW PROJECT</Card.Title>
-                                        </Card.Body>
-                                    </Card>
-                                </Link>
-                            </div>
-                            <div className={'col'}>
-                                <Link to={'/project/listSm'} style={{textDecoration: 'none'}}>
-                                    <Card>
-                                        <Card.Body>
-                                            <Card.Title>PROJECTS</Card.Title>
-                                        </Card.Body>
-                                    </Card>
-                                </Link>
-                            </div>
-                            <div className={'col'}>
-                              <Link to={'/inventory/main'} style={{textDecoration: 'none'}}>
+                                <Link to={'/inventory/main'} style={{textDecoration: 'none'}}>
                                     <Card>
                                         <Card.Body>
                                             <Card.Title>INVENTORY</Card.Title>
                                         </Card.Body>
                                     </Card>
                                 </Link>
+                            </div>
+                            <div className={'col'}>
+
+                            </div>
+                            <div className={'col'}>
+
                             </div>
                         </div>
                     </section>

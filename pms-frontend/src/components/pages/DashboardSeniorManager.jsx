@@ -65,10 +65,22 @@ class DashboardSeniorManager extends Component {
                                 </Link>
                             </div>
                             <div className={'col'}>
-                                
+                                <Link to={'/project/listSm'} style={{textDecoration: 'none'}}>
+                                    <Card>
+                                        <Card.Body>
+                                            <Card.Title>PROJECTS</Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
                             </div>
                             <div className={'col'}>
-                                
+                                <Link to={'/project/addProjectSm'} style={{textDecoration: 'none'}}>
+                                    <Card>
+                                        <Card.Body>
+                                            <Card.Title>NEW PROJECT</Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
                             </div>
                         </div>
                     </section>

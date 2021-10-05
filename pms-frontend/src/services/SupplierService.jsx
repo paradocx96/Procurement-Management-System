@@ -92,7 +92,7 @@ class SupplierService extends Component {
     }
 
     getAll() {
-        return axios.get(URL + "/get-all-supplier");
+        return axios.get(API_SUPPLIER_BACKEND_URL + "get-all-supplier");
     }
 
 }

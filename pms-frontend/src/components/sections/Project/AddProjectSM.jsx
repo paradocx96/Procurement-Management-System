@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import ProjectService from "../../../services/ProjectService";
-import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
-import Toast1 from "../../Toasts/Toast1";
 import SiteService from "../../../services/SiteService";
+import NavigationSeniorManager from "../../layouts/Navigation/NavigationSeniorManager";
 
 class AddProjectSM extends Component {
 
@@ -95,19 +94,9 @@ class AddProjectSM extends Component {
     render() {
         return (
             <div>
-                <NavigationSiteManager/>
+                <NavigationSeniorManager/>
                 <Container>
                     <h2>ADD NEW PROJECT</h2>
-
-                    {/*<div style={{"display": this.state.show ? "block" : "none"}}>*/}
-                    {/*    <Toast1*/}
-                    {/*        children={{*/}
-                    {/*            show: this.state.show,*/}
-                    {/*            message: this.state.message,*/}
-                    {/*            type: 'success'*/}
-                    {/*        }}*/}
-                    {/*    />*/}
-                    {/*</div>*/}
 
                     <div>
                         <Form onSubmit={this.onSubmit.bind(this)}
@@ -119,6 +108,7 @@ class AddProjectSM extends Component {
                                     <Form.Control required as="select"
                                                   name="siteId"
                                                   onChange={this.onHandlerSiteId}>
+                                        <option>Select Site</option>
                                         {this.state.siteList.map(item => (
                                             <option key={item.id} value={item.id}>
                                                 {item.siteName}({item.location})
