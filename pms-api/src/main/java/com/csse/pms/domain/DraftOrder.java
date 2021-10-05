@@ -4,6 +4,12 @@ import com.csse.pms.dal.model.OrderItemModel;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * @author Chandrasiri S.A.N.L.D.
+ *
+ * This Class for Draft Order related implementation
+ */
+
 public class DraftOrder {
 
     private String id;

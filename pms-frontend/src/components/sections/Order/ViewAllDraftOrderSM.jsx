@@ -1,8 +1,9 @@
+// @author IT19180526 - Chandrasiri SANLD
+
 import React, {Component} from 'react';
 import {Col, Container, Form, Row, Table} from "react-bootstrap";
 import DraftOrderService from "../../../services/DraftOrderService";
 import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
-import ProjectService from "../../../services/ProjectService";
 import SiteService from "../../../services/SiteService";
 import {Link} from "react-router-dom";
 

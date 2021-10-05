@@ -7,6 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
+/**
+ * @author Chandrasiri S.A.N.L.D.
+ *
+ * This Class for Delivery Log related implementation
+ */
+
 @Service
 public class DeliveryLogApi {
 

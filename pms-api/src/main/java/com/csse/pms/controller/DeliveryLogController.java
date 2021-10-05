@@ -10,6 +10,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+/**
+ * @author Chandrasiri S.A.N.L.D.
+ *
+ * This Class for Delivery Log related implementation
+ */
+
 @RestController
 @RequestMapping(CommonConstants.DELIVERY_REQUEST_MAPPING)
 @CrossOrigin(origins = CommonConstants.STAR, allowedHeaders = CommonConstants.STAR, exposedHeaders = CommonConstants.STAR)

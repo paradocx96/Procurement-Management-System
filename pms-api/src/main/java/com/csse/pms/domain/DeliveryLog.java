@@ -1,5 +1,11 @@
 package com.csse.pms.domain;
 
+/**
+ * @author Chandrasiri S.A.N.L.D.
+ *
+ * This Class for Delivery Log related implementation
+ */
+
 public class DeliveryLog {
 
     private String id;

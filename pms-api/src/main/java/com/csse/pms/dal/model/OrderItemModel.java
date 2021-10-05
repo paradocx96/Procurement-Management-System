@@ -2,6 +2,12 @@ package com.csse.pms.dal.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * @author Chandrasiri S.A.N.L.D.
+ *
+ * This Class for Order related implementation
+ */
+
 @Document
 public class OrderItemModel {
 

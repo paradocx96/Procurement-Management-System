@@ -1,7 +1,8 @@
+// @author IT19180526 - Chandrasiri SANLD
+
 import React, {Component} from 'react';
 import {Container, Table} from "react-bootstrap";
 import ProjectService from "../../../services/ProjectService";
-import NavigationSiteManager from "../../layouts/Navigation/NavigationSiteManager";
 import {Link} from "react-router-dom";
 import NavigationSeniorManager from "../../layouts/Navigation/NavigationSeniorManager";
 

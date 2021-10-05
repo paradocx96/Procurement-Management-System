@@ -5,6 +5,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * @author Chandrasiri S.A.N.L.D.
+ *
+ * This Class for Draft Order related implementation
+ */
+
 @Document
 public class DraftOrderModel {
 

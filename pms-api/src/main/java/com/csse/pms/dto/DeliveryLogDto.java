@@ -1,5 +1,11 @@
 package com.csse.pms.dto;
 
+/**
+ * @author Chandrasiri S.A.N.L.D.
+ *
+ * This Class for Delivery Log related implementation
+ */
+
 public class DeliveryLogDto {
 
     private String id;
