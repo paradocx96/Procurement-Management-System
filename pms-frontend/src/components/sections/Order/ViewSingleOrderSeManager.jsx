@@ -220,7 +220,7 @@ class ViewSingleOrderSeManager extends Component {
                             </thead>
                             <tbody>
                             {
-                                this.state.orderList.length === 0 ?
+                                this.state.deliveryList.length === 0 ?
                                     <tr>
                                         <td>{'Data Not Available!'}</td>
                                     </tr>

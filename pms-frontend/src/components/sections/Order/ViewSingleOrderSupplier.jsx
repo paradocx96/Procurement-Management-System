@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import {Button, Container, Table} from "react-bootstrap";
+import {Container, Table} from "react-bootstrap";
+import DeliveryLogService from "../../../services/DeliveryLogService";
 import OrderService from "../../../services/OrderService";
 import SiteService from "../../../services/SiteService";
-import NavigationSeniorManager from "../../layouts/Navigation/NavigationSeniorManager";
 import NavigationSupplier from "../../layouts/Navigation/NavigationSupplier";
-import DeliveryLogService from "../../../services/DeliveryLogService";
 
 class ViewSingleOrderSupplier extends Component {
 
@@ -237,7 +236,7 @@ class ViewSingleOrderSupplier extends Component {
                             </thead>
                             <tbody>
                             {
-                                this.state.orderList.length === 0 ?
+                                this.state.deliveryList.length === 0 ?
                                     <tr>
                                         <td>{'Data Not Available!'}</td>
                                     </tr>
