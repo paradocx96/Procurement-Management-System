@@ -4,6 +4,7 @@ import CountableItemService from "../../../../services/CountableItemService";
 import {Button, Table} from "react-bootstrap";
 import {confirmAlert} from "react-confirm-alert";
 import Toast1 from "../../../Toasts/Toast1";
+import CommonCheckAuthForInternalUsers from "../../../../services/CommonCheckAuthForInternalUsers";
 
 class DeleteCountableItems extends React.Component{
     constructor(props) {
@@ -142,4 +143,4 @@ class DeleteCountableItems extends React.Component{
     }
 
 }
-export default DeleteCountableItems;
+export default CommonCheckAuthForInternalUsers(DeleteCountableItems);

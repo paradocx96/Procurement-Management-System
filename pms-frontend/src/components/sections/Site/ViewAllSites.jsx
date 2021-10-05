@@ -2,6 +2,7 @@ import React from "react";
 import SiteService from "../../../services/SiteService";
 import data from "bootstrap/js/src/dom/data";
 import {Button, Table} from "react-bootstrap";
+import CommonCheckAuthForInternalUsers from "../../../services/CommonCheckAuthForInternalUsers";
 
 class ViewAllSites extends React.Component{
     constructor(props) {
@@ -70,4 +71,4 @@ class ViewAllSites extends React.Component{
 
 }
 
-export default ViewAllSites;
+export default CommonCheckAuthForInternalUsers(ViewAllSites);

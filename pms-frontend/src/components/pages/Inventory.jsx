@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {Col, Row} from "react-bootstrap";
+import CommonCheckAuthForInternalUsers from "../../services/CommonCheckAuthForInternalUsers";
 
 class Inventory extends React.Component{
     constructor(props) {
@@ -41,4 +42,4 @@ class Inventory extends React.Component{
 
 }
 
-export default Inventory;
+export default CommonCheckAuthForInternalUsers(Inventory);
